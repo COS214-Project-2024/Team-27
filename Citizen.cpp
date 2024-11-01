@@ -27,6 +27,16 @@ void Citizen::setEmploymentStatus(bool isEmployed) {
      this->isEmployed = isEmployed;
 }
 
+double Citizen::getincome()
+{
+    return this->income;
+}
+
+bool Citizen::getEmploymentStatus()
+{
+    return this->isEmployed;
+}
+
 void Citizen::display() const {
     std::cout << "Name: " << name << ", ID: " << ID << ", Age: " << age
               << ", Income: " << income << ", Satisfaction: " << satisfaction

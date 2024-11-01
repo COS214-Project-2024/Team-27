@@ -1,11 +1,15 @@
 #ifndef COLLECTALLTAX_H
 #define COLLECTALLTAX_H
 #include "Government.h"
+#include "Command.h"
 
-class CollectAllTax{
+class CollectAllTax: public Command {
+private:
+    Government* government;
+
     public:
  virtual void execute();
-    void collectAllax(Government* gov);
+        CollectAllTax(Government* gov);
 };
 
 #endif

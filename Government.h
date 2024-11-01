@@ -3,6 +3,10 @@
 
 #include "Citizen.h"
 #include "CityGrowthManager.h"
+#include "Building.h"
+#include "GovernmentMemento.h"
+// #include "GovernmentMediator.h"
+
 
 #include <string>
 #include <vector>
@@ -11,15 +15,19 @@ using namespace std ;
 
 class Government {
   private :
-      GovernmentMediator* mediator ;
+      // GovernmentMediator* mediator ;
       Government* backup ;
       CityGrowthManager* cityGrowthManager ;
       vector<Citizen> citizens ;
       vector<Building> buildings ;
+      double citizenTaxRate;
+      double buildingTaxRate;
+      double CTotalTax;
+      double BTotalTax;
   public :
     Government(double cRate, double bRate, vector<Citizen*>);
 
-    // Command
+    // Command 
     void collectCitizenTax() ;
     void collectBuildingTax();
     void collectCityTax();
@@ -36,7 +44,7 @@ class Government {
 
 
 
-}
+};
 
 
 
