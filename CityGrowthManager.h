@@ -6,6 +6,7 @@ class CityGrowthManager{
         int population ;
         int numberOfBuildings ;
         double economicGrowthRate ;
+        Government* savedGov ;
     public :
         CityGrowthManager(int pop, int numOfBuildings, double econG_rate);
         //setters

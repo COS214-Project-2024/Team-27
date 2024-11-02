@@ -16,11 +16,23 @@ void CityGrowthManager::setEconGrowthrate(double rate){
 void CityGrowthManager::evaluatePopulationGrowth(){
     
 }
-        void evaluateBuildingExpansion();
+void CityGrowthManager::evaluateBuildingExpansion(){
+    savedGov = Government::
+    int growthFactor = static_cast<int>(economicGrowthRate * 100);
+    population += growthFactor ;
+    cout << " Population growth evaluated : " << population << std:: endl ;
+}
         void evaluateEconomicGrowth();
         void evaluateGrowth();
         //getters
-        int getPopulation();
-        int getNumOfBuildings();
-        double getEconGrowthRate();
-};
+int CityGrowthManager::getPopulation(){
+    return population ;
+}
+
+int CityGrowthManager::getNumOfBuildings(){
+    return numberOfBuildings ;
+}
+
+double CityGrowthManager::getEconGrowthRate(){
+    return economicGrowthRate ;
+}
