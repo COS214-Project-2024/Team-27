@@ -18,6 +18,10 @@ class GovernmentMemento{
     public :
         GovernmentMemento(double b, double c,vector<Building*> buildingsC, vector<Citizen*> CitizenC);
         void getDetails();
+        double getBuildingTaxRate() const ;
+        double getCitizenTaxRate() const ;
+        const vector<Citizen*>& getCitizens() const ;
+        const vector<Building*>& getBuildings() const ;
 };
 
 
