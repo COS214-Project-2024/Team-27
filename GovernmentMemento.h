@@ -20,7 +20,7 @@ class GovernmentMemento{
         
 
     public :
-        GovernmentMemento(double b, double c,vector<Building*> buildingsC, vector<Citizen*> CitizenC);
+        GovernmentMemento(double b, double c,int population, int numBuildings, double econRate, vector<Building*> buildingsC, vector<Citizen*> CitizenC);
         void getDetails();
         double getBuildingTaxRate() const ;
         double getCitizenTaxRate() const ;
