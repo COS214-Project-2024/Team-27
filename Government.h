@@ -12,7 +12,6 @@ using namespace std ;
 
 class Government {
   private :
-      GovernmentMediator* mediator ;
       Government* backup ;
       CityGrowthManager* cityGrowthManager ;
       vector<Citizen> citizens ;
