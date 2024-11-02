@@ -1,11 +1,7 @@
 #include "GovernmentMemento.h"
 
 GovernmentMemento::GovernmentMemento(double b, double c, vector<Building*> buildingsC, vector<Citizen*> CitizensC)
-    : buildingTaxRate(b), citizenTaxRate(c), buildings(buildingsC){
-        for(Citizen* citizen : CitizensC){
-            citizens.push_back(new Citizen(*citizen));
-        }
-}
+    : buildingTaxRate(b), citizenTaxRate(c), buildings(buildingsC), citizens(CitizensC){}
 
 
 void GovernmentMemento::getDetails(){
@@ -15,9 +11,25 @@ void GovernmentMemento::getDetails(){
     cout << " Number of Citizens: "<< citizens.size() << endl ;
 }
 
-GovernmentMemento::~GovernmentMemento(){
-    for(Citizen* citizen : citizens){
-        delete citizen ;
-    }
-    
+double GovernmentMemento::getBuildingTaxRate() const {
+    return buildingTaxRate ;
 }
+
+double GovernmentMemento::getCitizenTaxRate() const {
+    return citizenTaxRate ;
+}
+
+const vector<Citizen*>& GovernmentMemento::getCitizens() const {
+    return citizens ;
+}
+
+const vector<Building*>& GovernmentMemento::getBuildings() const {
+    return buildings ;
+}
+
+// GovernmentMemento::~GovernmentMemento(){
+//     for(Citizen* citizen : citizens){
+//         delete citizen ;
+//     }
+    
+// }
