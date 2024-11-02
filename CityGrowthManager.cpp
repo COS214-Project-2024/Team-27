@@ -23,8 +23,22 @@ void CityGrowthManager::evaluateBuildingExpansion(){
     cout << " Population growth evaluated : " << population << std:: endl ;
 }
         void evaluateEconomicGrowth();
-        void evaluateGrowth();
-        //getters
+void CityGrowthManager::evaluateGrowth(GovernmentCaretaker* caretaker, int previousIndex = -1){
+    if(previousIndex == -1){
+        previousIndex = caretaker->history.size() -1 ;
+    }
+
+    GovernmentMemento* memento = caretaker->getMemento(previousIndex);
+    if(memento){
+        int previousPopulation = memento->getSavedPopulation();
+        int previousBuildings = memento->getSavedNumberOfBuildings();
+        double prevoousEconRate = memento->getSavedEconomicGrowthRate();
+
+        int popGrowth = population - previousPopulation ;
+        int buildingGrowth = numberOfBuildings - previousBuildings ;
+        double econGrowth = economicGrowthRate - previousEconRate ;
+    }
+}
 int CityGrowthManager::getPopulation(){
     return population ;
 }
