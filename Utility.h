@@ -8,7 +8,7 @@ class Utility{
     private:
 
     public:
-    
+       virtual void useResources(double used) = 0;   
 };
 
 #endif
