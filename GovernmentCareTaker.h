@@ -8,7 +8,7 @@ class GovernmentCaretaker{
         vector<GovernmentMemento*> history ;
     public :
         void saveMemento(GovernmentMemento* memento);
-        GovernmentCaretaker* getMemento(int i);
+        GovernmentMemento* getMemento(int i);
         ~GovernmentCaretaker();
 };
 
