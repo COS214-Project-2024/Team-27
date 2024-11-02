@@ -26,6 +26,10 @@ const vector<Citizen*>& GovernmentMemento::getCitizens() const {
 const vector<Building*>& GovernmentMemento::getBuildings() const {
     return buildings ;
 }
+int GovernmentMemento::getSavedPopulation() const { return savedPopulation; }
+int GovernmentMemento::getSavedNumberOfBuildings() const { return savedNumberOfBuildings; }
+
+double GovernmentMemento::getSavedEconomicGrowthRate() const { return savedEconomicGrowthRate; }
 
 // GovernmentMemento::~GovernmentMemento(){
 //     for(Citizen* citizen : citizens){

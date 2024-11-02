@@ -17,6 +17,8 @@ class Government {
       CityGrowthManager* cityGrowthManager ;
       vector<Citizen> citizens ;
       vector<Building> buildings ;
+      double buildingTaxRate ;
+      double citizenTaxRate ;
   public :
     Government(double cRate, double bRate, vector<Citizen*>);
 

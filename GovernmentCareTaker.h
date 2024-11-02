@@ -2,9 +2,11 @@
 #define GOVERNMENTCARETAKER_H
 
 #include "GovernmentMemento.h"
+#include "CityGrowthManager.h"
 
 class GovernmentCaretaker{
     private :
+        friend class CityGrowthManager ;
         vector<GovernmentMemento*> history ;
     public :
         void saveMemento(GovernmentMemento* memento);
