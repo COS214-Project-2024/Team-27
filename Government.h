@@ -32,7 +32,7 @@ class Government {
 
     // Memento
     GovernmentMemento* saveState();
-    void restoreState();
+    void restoreState(GovernmentMemento* memento);
     void displayState();
 };
 #endif
