@@ -11,7 +11,8 @@ class WasteSystem: public Utility{
         int numOftrucks;
     public:
         WasteSystem(double Kilograms,int numOftrucks);
-        void reboot(int increment);
+        
+        void update();
         void useResources(double used);
     
 };
