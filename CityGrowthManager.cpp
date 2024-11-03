@@ -53,3 +53,26 @@ int CityGrowthManager::getNumOfBuildings(){
 double CityGrowthManager::getEconGrowthRate(){
     return economicGrowthRate ;
 }
+
+
+void CityGrowthManager::simulateNaturalDisaster(Government* myGov, 
+                                                GovernmentCaretaker* caretaker, 
+                                                double populationImpactPercentage, 
+                                                double buildingImpactPercentage, 
+                                                double economicImpactFactor) {
+    // Save current state before applying disaster impact
+    caretaker->saveMemento(myGov->saveState());
+    // Calculate impact on population
+    int populationLoss = static_cast<int>(population * (populationImpactPercentage / 100.0));
+    population = std::max(0, population - populationLoss);
+
+    // Calculate impact on buildings
+    int buildingsLost = static_cast<int>(numberOfBuildings * (buildingImpactPercentage / 100.0));
+    numberOfBuildings = std::max(0, numberOfBuildings - buildingsLost);
+
+    // Calculate impact on economic growth rate
+    economicGrowthRate *= economicImpactFactor;
+    if (economicGrowthRate < 0) economicGrowthRate = 0;
+
+    std::cout << "Disaster simulated: Population, buildings, and economy adjusted." << std::endl;
+}

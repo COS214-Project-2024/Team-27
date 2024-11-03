@@ -37,5 +37,16 @@ class Government {
     GovernmentMemento* saveState();
     void restoreState(GovernmentMemento* memento);
     void displayState();
+
+    //getters
+    double getCitizeTaxRate(){
+      return citizenTaxRate ;
+    }
+    double getBuildingTaxRate(){
+      return buildingTaxRate ;
+    }
+     double getEconomicGrowthRate(){
+      return economicGrowthRate ;
+    }
 };
 #endif
