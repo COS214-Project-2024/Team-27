@@ -11,7 +11,7 @@ class PowerSystem: public Utility{
         double save;
     public:
         PowerSystem(double megawatts);
-        void reboot();
+        void update();
         void useResources(double used);
     
 };
