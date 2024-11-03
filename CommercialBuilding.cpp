@@ -64,3 +64,7 @@ CommercialBuilding* CommercialBuilding::clone(){
 void CommercialBuilding::useResources(){
     
 }
+
+string CommercialBuilding::getComName(){
+    return name;
+}

@@ -31,6 +31,7 @@ class CommercialBuilding: public Building{
         void damage() override;
         CommercialBuilding* clone() override;
         void useResources() override;
+        string getComName();
 };
 
 #endif

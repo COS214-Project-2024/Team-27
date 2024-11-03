@@ -45,15 +45,20 @@ class CityFacade{
         void createLandmark();
         void createCommercial();
 
-        void showCitizens(string type);
         void createCitizen();
         void createChild();
         void createAdult();
         void setCitizenDetails(Citizen* citizen, const std::string& name, int age, double income, int satisfaction, bool isEmployed); 
         void updateCitizens();
+
         void moveIn();
         void moveIntoHouse();
         void moveIntoApartment();
+
+        void visitLandmark();
+        void visitCommercialBuilding();
+
+        void startUp();
 
 
         
