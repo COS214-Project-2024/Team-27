@@ -69,3 +69,8 @@ void House::useResources(){
 void House::addResident(Citizen* citizen){
     citizens.push_back(citizen);
 }
+
+double House::getPayableTax()
+{
+    
+}
