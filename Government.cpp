@@ -1,4 +1,26 @@
 #include "Government.h"
+#include "CollectAllTax.h"
+#include "CollectBuildingTax.h"
+#include "CollectCitizenTax.h"
+#include "Building.h"
+#include "GovernmentMemento.h"
+
+void Government::collectCitizenTax()
+{
+    
+}
+
+void Government::collectBuildingTax()
+{
+   
+}
+
+void Government::collectCityTax()
+{
+     collectalltax = new CollectAllTax();
+    
+}
+
 
 Government::Government(double  cRate, double bRate, double econGrowthRate, vector<Citizen*> initialCitizens, vector <Building*> initialBuildings) 
     : citizenTaxRate(cRate), buildingTaxRate(bRate), economicGrowthRate(econGrowthRate),citizens(initialCitizens), buildings(initialBuildings){

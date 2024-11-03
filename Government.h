@@ -1,6 +1,5 @@
 #ifndef GOVERNMENT_H
 #define GOVERNMENT_H
-
 #include "Citizen.h"
 #include "CityGrowthManager.h"
 #include "GovernmentMemento.h"
@@ -22,6 +21,9 @@ class Government {
       double economicGrowthRate ; 
       double CTotalTax;
       double BTotalTax;
+      CollectBuildingTax *collectbuildingtax;
+      CollectCitizenTax *Collectcitizentax;
+      CollectAllTax *collectalltax;
   public :
     Government(double cRate, double bRate, double economicGrowthRate, vector<Citizen*>, vector<Building*>);
 

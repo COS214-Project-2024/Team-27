@@ -1,6 +1,7 @@
 #ifndef CITYGROWTHMANAGER_H
 #define CITYGROWTHMANAGER_H
 
+
 #include "GovernmentCareTaker.h"
 #include "Government.h"
 #include <iostream>
@@ -29,6 +30,6 @@ class CityGrowthManager{
                                                 double populationImpactPercentage, 
                                                 double buildingImpactPercentage, 
                                                 double economicImpactFactor) ;
-};  
+}; 
 
 #endif

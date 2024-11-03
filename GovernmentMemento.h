@@ -2,6 +2,7 @@
 #define GOVERNMENTMEMENTO_H
 
 #include <vector>
+
 #include "Citizen.h"
 #include "Building.h"
 #include <iostream>
@@ -32,5 +33,3 @@ class GovernmentMemento{
         const vector<Building*>& getBuildings() const ;
 };
 
-
-#endif

@@ -1,6 +1,7 @@
 #include "CityGrowthManager.h"
 
 
+
 CityGrowthManager::CityGrowthManager(int pop, int numOfBuildings, double econG_rate)
     : population(pop), numberOfBuildings(numberOfBuildings), economicGrowthRate(econG_rate){}
 
