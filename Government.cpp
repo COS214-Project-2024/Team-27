@@ -1,7 +1,9 @@
 #include "Government.h"
 
-Government::Government(double  cRate, double bRate, double econGrowthRate, vector<Citizen*>, vector <Building*> initialBuildings) 
-    : citizenTaxRate(cRate), buildingTaxRate(bRate), economicGrowthRate(econGrowthRate), buildings(initialBuildings), cityGrowthManager(nullptr){}
+Government::Government(double  cRate, double bRate, double econGrowthRate, vector<Citizen*> initialCitizens, vector <Building*> initialBuildings) 
+    : citizenTaxRate(cRate), buildingTaxRate(bRate), economicGrowthRate(econGrowthRate),citizens(initialCitizens), buildings(initialBuildings){
+        cityGrowthManager = new CityGrowthManager(citizens.size(), buildings.size(), econGrowthRate);
+    }
 
 GovernmentMemento* Government::saveState(){
     vector<Citizen*> citizenPointers ;
