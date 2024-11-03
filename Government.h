@@ -13,7 +13,7 @@ using namespace std ;
 class Government {
   private :
       // GovernmentMediator* mediator ;
-      Government* backup ;
+      Government* backup 
       CityGrowthManager* cityGrowthManager ;
       vector<Citizen*> citizens ;
       vector<Building*> buildings ;

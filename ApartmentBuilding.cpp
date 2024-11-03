@@ -4,6 +4,18 @@ void ApartmentBuilding::getName(){
     cout<<name;
 }
 
+int ApartmentBuilding::numUnits(){
+    return units.size();
+}
+
+void ApartmentBuilding::printUnits(){
+    for(int i = 1; i<=units.size();i++){
+            cout<<i<<". ";
+            units[i-1]->getName();
+            cout<<endl;
+        }
+}
+
 void ApartmentBuilding::addUnit(Unit* unit){
     if(unit){
         units.push_back(unit);

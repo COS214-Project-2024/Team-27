@@ -19,7 +19,7 @@ class CityGrowthManager{
         void evaluatePopulationGrowth();
         void evaluateBuildingExpansion();
         void evaluateEconomicGrowth();
-        void evaluateGrowth();
+        void evaluateGrowth(GovernmentCaretaker* caretaker, int previousIndex);
         //getters
         int getPopulation();
         int getNumOfBuildings();

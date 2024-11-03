@@ -16,27 +16,32 @@ void CityGrowthManager::setEconGrowthrate(double rate){
 void CityGrowthManager::evaluatePopulationGrowth(){
     
 }
-void CityGrowthManager::evaluateBuildingExpansion(){
-    savedGov = Government::
-    int growthFactor = static_cast<int>(economicGrowthRate * 100);
-    population += growthFactor ;
-    cout << " Population growth evaluated : " << population << std:: endl ;
+void CityGrowthManager::evaluatePopulationGrowth() {
+    int growthFactor = static_cast<int>(economicGrowthRate * 50); // Example growth factor calculation
+    population += growthFactor;
+    cout << "Population growth evaluated: " << population << endl;
 }
-        void evaluateEconomicGrowth();
-void CityGrowthManager::evaluateGrowth(GovernmentCaretaker* caretaker, int previousIndex = -1){
-    if(previousIndex == -1){
-        previousIndex = caretaker->history.size() -1 ;
+void CityGrowthManager::evaluateGrowth(GovernmentCaretaker* caretaker, int previousIndex) {
+    if (previousIndex == -1) {
+        previousIndex = caretaker->history.size() - 1; // Use the last saved state if no specific index is given
     }
 
     GovernmentMemento* memento = caretaker->getMemento(previousIndex);
-    if(memento){
+    if (memento) {
         int previousPopulation = memento->getSavedPopulation();
         int previousBuildings = memento->getSavedNumberOfBuildings();
-        double prevoousEconRate = memento->getSavedEconomicGrowthRate();
+        double previousEconRate = memento->getSavedEconomicGrowthRate();
 
-        int popGrowth = population - previousPopulation ;
-        int buildingGrowth = numberOfBuildings - previousBuildings ;
-        double econGrowth = economicGrowthRate - previousEconRate ;
+        int popGrowth = population - previousPopulation;
+        int buildingGrowth = numberOfBuildings - previousBuildings;
+        double econGrowth = economicGrowthRate - previousEconRate;
+
+        cout << "Growth Comparison:" << endl;
+        cout << " Population Growth: " << popGrowth << endl;
+        cout << " Building Growth: " << buildingGrowth << endl;
+        cout << " Economic Growth Rate Change: " << econGrowth << "%" << endl;
+    } else {
+        cout << "No previous state found for comparison." << endl;
     }
 }
 int CityGrowthManager::getPopulation(){
