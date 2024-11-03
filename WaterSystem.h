@@ -11,7 +11,7 @@ class WaterSystem: public Utility{
         double save;
     public:
         WaterSystem(double Litres);
-        void reboot();
+        void update();
         void useResources(double used);    
 };
 
