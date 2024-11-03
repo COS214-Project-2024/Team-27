@@ -2,12 +2,14 @@
 #define HOUSE_H
 
 #include <iostream>
+#include <vector>
 #include "Building.h"
 #include "BuildingState.h"
 #include "UnderConstruction.h"
 #include "Operational.h"
 #include "ClosedDown.h"
 #include "Damaged.h"
+#include "Citizen.h"
 using namespace std;
 
 class BuidlingState;
@@ -16,6 +18,7 @@ class House: public Building{
         string name;
         string size;
         BuildingState* state;
+        vector<Citizen*> citizens;
     public:
     virtual ~House() = default;
     House(string name);
@@ -31,6 +34,7 @@ class House: public Building{
     void damage() override;
     House* clone() override;
     void useResources() override;
+    void addResident(Citizen* citizen);
 };
 
 #endif

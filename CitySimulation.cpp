@@ -223,23 +223,18 @@ void CitySimulation::option3(){
 
     switch(prompt){
         case 1:
-            cout<<"Implement citizen stats facade"<<endl;
-            cout<<endl;
-            
+            cityFacade->showCitizenStats();
             break;
         case 2: 
-            cout<<"Implement new citizen facade"<<endl;
-            cout<<endl;
+            cityFacade->createCitizen();
             
             break;
         case 3:
-            cout<<"Implement update citizen facade"<<endl;
-            cout<<endl;
+            cityFacade->updateCitizens();
             
             break;
         case 4: 
-            cout<<"Implement move into apartment facade"<<endl;
-            cout<<endl;
+            cityFacade->moveIn();
             
             break;
         case 5: 

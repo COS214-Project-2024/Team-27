@@ -12,6 +12,7 @@
 #include "Operational.h"
 #include "ClosedDown.h"
 #include "Damaged.h"
+#include "Citizen.h"
 using namespace std;
 
 class Building;
@@ -21,6 +22,7 @@ class ApartmentBuilding: public Apartment{
         string name;
         string size;
         BuildingState* state;
+        vector<Citizen*> citizens;
     public:
         int numUnits();
         void printUnits();
@@ -29,6 +31,7 @@ class ApartmentBuilding: public Apartment{
         virtual ~ApartmentBuilding() = default;
         void addUnit(Unit* unit);
         void removeUnit(Unit* unit);
+        vector<Unit*> getUnits();
         void displayInfo() override;
         void setState(BuildingState* newState) override;
         BuildingState* getState() override;
@@ -40,6 +43,7 @@ class ApartmentBuilding: public Apartment{
         ApartmentBuilding* clone() override;
         void useResources() override;
         void setSize(string size);
+        void addResident(Citizen* citizen);
 };
 
 #endif

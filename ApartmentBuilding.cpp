@@ -28,6 +28,10 @@ void ApartmentBuilding::setSize(string size){
     this->size = size;
 }
 
+void ApartmentBuilding::addResident(Citizen *citizen){
+    citizens.push_back(citizen);
+}
+
 void ApartmentBuilding::removeUnit(Unit* unit){
     if(unit){
         units.erase(std::remove(units.begin(), units.end(), unit), units.end());
@@ -105,4 +109,8 @@ ApartmentBuilding* ApartmentBuilding::clone(){
 
 void Unit::useResources(){
     
+}
+
+vector<Unit*> ApartmentBuilding::getUnits(){
+    return units;
 }

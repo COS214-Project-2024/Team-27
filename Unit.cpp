@@ -60,3 +60,7 @@ Unit* Unit::clone(){
     cout<<"A clone of Unit "<<unitNumber<<" has been created"<<endl;
     return new Unit(this->unitNumber, this->size, this->state);
 }
+
+void Unit::addResident(Citizen *citizen){
+    citizens.push_back(citizen);
+}

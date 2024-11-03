@@ -2,13 +2,16 @@
 #define UNIT_H
 
 #include <iostream>
+#include <vector>
 #include "Apartment.h"
 #include "BuildingState.h"
+#include "Building.h"
 #include "Building.h"
 #include "UnderConstruction.h"
 #include "Operational.h"
 #include "ClosedDown.h"
 #include "Damaged.h"
+#include "Citizen.h"
 using namespace std;
 
 class Unit: public Apartment{
@@ -16,6 +19,7 @@ class Unit: public Apartment{
         int unitNumber;
         string size;
         BuildingState* state;
+        vector<Citizen*> citizens;
     public:
         virtual ~Unit() = default;
         Unit(int number, string size);
@@ -31,6 +35,7 @@ class Unit: public Apartment{
         void damage() override;
         Unit* clone() override;
         void useResources() override;
+        void addResident(Citizen* citizen);
 };
 
 #endif

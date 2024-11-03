@@ -363,7 +363,7 @@ void CityFacade::showBuildingStats(){
 void CityFacade::showUnits(){
     for(int i = 0; i<apartmentBuildings.size();i++){
         if(apartmentBuildings[i] && apartmentBuildings[i]->numUnits() != 0){
-            cout<<"In apartment building";
+            cout<<"In apartment building ";
             apartmentBuildings[i]->getName();
             cout<<" we have the following units: "<<endl;
             apartmentBuildings[i]->printUnits();
@@ -387,8 +387,209 @@ void CityFacade::showAllStats(){
 }
 
 void CityFacade::showCitizenStats(){
+    if(citizens.size() == 0){
+        cout<<"No citizens to show"<<endl;
+    }
+
+    cout<<"We have the following citizens: "<<endl;
+    for(int i = 0; i<citizens.size();i++){
+        cout<<i+1<<". ";
+        citizens[i]->display();
+    }
+}
+
+void CityFacade::createCitizen(){
+    cout<<"Which type of citizen would you like to create: "<<endl
+        << "1. Adult" << endl << "2. Child" <<endl;
+    int type;
+    cin>>type;
+    if(type == 1){
+        createAdult();
+    } else if(type == 2){
+        createChild();
+    }
+}
+
+void CityFacade::createChild(){
+    string name;
+    int age = 20;
+    cout<<"Give the child a name: "<<endl;
+    cin>>name;
+    cout<<endl;
+
+    while(age>18){
+        cout<<"Give the child an age: "<<endl;
+        cin>>age;
+    }
+    
+    ConcreteCitizenBuilder builder;
+    CitizenDirector director(&builder);
+
+    // Create a child citizen and display initial state
+    Citizen* child = director.createChild(name, age, 100);
+    cout << "Child citizen created" << endl;
+    
+    citizens.push_back(child);
 
 }
+
+void CityFacade::createAdult(){
+    string name;
+    string employment;
+    bool employed;
+    double income;
+    int age = 10;
+    cout<<"Give the adult a name: "<<endl;
+    cin>>name;
+    cout<<endl;
+
+    while(age<18){
+        cout<<"Give the adult an age: "<<endl;
+        cin>>age;
+    }
+
+    cout<<"Is the adult employed? (Y/N)"<<endl;
+    cin>>employment;
+
+    if(employment=="Y" || employment == "y"){
+        cout<<"Set the adult's income"<<endl;
+        cin>>income;
+        employed = true;
+    } else if(employment=="N" || employment == "n"){
+        income = 0.0;
+        employed = false;
+    }
+    
+    ConcreteCitizenBuilder builder;
+    CitizenDirector director(&builder);
+
+    // Create a child citizen and display initial state
+    Citizen* adult = director.createAdult(name, age, 100,income, employed);
+    cout << "Adult citizen created" << endl;
+    cout << endl;
+    citizens.push_back(adult);
+}
+void CityFacade::updateCitizens(){
+    if(citizens.size() == 0){
+        cout<<"No citizens to update"<<endl;
+    }
+
+    int update = -10;
+
+    while(update<0 && update-1>citizens.size()){
+        cout<<"Which citizen do you want to update?"<<endl;
+        showCitizenStats();
+        cin>>update;
+    }
+    
+    cout<<"From citizen ";
+    citizens[update-1]->display();
+    cout<<endl;
+
+    cout<<"What would you like to update? "<<endl
+        <<"1. Employment"<<endl
+        <<"2. Income"<<endl;
+    int choice;
+    cin>>choice;
+    if(choice == 1){
+        if(citizens[update-1]->getEmployment()){
+            citizens[update-1]->setEmploymentStatus(false);
+            citizens[update-1]->setIncome(0.0);
+        } else{
+            citizens[update-1]->setEmploymentStatus(true);
+        }
+        cout<<"Citizen employment status updated"<<endl;
+    } else if (choice ==2){
+        if(citizens[update-1]->getEmployment()){
+            cout<<"Insert income: "<<endl;
+            double income;
+            cin>>income;
+            citizens[update-1]->setIncome(income);
+        } else{
+            cout<<"Citizen is unemployed, cannot update income"<<endl;
+        }
+    }
+
+    
+}
+void CityFacade::setCitizenDetails(Citizen* citizen, const string& name, int age, double income, int satisfaction, bool isEmployed) {
+    citizen->setName(name);
+    citizen->setAge(age);
+    citizen->setIncome(income);
+    citizen->setSatisfaction(satisfaction);
+    citizen->setEmploymentStatus(isEmployed);
+}
+
+void CityFacade::moveIn(){
+    if(citizens.size() != 0){
+        if(apartmentBuildings.size() != 0 && houses.size() != 0){
+            int option;
+            cout<<"Which building would you like to move the citizen into?"<<endl
+                <<"1. Apartment"<<endl
+                <<"2. House"<<endl;
+            cin>>option;
+            if(option == 1){
+                moveIntoApartment();
+            } else if(option == 2){
+                moveIntoHouse();
+            }
+        }
+
+        if(apartmentBuildings.size() == 0 && houses.size() != 0){
+            cout<<"You can only move into a house, there are no apartments"<<endl;
+            moveIntoHouse();
+        }
+
+        if(apartmentBuildings.size() != 0 && houses.size() == 0){
+            cout<<"You can only move into an apartment, there are no houses"<<endl;
+            moveIntoApartment();
+        }
+    } else{
+        cout<<"There are no citizens for you to move in"<<endl;
+    }
+}
+
+void CityFacade::moveIntoHouse(){
+    int citizen;
+    cout<<"Which citizen wants to move in: "<<endl;
+    showCitizenStats();
+    cin>>citizen;
+
+    int house;
+    cout<<"Which house would you like to move the citizen into?"<<endl;
+    showBuildings("House");
+    cin>>house;
+
+    houses[house-1]->addResident(citizens[citizen-1]);
+    cout<<"Citizen moved into house "<<endl;
+    houses[house-1]->displayInfo();
+    cout<<endl;
+    
+}
+
+void CityFacade::moveIntoApartment(){
+    int citizen;
+    cout<<"Which citizen wants to move in: "<<endl;
+    showCitizenStats();
+    cin>>citizen;
+
+    int apartment;
+    cout<<"Which apartment building would you like to move the citizen into?"<<endl;
+    showBuildings("ApartmentB");
+    cin>>apartment;
+
+    int unit;
+    cout<<"Which unit would you like to move the citizen into?"<<endl;
+    apartmentBuildings[apartment-1]->printUnits();
+    cin>>unit;
+
+    apartmentBuildings[apartment-1]->getUnits()[unit-1]->addResident(citizens[citizen-1]);
+    apartmentBuildings[apartment-1]->addResident(citizens[citizen-1]);
+    cout<<"Citizen moved into apartment building"<<endl;
+    apartmentBuildings[apartment-1]->displayInfo();
+    cout<<endl;
+}
+
 
 void CityFacade::showUtilityStats(){
 

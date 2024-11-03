@@ -14,6 +14,10 @@
 #include "House.h"
 #include "Landmark.h"
 #include "CommercialBuilding.h"
+#include "ConcreteCitizenBuilder.h"
+#include "Citizen.h"
+#include "CitizenBuilder.h"
+#include "CitizenDirector.h"
 using namespace std;
 
 class CityFacade{
@@ -22,6 +26,7 @@ class CityFacade{
         vector<House*> houses;
         vector<Landmark*> landmarks;
         vector<CommercialBuilding*> commercialBuildings;
+        vector<Citizen*> citizens;
     public:
         CityFacade();
         void showAllStats();
@@ -32,12 +37,25 @@ class CityFacade{
         void showTaxStats();
         void showGrowthStats();
         void showUnits();
+
         void showBuildings(string type);
         void createAPBuilding();
         void createUnit();
         void createHouse();
         void createLandmark();
         void createCommercial();
+
+        void showCitizens(string type);
+        void createCitizen();
+        void createChild();
+        void createAdult();
+        void setCitizenDetails(Citizen* citizen, const std::string& name, int age, double income, int satisfaction, bool isEmployed); 
+        void updateCitizens();
+        void moveIn();
+        void moveIntoHouse();
+        void moveIntoApartment();
+
+
         
 
 };
