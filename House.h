@@ -12,6 +12,9 @@ class House: public Building{
         string name;
         string size;
         BuildingState* state;
+        
+        const double tA=5000;
+
     public:
     virtual ~House() = default;
     House(string name);
@@ -27,6 +30,8 @@ class House: public Building{
     void damage() override;
     Building* clone() override;
     void useResources() override;
+      double getPayableTax();
+
 };
 
 #endif

@@ -9,6 +9,7 @@ class BuildingState;
 class Building{
     private:
         BuildingState* state;
+        double revenue;
     public:
     virtual ~Building() = default;
     virtual void setState(BuildingState* newState)=0;
@@ -22,6 +23,7 @@ class Building{
     virtual void displayInfo()=0;
     virtual Building* clone()=0;
     virtual void useResources()=0;
+    virtual double getRevenue()=0;
 };
 
 #endif

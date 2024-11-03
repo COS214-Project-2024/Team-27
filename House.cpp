@@ -64,3 +64,8 @@ Building* House::clone(){
 void House::useResources(){
     
 }
+
+double House::getPayableTax()
+{
+    
+}
