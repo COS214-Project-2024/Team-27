@@ -10,9 +10,9 @@ using namespace std;
 
 class BuildingState;
 class Building{
-    private:
+    protected:
         BuildingState* state;
-          map<string, unique_ptr<Utility>> utilities;
+        map<string, unique_ptr<Utility>> utilities;
     public:
     virtual ~Building() = default;
     virtual void setState(BuildingState* newState)=0;
