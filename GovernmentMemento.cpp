@@ -1,7 +1,7 @@
 #include "GovernmentMemento.h"
 
-GovernmentMemento::GovernmentMemento(double b, double c, vector<Building*> buildingsC, vector<Citizen*> CitizensC)
-    : buildingTaxRate(b), citizenTaxRate(c), savedPopulation(population), savedNumberOfBuildings(numBuildings), savedEconomicGrowth(econRate),buildings(buildingsC), citizens(CitizensC){}
+GovernmentMemento::GovernmentMemento(double b, double c,int population, int numBuildings, double econRate, vector<Building*> buildingsC, vector<Citizen*> CitizensC)
+    : buildingTaxRate(b), citizenTaxRate(c), savedPopulation(population), savedNumberOfBuildings(numBuildings), savedEconomicGrowthRate(econRate),buildings(buildingsC), citizens(CitizensC){}
 
 
 void GovernmentMemento::getDetails(){

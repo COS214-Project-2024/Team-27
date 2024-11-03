@@ -4,15 +4,15 @@ GovernmentMemento* Government::saveState(){
     vector<Citizen*> citizenPointers ;
     vector<Building*> buildingPointers ;
 
-    for(auto& citizen : citizens){
-        citizenPointers.push_back(&citizen);
+    for(Citizen* citizen : citizens){
+        citizenPointers.push_back(citizen);
     }
 
-    for(auto& building : buildings){
-        buildingPointers.push_back(&building);
+    for(Building* building : buildings){
+        buildingPointers.push_back(building);
     }
 
-    return new GovernmentMemento(buildingTaxRate, citizenTaxRate, buildingPointers, citizenPointers);
+    return new GovernmentMemento(buildingTaxRate, citizenTaxRate, citizens.size(), buildings.size(), economicGrowthRate, buildingPointers, citizenPointers);
 }
 
 void Government::restoreState(GovernmentMemento* memento){
@@ -23,14 +23,15 @@ void Government::restoreState(GovernmentMemento* memento){
 
     buildingTaxRate = memento->getBuildingTaxRate();
     citizenTaxRate = memento->getCitizenTaxRate();
+    economicGrowthRate = memento->getSavedEconomicGrowthRate();
 
     buildings.clear();
-    for(auto* buildingPtr : memento->getBuildings()){
-        buildings.push_back(*buildingPtr);
+    for(Building* buildingPtr : memento->getBuildings()){
+        buildings.push_back(buildingPtr);
     }
     citizens.clear();
-    for(auto* citizenPtr : memento->getCitizens()){
-        citizens.push_back(*citizenPtr);
+    for(Citizen* citizenPtr : memento->getCitizens()){
+        citizens.push_back(citizenPtr);
     }
 
     std::cout << "Government state has been restored from memento ." << endl ;
@@ -40,6 +41,7 @@ void Government::displayState(){
     std::cout << "Government State :" << std::endl ;
     std::cout << "Building Tax Rate :" << buildingTaxRate << std::endl ;
     std::cout << "Citizen Tax Rate :" << citizenTaxRate << std::endl ;
+    std::cout << "Economic Growth Rate :" << economicGrowthRate << std::endl ;
 
     std::cout << "Number of Citizens :" << citizens.size() << std::endl ;
     std::cout << "Number of Buildings :" << buildings.size() << std::endl ;
