@@ -20,6 +20,8 @@ class Government {
       double buildingTaxRate ;
       double citizenTaxRate ;
       double economicGrowthRate ; 
+      double CTotalTax;
+      double BTotalTax;
   public :
     Government(double cRate, double bRate, double economicGrowthRate, vector<Citizen*>, vector<Building*>);
 
