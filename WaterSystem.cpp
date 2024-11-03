@@ -4,9 +4,10 @@ WaterSystem::WaterSystem(double Litres)
 {
     this->Litres = Litres;
     this->save = Litres;
+    
 }
 
-void WaterSystem::reboot()
+void WaterSystem::update()
 {
     Litres +=save;
 }
@@ -14,7 +15,7 @@ void WaterSystem::reboot()
 void WaterSystem::useResources(double used)
 {
     if (Litres < used )
-    {
+    { 
        std::cout <<"Not enough water available "<<std::endl;
     }
     else{
