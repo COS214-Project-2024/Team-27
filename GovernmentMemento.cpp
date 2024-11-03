@@ -30,10 +30,3 @@ int GovernmentMemento::getSavedPopulation() const { return savedPopulation; }
 int GovernmentMemento::getSavedNumberOfBuildings() const { return savedNumberOfBuildings; }
 
 double GovernmentMemento::getSavedEconomicGrowthRate() const { return savedEconomicGrowthRate; }
-
-// GovernmentMemento::~GovernmentMemento(){
-//     for(Citizen* citizen : citizens){
-//         delete citizen ;
-//     }
-    
-// }
