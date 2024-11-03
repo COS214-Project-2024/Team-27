@@ -18,10 +18,6 @@ void ConcreteCitizenBuilder::setName(const std::string& name) {
     citizen->setName(name);
 }
 
-void ConcreteCitizenBuilder::setID(int ID) {
-    citizen->setID(ID);
-}
-
 void ConcreteCitizenBuilder::setAge(int age) {
     citizen->setAge(age);
 }

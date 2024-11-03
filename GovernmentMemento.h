@@ -2,25 +2,34 @@
 #define GOVERNMENTMEMENTO_H
 
 #include <vector>
+
+#include "Citizen.h"
+#include "Building.h"
 #include <iostream>
-using namespace std;
 
-class Citizen;
-class Building;
+using namespace std ;
 
-class GovernmentMemento {
-    private:
+class GovernmentMemento{
+    private :
         double buildingTaxRate;
-        double citizenTaxRate;
-        vector<Citizen*> citizens; 
-        vector<Building*> buildings; 
-    public:
-        void getDetails();
-        GovernmentMemento(double buildingTaxRate,double citizenTaxRate, vector<Citizen*> citizen,vector<Building*> buildings);
-        double getbuildingTaxRate();
-        double getcitizenTaxRate();
-         vector<Citizen*> getcitizens();
-         vector<Building*> getbuildings();
-};      
+        double citizenTaxRate ;
+        vector<Citizen*> citizens ;
+        vector<Building*> buildings ;
+        int savedPopulation;
+        int savedNumberOfBuildings ;
+        int savedEconomicGrowthRate ;
+        
 
-#endif
+    public :
+        GovernmentMemento(double b, double c,int population, int numBuildings, double econRate, vector<Building*> buildingsC, vector<Citizen*> CitizenC);
+        void getDetails();
+        double getBuildingTaxRate() const ;
+        double getCitizenTaxRate() const ;
+        int getSavedPopulation() const ;
+        int getSavedNumberOfBuildings() const ;
+        double getSavedEconomicGrowthRate() const ;
+
+        const vector<Citizen*>& getCitizens() const ;
+        const vector<Building*>& getBuildings() const ;
+};
+

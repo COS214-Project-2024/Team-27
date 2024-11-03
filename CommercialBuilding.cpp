@@ -2,7 +2,8 @@
 
 CommercialBuilding::CommercialBuilding(string name){
     this->name = name;
-    construct();
+    setState(new UnderConstruction);
+    cout<<"Commercial Building "<<name<<" is now under construction"<<endl;
 }
 
 CommercialBuilding::CommercialBuilding(string name, string size, BuildingState* state){
@@ -55,7 +56,7 @@ void CommercialBuilding::damage(){
     cout<<"Commercial Building "<<name<<" is now damaged"<<endl;
 }
 
-Building* CommercialBuilding::clone(){
+CommercialBuilding* CommercialBuilding::clone(){
     cout<<"A clone of Commercial Building "<<name<<" has been created"<<endl;
     return new CommercialBuilding(this->name, this->size, this->state);
 }

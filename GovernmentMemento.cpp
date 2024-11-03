@@ -1,35 +1,32 @@
 #include "GovernmentMemento.h"
 
-void GovernmentMemento::getDetails()
-{
-    std::cout<<"buildingTaxRate: "<< buildingTaxRate <<std::endl;
-    std::cout<<"citizenTaxRate: "<< citizenTaxRate <<std::endl;
+GovernmentMemento::GovernmentMemento(double b, double c,int population, int numBuildings, double econRate, vector<Building*> buildingsC, vector<Citizen*> CitizensC)
+    : buildingTaxRate(b), citizenTaxRate(c), savedPopulation(population), savedNumberOfBuildings(numBuildings), savedEconomicGrowthRate(econRate),buildings(buildingsC), citizens(CitizensC){}
+
+
+void GovernmentMemento::getDetails(){
+    cout << " Building Tax Rate: " << buildingTaxRate << endl ;
+    cout << " Citizen Tax Rate: " << citizenTaxRate << endl ;
+    cout << " Number of Buildings: " << buildings.size() << endl ;
+    cout << " Number of Citizens: "<< citizens.size() << endl ;
 }
 
-GovernmentMemento::GovernmentMemento(double buildingTaxRate,double citizenTaxRate, vector<Citizen*> citizen,vector<Building*> buildings)
-{
-    this->buildingTaxRate = buildingTaxRate;
-    this->citizenTaxRate = citizenTaxRate;
-    this->citizens = citizen;
-    this->buildings = buildings;
+double GovernmentMemento::getBuildingTaxRate() const {
+    return buildingTaxRate ;
 }
 
-double GovernmentMemento::getbuildingTaxRate()
-{
-    return buildingTaxRate;
+double GovernmentMemento::getCitizenTaxRate() const {
+    return citizenTaxRate ;
 }
 
-double GovernmentMemento::getcitizenTaxRate()
-{
-    return citizenTaxRate;
+const vector<Citizen*>& GovernmentMemento::getCitizens() const {
+    return citizens ;
 }
 
-vector<Citizen *> GovernmentMemento::getcitizens()
-{
-    return citizens;
+const vector<Building*>& GovernmentMemento::getBuildings() const {
+    return buildings ;
 }
+int GovernmentMemento::getSavedPopulation() const { return savedPopulation; }
+int GovernmentMemento::getSavedNumberOfBuildings() const { return savedNumberOfBuildings; }
 
-vector<Building *> GovernmentMemento::getbuildings()
-{
-    return buildings;
-}
+double GovernmentMemento::getSavedEconomicGrowthRate() const { return savedEconomicGrowthRate; }

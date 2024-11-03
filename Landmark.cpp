@@ -2,7 +2,7 @@
 
 Landmark::Landmark(string name){
     this->name = name;
-    construct();
+    setState(new UnderConstruction);
 }
 
 Landmark::Landmark(string name, string size, BuildingState* state){
@@ -55,7 +55,7 @@ void Landmark::damage(){
     cout<<"Landmark "<<name<<" is now damaged"<<endl;
 }
 
-Building* Landmark::clone(){
+Landmark* Landmark::clone(){
     cout<<"A clone of Landmark "<<name<<" has been created"<<endl;
     return new Landmark(this->name, this->size, this->state);
 }

@@ -1,6 +1,5 @@
 #include "HouseFactory.h"
 
-Building* HouseFactory::construct(string name){
-    house = new House(name);
-    return house;
+House* HouseFactory::construct(string name){
+    return new House(name);
 }

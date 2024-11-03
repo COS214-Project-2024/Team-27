@@ -10,9 +10,9 @@ using namespace std;
 class Building;
 class HouseFactory: public BuildingFactory{
     private:
-        Building* house;
+        House* house;
     public:
-        Building* construct(string name) override;
+        House* construct(string name) override;
 };
 
 #endif

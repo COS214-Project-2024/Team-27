@@ -4,6 +4,18 @@ void ApartmentBuilding::getName(){
     cout<<name;
 }
 
+int ApartmentBuilding::numUnits(){
+    return units.size();
+}
+
+void ApartmentBuilding::printUnits(){
+    for(int i = 1; i<=units.size();i++){
+            cout<<i<<". ";
+            units[i-1]->getName();
+            cout<<endl;
+        }
+}
+
 void ApartmentBuilding::addUnit(Unit* unit){
     if(unit){
         units.push_back(unit);
@@ -14,6 +26,10 @@ void ApartmentBuilding::addUnit(Unit* unit){
 
 void ApartmentBuilding::setSize(string size){
     this->size = size;
+}
+
+void ApartmentBuilding::addResident(Citizen *citizen){
+    citizens.push_back(citizen);
 }
 
 void ApartmentBuilding::removeUnit(Unit* unit){
@@ -45,7 +61,7 @@ void ApartmentBuilding::displayInfo(){
 
 ApartmentBuilding::ApartmentBuilding(string name){
     this->name = name;
-    construct();
+    setState(new UnderConstruction);
 }
 
 ApartmentBuilding::ApartmentBuilding(string name, BuildingState* state){
@@ -86,11 +102,15 @@ void ApartmentBuilding::damage(){
     cout<<"Apartment Building "<<name<<" is now damaged"<<endl;
 }
 
-Building* ApartmentBuilding::clone(){
+ApartmentBuilding* ApartmentBuilding::clone(){
     cout<<"A clone of Apartment Building "<<name<<" has been created"<<endl;
     return new ApartmentBuilding(this->name, this->state);
 }
 
 void Unit::useResources(){
     
+}
+
+vector<Unit*> ApartmentBuilding::getUnits(){
+    return units;
 }
