@@ -7,6 +7,7 @@
 #include "HouseFactory.h"
 #include "LandmarkFactory.h"
 #include "Building.h"
+#include "Government.h"
 #include "Apartment.h"
 #include "ApartmentBuilding.h"
 #include "Unit.h"
@@ -165,6 +166,29 @@ void testMemento(){
         delete citizen ;
     }
 
+    // Next Step is to create buildings 
+    vector<Building*> newBuildings ;
+    CommercialBuilding* newCommercialBuilding = new CommercialBuilding("Nike Shop .");
+    newBuildings.push_back(newCommercialBuilding);
+    
+    Operational* newOperationalState = new Operational();
+    Operational* newOperationalState1 = new Operational();
+    ApartmentBuilding* newApartment = new ApartmentBuilding("New Apartments .", newOperationalState);
+    newBuildings.push_back(newApartment);
+
+    cout << "----------------" << std::endl ;
+    Government* newGov = new Government(8.00, 9.00, 2.0, citizens, newBuildings);
+
+    GovernmentMemento* newMemento = newGov->saveState();
+    newMemento->getDetails();
+    GovernmentCaretaker* newCareTaker = new GovernmentCaretaker();
+    newCareTaker->saveMemento(newMemento);
+    newGov->displayState();
+    ApartmentBuilding* newApartment2 = new ApartmentBuilding("New Apartments 2 .", newOperationalState1);
+    newGov->addBuilding(newApartment2);
+    newGov->displayState();
+    newGov->restoreState(newCareTaker->getMemento(0));
+    newGov->displayState();
     
 }
 

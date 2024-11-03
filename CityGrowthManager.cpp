@@ -13,9 +13,7 @@ void CityGrowthManager::setNumOfBuildings(int num){
 void CityGrowthManager::setEconGrowthrate(double rate){
     economicGrowthRate = rate ;
 }
-void CityGrowthManager::evaluatePopulationGrowth(){
-    
-}
+
 void CityGrowthManager::evaluatePopulationGrowth() {
     int growthFactor = static_cast<int>(economicGrowthRate * 50); // Example growth factor calculation
     population += growthFactor;
