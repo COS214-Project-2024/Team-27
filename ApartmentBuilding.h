@@ -22,6 +22,8 @@ class ApartmentBuilding: public Apartment{
         string size;
         BuildingState* state;
     public:
+        int numUnits();
+        void printUnits();
         ApartmentBuilding(string name);
         ApartmentBuilding(string name, BuildingState* state);
         virtual ~ApartmentBuilding() = default;

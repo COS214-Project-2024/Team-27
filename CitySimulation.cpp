@@ -1,6 +1,7 @@
 #include "CitySimulation.h"
 
 CitySimulation::CitySimulation(){
+    cityFacade = new CityFacade();
 }
 
 void CitySimulation::home(){
@@ -24,7 +25,9 @@ void CitySimulation::home(){
         cout <<endl<< "You have selected option " << prompt << endl;
 
         if (prompt == 9) {
-            cout << "Exiting simulation. Goodbye!" << endl;
+            cout << "Exiting simulation. Goodbye!" << endl
+            << "This is what you have: "<<endl;
+            cityFacade->showAllStats();
             break;
         }
         
@@ -47,11 +50,8 @@ void CitySimulation::start(){
 void CitySimulation::processCommand(int command){
     switch(command){
         case 1:
-            cout<<"Implement stats facade"<<endl;
-            cout<<endl;
             option1();
             
-            //build apartment function
             break;
         case 2: 
             cout<<"Implement building facade"<<endl;
@@ -113,11 +113,7 @@ void CitySimulation::processCommand(int command){
 
 void CitySimulation::stats(){
     cout<<"This is what is in the city at the moment: "<<endl;
-    for(int i = 0; i<4;i++){
-        cout<<endl;
-    }
-    //implement stats function
-
+    cityFacade->showAllStats();
 }
 
 void CitySimulation::first(){
@@ -135,70 +131,73 @@ void CitySimulation::option1(){
 }
 
 void CitySimulation::option2(){
-    cout << "========================================" << endl;
-    cout << "1. View Buildings Overview" << endl;
-    cout << "2. Build Apartment Building" << endl;
-    cout << "3. Build Apartment" << endl;
-    cout << "4. Build House" << endl;
-    cout << "5. Build Landmark" << endl;
-    cout << "6. Build Commercial Building" << endl;
-    cout << "7. Manage Utilities & Services" << endl;
-    cout << "8. Manage Tax" << endl;
-    cout << "9. Back To Home" << endl;
-    cout << "10. Exit Simulation" << endl;
-    cout << "========================================" << endl;
-    cout << "Select an option (1-9): "<<endl;
+    bool stillGoing = true;
+    while(stillGoing){
+        cout << "========================================" << endl;
+        cout << "1. View Buildings Overview" << endl;
+        cout << "2. Build Apartment Building" << endl;
+        cout << "3. Build Apartment" << endl;
+        cout << "4. Build House" << endl;
+        cout << "5. Build Landmark" << endl;
+        cout << "6. Build Commercial Building" << endl;
+        cout << "7. Manage Utilities & Services" << endl;
+        cout << "8. Manage Tax" << endl;
+        cout << "9. Back To Home" << endl;
+        cout << "========================================" << endl;
+        cout << "Select an option (1-9): "<<endl;
 
-    int prompt;
-    cin>>prompt;
+        int prompt;
+        cin>>prompt;
 
-    switch(prompt){
-        case 1:
-            cout<<"Implement building stats facade"<<endl;
-            cout<<endl;
-            
-            break;
-        case 2: 
-            cout<<"Implement apartment building facade"<<endl;
-            cout<<endl;
-            
-            break;
-        case 3:
-            cout<<"Implement apartment facade"<<endl;
-            cout<<endl;
-            
-            break;
-        case 4: 
-            cout<<"Implement house facade"<<endl;
-            cout<<endl;
-            
-            break;
-        case 5: 
-            cout<<"Implement landmark facade"<<endl;
-            cout<<endl;
-            
-            break;
-        case 6: 
-            cout<<"Implement Commercial Building facade"<<endl;
-            cout<<endl;
-            
-            break;
-        case 7: 
-            cout<<"Implement Utilities and Services facade"<<endl;
-            cout<<endl;
-            
-            break;
-        case 8: 
-            cout<<"Implement building tax facade"<<endl;
-            cout<<endl;
-            
-            break;
-        case 9:
-            cout<<"going back home"<<endl;
-            break;
-        default:
-            cout<<"Wrong prompt, chose 1-9"<<endl;
-            cout<<endl;
+        switch(prompt){
+            case 1:
+                cityFacade->showBuildingStats();
+                cout<<endl;
+                
+                break;
+            case 2: 
+                cityFacade->createAPBuilding();
+                cout<<endl;
+                
+                break;
+            case 3:
+                cityFacade->createUnit();
+                cout<<endl;
+                
+                break;
+            case 4: 
+                cityFacade->createHouse();
+                cout<<endl;
+                
+                break;
+            case 5: 
+                cityFacade->createLandmark();
+                cout<<endl;
+                
+                break;
+            case 6: 
+                cityFacade->createCommercial();
+                cout<<endl;
+                
+                break;
+            case 7: 
+                cout<<"Implement Utilities and Services facade"<<endl;
+                cout<<endl;
+                
+                break;
+            case 8: 
+                cout<<"Implement building tax facade"<<endl;
+                cout<<endl;
+                
+                break;
+            case 9:
+                cout<<"going back home"<<endl;
+                stillGoing = false;
+                break;
+            default:
+                cout<<"Wrong prompt, chose 1-9"<<endl;
+                cout<<endl;
+        }
     }
 }
 
@@ -216,7 +215,6 @@ void CitySimulation::option3(){
     cout << "8. Manage Tax" << endl;
     cout << "9. Use service" << endl;
     cout << "10. Back To Home" << endl;
-    cout << "11. Exit Simulation" << endl;
     cout << "========================================" << endl;
     cout << "Select an option (1-11): "<<endl;
 
@@ -271,10 +269,6 @@ void CitySimulation::option3(){
             cout<<"going back home"<<endl;
             stillGoing = false;
             break;
-        case 11:
-            cout<<"Exiting, showing stats: "<<endl;
-            stats();
-            break;
         default:
             cout<<"Wrong prompt, chose 1-11"<<endl;
             cout<<endl;
@@ -296,7 +290,6 @@ bool stillGoing = true;
     cout << "7. Assign utility to building" << endl;
     cout << "8. Assign citizen to service" << endl;
     cout << "9. Back To Home" << endl;
-    cout << "10. Exit Simulation" << endl;
     cout << "========================================" << endl;
     cout << "Select an option (1-10): "<<endl;
 
@@ -350,10 +343,6 @@ bool stillGoing = true;
             cout<<endl;
             
             break;
-        case 10:
-            cout<<"Exiting, showing stats: "<<endl;
-            stats();
-            break;
 
         default:
             cout<<"Wrong prompt, chose 1-10"<<endl;
@@ -371,7 +360,6 @@ bool stillGoing = true;
         cout << "3. Manage Citizen Tax" << endl;
         cout << "4. Manage City Tax" << endl;
         cout << "5. Back To Home" << endl;
-        cout << "6. Exit Simulation" << endl;
         cout << "========================================" << endl;
         cout << "Select an option (1-6): "<<endl;
 
@@ -405,10 +393,6 @@ bool stillGoing = true;
             cout<<endl;
             
             break;
-        case 6:
-            cout<<"Exiting, showing stats: "<<endl;
-            stats();
-            break;
 
         default:
             cout<<"Wrong prompt, chose 1-6"<<endl;
@@ -426,7 +410,6 @@ bool stillGoing = true;
         cout << "3. Simulate Natural Disaster" << endl;
         cout << "4. Make Buildings Operational" << endl;
         cout << "5. Back To Home" << endl;
-        cout << "6. Exit Simulation" << endl;
         cout << "========================================" << endl;
         cout << "Select an option (1-6): "<<endl;
 
@@ -460,10 +443,6 @@ bool stillGoing = true;
             cout<<endl;
             
             break;
-        case 6:
-            cout<<"Exiting, showing stats: "<<endl;
-            stats();
-            break;
 
         default:
             cout<<"Wrong prompt, chose 1-6"<<endl;
@@ -480,7 +459,6 @@ void CitySimulation::option7(){
         cout << "2. Manage City States" << endl;
         cout << "3. Overwrite Saved State" << endl;
         cout << "4. Back To Home" << endl;
-        cout << "5. Exit Simulation" << endl;
         cout << "========================================" << endl;
         cout << "Select an option (1-5): "<<endl;
 
@@ -509,10 +487,6 @@ void CitySimulation::option7(){
             cout<<endl;
             
             break;
-        case 5:
-            cout<<"Exiting, showing stats: "<<endl;
-            stats();
-            break;
 
         default:
             cout<<"Wrong prompt, chose 1-5"<<endl;
@@ -528,7 +502,6 @@ void CitySimulation::option8(){
         cout << "1. View City States Overview" << endl;
         cout << "2. Manage City States" << endl;
         cout << "3. Back To Home" << endl;
-        cout << "4. Exit Simulation" << endl;
         cout << "========================================" << endl;
         cout << "Select an option (1-4): "<<endl;
 
@@ -552,11 +525,6 @@ void CitySimulation::option8(){
             cout<<endl;
             
             break;
-        case 4:
-            cout<<"Exiting, showing stats: "<<endl;
-            stats();
-            break;
-
         default:
             cout<<"Wrong prompt, chose 1-4"<<endl;
             cout<<endl;
