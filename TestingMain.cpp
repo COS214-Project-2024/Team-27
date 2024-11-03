@@ -1,3 +1,4 @@
+#include "Citizen.h"
 #include "CityFacade.h"
 #include "CitySimulation.h"
 #include "BuildingFactory.h"
@@ -142,58 +143,85 @@ void testBasicBuildings(){
     newUnit->displayInfo();
 }
 
-void setCitizenDetails(Citizen* citizen, const std::string& name, int age, double income, int satisfaction, bool isEmployed) {
-    citizen->setName(name);
-    citizen->setAge(age);
-    citizen->setIncome(income);
-    citizen->setSatisfaction(satisfaction);
-    citizen->setEmploymentStatus(isEmployed);
+void testMemento(){
+    vector<Citizen*> citizens ;
+    
+        // Create 10 Citizen objects and store pointers in the vector
+    for (int i = 0; i < 10; ++i) {
+        Citizen* citizen = new Citizen();
+        citizen->setName("Citizen" + to_string(i + 1)); // Setting a unique name for each
+        citizen->setAge(20 + i); // Example age setting
+        citizen->setIncome(30000 + i * 1000); // Example income setting
+        citizen->setSatisfaction(50 + i * 5); // Example satisfaction setting
+        citizen->setEmploymentStatus(i % 2 == 0); // Alternate employment status
+
+        citizens.push_back(move(citizen)); // Add the Citizen to the vector
+    }
+    for (const auto& citizen : citizens) {
+        citizen->display();
+    }
+
+    for(Citizen* citizen : citizens){
+        delete citizen ;
+    }
+
+    
 }
 
-void testCitizenCreation() {
-    // Create a builder and director
-    ConcreteCitizenBuilder builder;
-    CitizenDirector director(&builder);
+// void setCitizenDetails(Citizen* citizen, const std::string& name, int age, double income, int satisfaction, bool isEmployed) {
+//     citizen->setName(name);
+//     citizen->setAge(age);
+//     citizen->setIncome(income);
+//     citizen->setSatisfaction(satisfaction);
+//     citizen->setEmploymentStatus(isEmployed);
+// }
 
-    // Create a child citizen and display initial state
-    Citizen* child = director.createChild("Tommy", 10, 7);
-    std::cout << "Child Citizen Details (Before setting additional attributes):" << std::endl;
-    child->display();
-    std::cout << std::endl;
+// void testCitizenCreation() {
+//     // Create a builder and director
+//     ConcreteCitizenBuilder builder;
+//     CitizenDirector director(&builder);
 
-    // Set additional details and display updated state
-    setCitizenDetails(child, "Tommy", 10, 0.0, 7, false);  
-    std::cout << "Child Citizen Details (After setting additional attributes):" << std::endl;
-    child->display();
-    std::cout << std::endl;
+//     // Create a child citizen and display initial state
+//     Citizen* child = director.createChild("Tommy", 10, 7);
+//     std::cout << "Child Citizen Details (Before setting additional attributes):" << std::endl;
+//     child->display();
+//     std::cout << std::endl;
 
-    // Create an adult citizen and display initial state
-    Citizen* adult = director.createAdult("Sarah", 35, 8, 45000.0, true);
-    std::cout << "Adult Citizen Details (Before setting additional attributes):" << std::endl;
-    adult->display();
-    std::cout << std::endl;
+//     // Set additional details and display updated state
+//     setCitizenDetails(child, "Tommy", 10, 0.0, 7, false);  
+//     std::cout << "Child Citizen Details (After setting additional attributes):" << std::endl;
+//     child->display();
+//     std::cout << std::endl;
 
-    // Set additional details and display updated state
-    setCitizenDetails(adult, "Sarah", 35, 45000.0, 8, true);  
-    std::cout << "Adult Citizen Details (After setting additional attributes):" << std::endl;
-    adult->display();
-    std::cout << std::endl;
+//     // Create an adult citizen and display initial state
+//     Citizen* adult = director.createAdult("Sarah", 35, 8, 45000.0, true);
+//     std::cout << "Adult Citizen Details (Before setting additional attributes):" << std::endl;
+//     adult->display();
+//     std::cout << std::endl;
 
-    // Clean up
-    delete child;
-    delete adult;
-}
+//     // Set additional details and display updated state
+//     setCitizenDetails(adult, "Sarah", 35, 45000.0, 8, true);  
+//     std::cout << "Adult Citizen Details (After setting additional attributes):" << std::endl;
+//     adult->display();
+//     std::cout << std::endl;
+
+//     // Clean up
+//     delete child;
+//     delete adult;
+// }
 
 int main(){
 
-    testFactory();
+    // testFactory();
 
-    testFacade();
+    // testFacade();
     
-    // Test citizen creation
-    testCitizenCreation();
+    // // // Test citizen creation
+    // // testCitizenCreation();
 
-    testBasicBuildings();
+    // testBasicBuildings();
+
+    testMemento();
 
     return 0;
 }

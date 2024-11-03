@@ -12,14 +12,16 @@ using namespace std ;
 
 class Government {
   private :
-      Government* backup ;
+      // GovernmentMediator* mediator ;
+      // Government* backup 
       CityGrowthManager* cityGrowthManager ;
-      vector<Citizen> citizens ;
-      vector<Building> buildings ;
+      vector<Citizen*> citizens ;
+      vector<Building*> buildings ;
       double buildingTaxRate ;
       double citizenTaxRate ;
+      double economicGrowthRate ; 
   public :
-    Government(double cRate, double bRate, vector<Citizen*>);
+    Government(double cRate, double bRate, double economicGrowthRate, vector<Citizen*>, vector<Building*>);
 
     // Command
     void collectCitizenTax() ;
