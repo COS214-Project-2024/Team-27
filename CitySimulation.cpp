@@ -434,13 +434,18 @@ bool stillGoing = true;
             
             break;
         case 3: 
-            cout<<"Simulating a Natural Disaster : "<<endl;
-            cityFacade->simulateNaturalDisaster();
-            cout<<endl;
-            
+            double populationImpact, buildingImpact, economicImpact;
+            cout << "Enter population impact (%): ";
+            cin >> populationImpact;
+            cout << "Enter building impact (%): ";
+            cin >> buildingImpact;
+            cout << "Enter economic impact factor: ";
+            cin >> economicImpact;
+            cityFacade->simulateNaturalDisaster(populationImpact, buildingImpact, economicImpact);
             break;
         case 4:
             cout<<"Implement all buildings operational facade"<<endl;
+            cityFacade->makeAllBuildingsOperational();
             cout<<endl;
             
             break;

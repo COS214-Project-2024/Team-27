@@ -883,3 +883,17 @@ void CityFacade::simulateNaturalDisaster(double PopulationImpact, double buidlin
     growthManager->simulateNaturalDisaster(gov, caretaker,PopulationImpact, buidlingImpact, economicImpact);
     cout << "Natural Disaster simulated, City metrics updated ." << endl ;
 }
+
+void CityFacade::makeAllBuildingsOperational(){
+
+    BuildingState* operationalState = new Operational() ;
+    BuildingState* underConstructionState = new UnderConstruction();
+    BuildingState* damagedSate = new Damaged() ;
+    BuildingState* closedDownState = new ClosedDown() ;
+
+    if(apartmentBuildings.size() > 0){
+        for(Building* thisBuilding : apartmentBuildings){
+            thisBuilding->operate();
+        }
+    }
+}
