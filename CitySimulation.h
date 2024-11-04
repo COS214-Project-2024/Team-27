@@ -24,6 +24,7 @@ class CitySimulation{
         void option7();
         void option8();
         void option9();
+        void option10();
 };
 
 #endif
