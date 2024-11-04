@@ -872,12 +872,11 @@ void CityFacade::viewPopulationGrowthOverView(){
     cout << "Number Of Buildings :" << growthManager->getNumOfBuildings() << endl ;
     cout << "Economic growth rate :" << growthManager->getEconGrowthRate() << endl ;
 }
-void CityFacade::managePopulationGrowth()
-{
+void CityFacade::managePopulationGrowth(){
     growthManager->evaluatePopulationGrowth();
     growthManager->evaluateBuildingExpansion();
     growthManager->evaluateEconomicGrowth();
-    cout << "Population, buildings, and economy have been evaluated and updated." << endl;
+    cout << "Population, buildings, and economy have been evaluated and updated ." << endl;
 }
 void CityFacade::simulateNaturalDisaster(double PopulationImpact, double buidlingImpact, double economicImpact){
     growthManager->simulateNaturalDisaster(gov, caretaker,PopulationImpact, buidlingImpact, economicImpact);

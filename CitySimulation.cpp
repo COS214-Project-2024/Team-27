@@ -411,7 +411,7 @@ bool stillGoing = true;
     while(stillGoing){
         cout << "========================================" << endl;
         cout << "1. View Population & Growth Overview" << endl;
-        cout << "2. Manage Population & Growth" << endl;
+        cout << "2. Manage & evaluate Population Growth" << endl;
         cout << "3. Simulate Natural Disaster" << endl;
         cout << "4. Make Buildings Operational" << endl;
         cout << "5. Back To Home" << endl;
@@ -429,7 +429,8 @@ bool stillGoing = true;
             
             break;
         case 2: 
-            cout<<"Implement manage population and growth facade"<<endl;
+            cout<<"managing and evaluating population and growth facade"<<endl;
+            cityFacade->managePopulationGrowth();
             cout<<endl;
             
             break;

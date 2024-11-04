@@ -82,7 +82,7 @@ class CityFacade{
         void viewPopulationGrowthOverView();
         void managePopulationGrowth();
         void simulateNaturalDisaster(double PopulationImpact, double buidlingImpact, double economicImpact);
-        void makeAllBuildingsOperational();  
+        void makeAllBuildingsOperational();
 
 
 };
