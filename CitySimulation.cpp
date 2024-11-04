@@ -87,14 +87,14 @@ void CitySimulation::processCommand(int command){
             //build commercial function
             break;
         case 8: 
-            cout<<"Implement save city facade"<<endl;
-            cout<<endl;
+            cout<<"State saved city facade"<<endl;
+            cout<<endl;                                                                                                                                                                                                                                                                                           
             option8();
             
             //build commercial function
             break;
         case 9: 
-            cout<<"Implement load facade"<<endl;
+            cout<<"State restored ... ... ..."<<endl<< "NOT FULL Impleme ...." << endl ;
             cout<<endl;
             option9();
             //build commercial function
