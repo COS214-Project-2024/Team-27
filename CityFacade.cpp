@@ -803,10 +803,10 @@ void CityFacade::startUp()
     int cinemaCapacity = 40;
 
     // Initialize services with their capacities
-    healthcareService = new Healthcare(healthcareCapacity);
-    educationService = new Education(educationCapacity);
-    policeStationService = new PoliceStation(policeStationCapacity);
-    cinemaService = new Cinema(cinemaCapacity);
+    hospital = new Healthcare(healthcareCapacity);
+    school = new Education(educationCapacity);
+    jail = new PoliceStation(policeStationCapacity);
+    movies = new Cinema(cinemaCapacity);
 
     // Assign citizens to services randomly
     for (Citizen *citizen : citizens)
@@ -815,27 +815,27 @@ void CityFacade::startUp()
         switch (serviceChoice)
         {
         case 0:
-            if (healthcareService->currentPatients.size() < healthcareCapacity)
+            if (hospital->currentPatients.size() < healthcareCapacity)
             {
-                healthcareService->currentPatients.push_back(citizen);
+                hospital->currentPatients.push_back(citizen);
             }
             break;
         case 1:
-            if (educationService->enrolledStudents.size() < educationCapacity)
+            if (school->enrolledStudents.size() < educationCapacity)
             {
-                educationService->enrolledStudents.push_back(citizen);
+                school->enrolledStudents.push_back(citizen);
             }
             break;
         case 2:
-            if (policeStationService->currentRequests.size() < policeStationCapacity)
+            if (jail->currentRequests.size() < policeStationCapacity)
             {
-                policeStationService->currentRequests.push_back(citizen);
+                jail->currentRequests.push_back(citizen);
             }
             break;
         case 3:
-            if (cinemaService->currentAudience.size() < cinemaCapacity)
+            if (movies->currentAudience.size() < cinemaCapacity)
             {
-                cinemaService->currentAudience.push_back(citizen);
+                movies->currentAudience.push_back(citizen);
             }
             break;
         default:
@@ -1226,16 +1226,16 @@ void CityFacade::viewServicesOverview()
         switch (choice)
         {
         case 1:
-            educationService->details();
+            school->details();
             break;
         case 2:
-            cinemaService->details();
+            movies->details();
             break;
         case 3:
-            healthcareService->details();
+            hospital->details();
             break;
         case 4:
-            policeStationService->details();
+            jail->details();
             break;
         case 5:
             viewing = false;
@@ -1267,21 +1267,21 @@ void CityFacade::useResource()
         {
         case 1:
             // Display citizens in Education service
-            educationService->showCitizens();
+            school->showCitizens();
             std::cout << "Select a citizen index to use the service: ";
             std::cin >> citizenIndex;
 
             // Get the citizen from the Education service
-            if (citizenIndex >= 0 && citizenIndex < educationService->enrolledStudents.size())
+            if (citizenIndex >= 0 && citizenIndex < school->enrolledStudents.size())
             {
-                Citizen *citizen = educationService->enrolledStudents[citizenIndex];
+                Citizen *citizen = school->enrolledStudents[citizenIndex];
                 std::cout << "Enter the purpose for using Education service: ";
                 std::cin.ignore();
                 std::getline(std::cin, usagePurpose);
 
                 // Use the service
-                educationService->useService(citizen, usagePurpose);
-                educationService->releaseStudent(citizen); // Release the citizen after use
+                school->useService(citizen, usagePurpose);
+                school->releaseStudent(citizen); // Release the citizen after use
             }
             else
             {
@@ -1290,21 +1290,21 @@ void CityFacade::useResource()
             break;
 
         case 2:
-            cinemaService->showCitizens();
+            movies->showCitizens();
             std::cout << "Select a citizen index to use the service: ";
             std::cin >> citizenIndex;
 
             // Get the citizen from the Cinema service
-            if (citizenIndex >= 0 && citizenIndex < cinemaService->currentAudience.size())
+            if (citizenIndex >= 0 && citizenIndex < movies->currentAudience.size())
             {
-                Citizen *citizen = cinemaService->currentAudience[citizenIndex];
+                Citizen *citizen = movies->currentAudience[citizenIndex];
                 std::cout << "Enter the purpose (e.g., movie name) for Cinema service: ";
                 std::cin.ignore();
                 std::getline(std::cin, usagePurpose);
 
                 // Use the service
-                cinemaService->useService(citizen, usagePurpose);
-                cinemaService->releaseAudience(citizen); // Release the citizen after use
+                movies->useService(citizen, usagePurpose);
+                movies->releaseAudience(citizen); // Release the citizen after use
             }
             else
             {
@@ -1313,21 +1313,21 @@ void CityFacade::useResource()
             break;
 
         case 3:
-            healthcareService->showCitizens();
+            hospital->showCitizens();
             std::cout << "Select a citizen index to use the service: ";
             std::cin >> citizenIndex;
 
             // Get the citizen from the Healthcare service
-            if (citizenIndex >= 0 && citizenIndex < healthcareService->currentPatients.size())
+            if (citizenIndex >= 0 && citizenIndex < hospital->currentPatients.size())
             {
-                Citizen *citizen = healthcareService->currentPatients[citizenIndex];
+                Citizen *citizen = hospital->currentPatients[citizenIndex];
                 std::cout << "Enter the purpose for using Healthcare service: ";
                 std::cin.ignore();
                 std::getline(std::cin, usagePurpose);
 
                 // Use the service
-                healthcareService->useService(citizen, usagePurpose);
-                healthcareService->releasePatient(citizen); // Release the citizen after use
+                hospital->useService(citizen, usagePurpose);
+                hospital->releasePatient(citizen); // Release the citizen after use
             }
             else
             {
@@ -1336,21 +1336,21 @@ void CityFacade::useResource()
             break;
 
         case 4:
-            policeStationService->showCitizens();
+            jail->showCitizens();
             std::cout << "Select a citizen index to use the service: ";
             std::cin >> citizenIndex;
 
             // Get the citizen from the Police Station service
-            if (citizenIndex >= 0 && citizenIndex < policeStationService->currentRequests.size())
+            if (citizenIndex >= 0 && citizenIndex < jail->currentRequests.size())
             {
-                Citizen *citizen = policeStationService->currentRequests[citizenIndex];
+                Citizen *citizen = jail->currentRequests[citizenIndex];
                 std::cout << "Enter the purpose for using Police Station service: ";
                 std::cin.ignore();
                 std::getline(std::cin, usagePurpose);
 
                 // Use the service
-                policeStationService->useService(citizen, usagePurpose);
-                policeStationService->releaseRequest(citizen); // Release the citizen after use
+                jail->useService(citizen, usagePurpose);
+                jail->releaseRequest(citizen); // Release the citizen after use
             }
             else
             {
