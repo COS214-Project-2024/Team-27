@@ -14,6 +14,7 @@
 #include "House.h"
 #include "Landmark.h"
 #include "CommercialBuilding.h"
+#include "Government.h"
 using namespace std;
 
 class CityFacade{
@@ -22,6 +23,8 @@ class CityFacade{
         vector<House*> houses;
         vector<Landmark*> landmarks;
         vector<CommercialBuilding*> commercialBuildings;
+
+        Government* government ;
     public:
         CityFacade();
         void showAllStats();

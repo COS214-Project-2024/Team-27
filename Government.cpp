@@ -4,6 +4,31 @@ Government::Government(double  cRate, double bRate, double econGrowthRate, vecto
     : citizenTaxRate(cRate), buildingTaxRate(bRate), economicGrowthRate(econGrowthRate),citizens(initialCitizens), buildings(initialBuildings){
         cityGrowthManager = new CityGrowthManager(citizens.size(), buildings.size(), econGrowthRate);
     }
+Government::Government(double cRate, double bRate, double econGrowthRate)
+    :  citizenTaxRate(cRate), buildingTaxRate(bRate), economicGrowthRate(econGrowthRate){
+        cityGrowthManager = new CityGrowthManager(citizens.size(), buildings.size(), econGrowthRate);
+    }
+Government::Government(double cRate, double bRate, double economicGrowthRate,
+                       vector<Citizen*> citizens,
+                       vector<ApartmentBuilding*> apartmentBuildings,
+                       vector<House*> houses,
+                       vector<Landmark*> landmarks,
+                       vector<CommercialBuilding*> commercialBuildings)
+    : citizenTaxRate(cRate), buildingTaxRate(bRate), economicGrowthRate(economicGrowthRate),
+      citizens(citizens) {
+    for (auto* apartment : apartmentBuildings) {
+        buildings.push_back(apartment);
+    }
+    for (auto* house : houses) {
+        buildings.push_back(house);
+    }
+    for (auto* landmark : landmarks) {
+        buildings.push_back(landmark);
+    }
+    for (auto* commercial : commercialBuildings) {
+        buildings.push_back(commercial);
+    }
+}
 
 GovernmentMemento* Government::saveState(){
     vector<Citizen*> citizenPointers ;
