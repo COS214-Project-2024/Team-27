@@ -24,6 +24,11 @@
 #include "Cycle.h"
 #include "Bus.h"
 #include "BuildingMaterials.h"
+#include "Services.h"
+#include "Healthcare.h"
+#include "Education.h"
+#include "PoliceStation.h"
+#include "Cinema.h"
 
 #include "Government.h"
 #include "Citizen.h"
