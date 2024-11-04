@@ -56,13 +56,9 @@ double CityGrowthManager::getEconGrowthRate(){
 }
 
 
-void CityGrowthManager::simulateNaturalDisaster(Government* myGov, 
-                                                GovernmentCaretaker* caretaker, 
-                                                double populationImpactPercentage, 
+void CityGrowthManager::simulateNaturalDisaster(double populationImpactPercentage, 
                                                 double buildingImpactPercentage, 
                                                 double economicImpactFactor) {
-    // Save current state before applying disaster impact
-    caretaker->saveMemento(myGov->saveState());
     // Calculate impact on population
     int populationLoss = static_cast<int>(population * (populationImpactPercentage / 100.0));
     population = std::max(0, population - populationLoss);

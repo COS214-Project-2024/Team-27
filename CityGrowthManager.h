@@ -26,8 +26,7 @@ class CityGrowthManager{
         int getPopulation();
         int getNumOfBuildings();
         double getEconGrowthRate();
-        void CityGrowthManager::simulateNaturalDisaster(Government* gov , GovernmentCaretaker* caretaker, 
-                                                double populationImpactPercentage, 
+        void CityGrowthManager::simulateNaturalDisaster(double populationImpactPercentage, 
                                                 double buildingImpactPercentage, 
                                                 double economicImpactFactor) ;
 }; 
