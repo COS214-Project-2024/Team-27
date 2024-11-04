@@ -10,7 +10,7 @@ class CityAggregate{
 
     public:
     virtual CityIterator* createBuildingIterator(vector<ApartmentBuilding*> apartmentBuildings, vector<House*> houses, vector<Landmark*> landmarks, vector<CommercialBuilding*> commercialBuildings)=0;
-    virtual CityIterator* createCitizenInterator(vector<Citizen*> citizens)=0;
+    virtual CityIterator* createCitizenIterator(vector<Citizen*> citizens)=0;
 };
 
 #endif

@@ -32,14 +32,11 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-        <li><a href="#compilation-and-running">Compilation and Running</a></li>
+        <li><a href="#installation-requirements">Installation Requirements</a></li>
+        <li><a href="#compilation-and-running">How to Compile and Run</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#group-members">Group Members</a></li>
   </ol>
 </details>
 
@@ -47,7 +44,7 @@
 ## About The Project
 
 <div align="center"> 
-<a href="" ><img src="img/houses.jpg" alt="houses" width="300" height="300"> </a>
+<a href=""><img src="img/houses.jpg" alt="houses" width="300" height="300"> </a>
 </div>
 
 ### Description
@@ -61,31 +58,40 @@ The City Builder Simulation is a dynamic application designed to model urban dev
 - **Dynamic State Management**: Track building states (under construction, operational) to reflect real-world scenarios.
 
 ### Design Patterns Used
-- Memento
-- Prototype
-- Decorator
-- Composite
-- Iterator
-- Command
-- Builder
-- Factory Method
-- State
+- **Memento**: Stores previous states of the government, such as taxes and buildings.
+- **Prototype**: For cloning buildings, allowing quick duplication of complex structures.
+- **Decorator**: Adds additional features to buildings, such as boreholes and solar panels.
+- **Composite**: Manages apartment buildings by grouping individual units into a single entity.
+- **Iterator**: Traverses buildings and citizens efficiently.
+- **Command**: Handles actions like collecting taxes and moving citizens.
+- **Builder**: Creates customized citizens (e.g., children and adults) with specific attributes.
+- **Factory Method**: Used for creating buildings with standard procedures.
+- **State**: Manages different states of buildings (e.g., under construction, operational).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
-This section should list any major frameworks/libraries used to bootstrap your project. Here are a few examples.
-
-<p align="left"> <a href="https://www.w3schools.com/cpp/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" alt="cplusplus" width="40" height="40"/> </a> </p>
+<p align="left">
+  <a href="https://www.w3schools.com/cpp/" target="_blank" rel="noreferrer">
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" alt="cplusplus" width="40" height="40"/>
+  </a>
+  <a href="https://code.visualstudio.com/" target="_blank" rel="noreferrer">
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg" alt="Visual Studio Code" width="40" height="40"/>
+  </a>
+</p>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-Follow the steps below to begin playing:
+### Installation Requirements
+To run this project, you need:
+- A C++ compiler (such as g++) and `make` utility
+- Git for cloning the repository
 
-### Prerequisites
-- C++ compiler and make utility
-  ```sh
-  g++
+### How to Compile and Run
+1. **Clone the repository**:
+   ```sh
+   git clone https://github.com/yourusername/city-builder-simulation.git
+   cd city-builder-simulation

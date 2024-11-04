@@ -1413,7 +1413,29 @@ void CityFacade::useResource()
         }
     }
 }
-void CityFacade::createCitizen(){
+
+void CityFacade::traverseCitizens(){
+    City* myCity = new City(apartmentBuildings, houses, landmarks, commercialBuildings, citizens);
+
+    CitizenIterator* myCitizenIterator = myCity->createCitizenIterator(citizens);
+    int i = 0;
+    while(myCitizenIterator->hasNext()){
+        cout<<++i<<endl;
+        Citizen* currCitizen = myCitizenIterator->next();
+        currCitizen->getName();
+    }
+}
+
+void CityFacade::traverseBuildings(){
+    City* myCity = new City(apartmentBuildings, houses, landmarks, commercialBuildings, citizens);
+
+    BuildingIterator* myBuildingIterator = myCity->createBuildingIterator(apartmentBuildings, houses, landmarks, commercialBuildings);
+    int i = 0;
+    while(myBuildingIterator->hasNext()){
+        cout<<++i<<endl;
+        BuildingVariant currBuilding = myBuildingIterator->next("nothing");
+    }
+}void CityFacade::createCitizen(){
     cout<<"Which type of citizen would you like to create: "<<endl
         << "1. Adult" << endl << "2. Child" <<endl;
     int type;
