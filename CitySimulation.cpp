@@ -76,8 +76,7 @@ void CitySimulation::processCommand(int command){
             //build commercial function
             break;
         case 6: 
-            cout<<"Implement tax facade"<<endl;
-            cout<<endl;
+            
             option6();
             //build commercial function
             break;
@@ -88,14 +87,14 @@ void CitySimulation::processCommand(int command){
             //build commercial function
             break;
         case 8: 
-            cout<<"Implement save city facade"<<endl;
-            cout<<endl;
+            cout<<"State saved city facade"<<endl;
+            cout<<endl;                                                                                                                                                                                                                                                                                           
             option8();
             
             //build commercial function
             break;
         case 9: 
-            cout<<"Implement load facade"<<endl;
+            cout<<"State restored ... ... ..."<<endl<< "NOT FULL Impleme ...." << endl ;
             cout<<endl;
             option9();
             //build commercial function
@@ -425,12 +424,12 @@ bool stillGoing = true;
             
             break;
         case 2: 
-            cout<<"Implement building tax facade"<<endl;
+            cityFacade->traverseBuildings();
             cout<<endl;
             
             break;
         case 3: 
-            cout<<"Implement citizen tax facade"<<endl;
+            cityFacade->traverseCitizens();
             cout<<endl;
             
             break;
@@ -516,32 +515,20 @@ void CitySimulation::option8(){
     while(stillGoing){
         cout << "========================================" << endl;
         cout << "1. View City States Overview" << endl;
-        cout << "2. Manage City States" << endl;
-        cout << "3. Overwrite Saved State" << endl;
-        cout << "4. Back To Home" << endl;
+        cout << "2. Back To Home" << endl;
         cout << "========================================" << endl;
-        cout << "Select an option (1-5): "<<endl;
+        cout << "Select an option (1 or 2): "<<endl;
 
     int prompt;
     cin>>prompt;
 
     switch(prompt){
         case 1: 
-            cout<<"Implement city state stats facade"<<endl;
+            cout<<"You have " << cityFacade->getCaretaker()->numOfMementos() <<" Saved States in memory "<< endl;
             cout<<endl;
             
             break;
         case 2: 
-            cout<<"Implement manage states facade"<<endl;
-            cout<<endl;
-            
-            break;
-        case 3:
-            cout<<"Implement overwrite state facade"<<endl;
-            cout<<endl;
-            
-            break;
-        case 4: 
             cout<<"going back home"<<endl;
             stillGoing = false;
             cout<<endl;
@@ -549,7 +536,7 @@ void CitySimulation::option8(){
             break;
 
         default:
-            cout<<"Wrong prompt, chose 1-5"<<endl;
+            cout<<"Wrong prompt, chose 1-2"<<endl;
             cout<<endl;
     }
     }

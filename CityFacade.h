@@ -25,6 +25,7 @@
 #include "Walk.h"
 #include "Taxi.h"
 #include "Cycle.h"
+#include "City.h"
 #include "Bus.h"
 #include "BuildingMaterials.h"
 #include "Services.h"
@@ -32,12 +33,18 @@
 #include "Education.h"
 #include "PoliceStation.h"
 #include "Cinema.h"
+#include "BuildingIterator.h"
+#include "CitizenIterator.h"
+#include "City.h"
+
 #include "Government.h"
 #include "Citizen.h"
 
+#include <random>
 #include <cstdlib>
 #include <vector>
 #include <ctime>
+#include <variant>
 using namespace std;
 
 class CityFacade{
@@ -102,6 +109,11 @@ class CityFacade{
         void viewServicesOverview();
         void useResource();
 
+        void traverseCitizens();
+        void traverseBuildings();
+        GovernmentCaretaker* getCaretaker(){
+            return caretaker ;
+        };
 
 };
 

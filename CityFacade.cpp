@@ -1055,12 +1055,27 @@ void CityFacade::viewPopulationGrowthOverView()
     cout << "Number Of Buildings :" << growthManager->getNumOfBuildings() << endl;
     cout << "Economic growth rate :" << growthManager->getEconGrowthRate() << endl;
 }
-void CityFacade::managePopulationGrowth()
-{
+void CityFacade::managePopulationGrowth() {
     growthManager->evaluatePopulationGrowth();
+    int targetPopulation = growthManager->getPopulation();
+    int increasePopulation = targetPopulation - citizens.size();
+    
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_int_distribution<int> dist(0, 1);
+    
+    // Continue adding citizens until the population reaches the target
+    while (citizens.size() < targetPopulation) {
+        if (dist(gen) == 0) {
+            createAdult();  // Adds an adult to the citizens list
+        } else {
+            createChild();  // Adds a child to the citizens list
+        }
+    }
+    
     growthManager->evaluateBuildingExpansion();
     growthManager->evaluateEconomicGrowth();
-    cout << "Population, buildings, and economy have been evaluated and updated ." << endl;
+    cout << "Population, buildings, and economy have been evaluated and updated." << endl;
 }
 
 void CityFacade::AssignUtilitiestoBuildings()
@@ -1167,12 +1182,43 @@ void CityFacade::AssignUtilitiestoBuildings()
         }
     }
 }
-void CityFacade::simulateNaturalDisaster(double PopulationImpact, double buidlingImpact, double economicImpact)
-{
-    growthManager->simulateNaturalDisaster(PopulationImpact, buidlingImpact, economicImpact);
-    cout << "Natural Disaster simulated, City metrics updated ." << endl;
-}
+void CityFacade::simulateNaturalDisaster(double populationImpact, double buildingImpact, double economicImpact) {
+        // Simulate impact on population
+        int numCitizensToMove = static_cast<int>(citizens.size() * (populationImpact / 100.0));
+        vector<Citizen*> newCitizens;
 
+        for (int i = 0; i < numCitizensToMove && !citizens.empty(); ++i) {
+            newCitizens.push_back(std::move(citizens.back()));
+            citizens.pop_back();
+        }
+
+        // Simulate impact on buildings
+        int numApartmentBuildingsToRemove = static_cast<int>(apartmentBuildings.size() * (buildingImpact / 100.0));
+        int numHousesToRemove = static_cast<int>(houses.size() * (buildingImpact / 100.0));
+        int numCommercialBuildingsToRemove = static_cast<int>(commercialBuildings.size() * (buildingImpact / 100.0));
+        int landmarkBuildingsToRemove = static_cast<int>(landmarks.size() * (buildingImpact / 100.0));
+
+        for (int i = 0; i < numApartmentBuildingsToRemove && !apartmentBuildings.empty(); ++i) {
+            apartmentBuildings[i]->damage();
+            apartmentBuildings.pop_back();
+        }
+        for (int i = 0; i < numHousesToRemove && !houses.empty(); ++i) {
+            houses[i]->damage();
+            houses.pop_back();
+        }
+        for (int i = 0; i < numCommercialBuildingsToRemove && !commercialBuildings.empty(); ++i) {
+            commercialBuildings[i]->damage();
+            commercialBuildings.pop_back();
+        }
+        for(int i = 0 ; i < landmarkBuildingsToRemove && !landmarks.empty() ; i++){
+            landmarks[i]->damage();
+            landmarks.pop_back();
+        }
+
+        growthManager->simulateNaturalDisaster(populationImpact, buildingImpact, economicImpact);
+
+        cout << "Natural Disaster simulated, City metrics updated." << endl;
+    }
 void CityFacade::makeAllBuildingsOperational()
 {
     if (apartmentBuildings.size() > 0)
@@ -1364,6 +1410,143 @@ void CityFacade::useResource()
 
         default:
             std::cout << "Invalid option. Please choose between 1 and 5." << std::endl;
+        }
+    }
+}
+
+void CityFacade::traverseCitizens(){
+    City* myCity = new City(apartmentBuildings, houses, landmarks, commercialBuildings, citizens);
+
+    CitizenIterator* myCitizenIterator = myCity->createCitizenIterator(citizens);
+    int i = 0;
+    while(myCitizenIterator->hasNext()){
+        cout<<++i<<endl;
+        Citizen* currCitizen = myCitizenIterator->next();
+        currCitizen->getName();
+    }
+}
+
+void CityFacade::traverseBuildings(){
+    City* myCity = new City(apartmentBuildings, houses, landmarks, commercialBuildings, citizens);
+
+    BuildingIterator* myBuildingIterator = myCity->createBuildingIterator(apartmentBuildings, houses, landmarks, commercialBuildings);
+    int i = 0;
+    while(myBuildingIterator->hasNext()){
+        cout<<++i<<endl;
+        BuildingVariant currBuilding = myBuildingIterator->next("nothing");
+    }
+}
+void CityFacade::createCitizen(){
+    cout<<"Which type of citizen would you like to create: "<<endl
+        << "1. Adult" << endl << "2. Child" <<endl;
+    int type;
+    cin>>type;
+    if(type == 1){
+        createAdult();
+    } else if(type == 2){
+        createChild();
+    }
+}
+
+void CityFacade::createChild(){
+    string name;
+    int age = 20;
+    cout<<"Give the child a name: "<<endl;
+    cin>>name;
+    cout<<endl;
+
+    while(age>18){
+        cout<<"Give the child an age: "<<endl;
+        cin>>age;
+        if(age > 18){
+            cout << "Children cannot have an age greater than 18 ." << endl ;
+        }
+    }
+    
+    ConcreteCitizenBuilder builder;
+    CitizenDirector director(&builder);
+
+    // Create a child citizen and display initial state
+    Citizen* child = director.createChild(name, age, 100);
+    cout << "Child citizen created" << endl;
+    
+    citizens.push_back(child);
+
+}
+void CityFacade::createAdult(){
+    string name;
+    string employment;
+    bool employed;
+    double income;
+    int age = 10;
+    cout<<"Give the adult a name: "<<endl;
+    cin>>name;
+    cout<<endl;
+
+    while(age<18){
+        cout<<"Give the adult an age: "<<endl;
+        cin>>age;
+    }
+
+    cout<<"Is the adult employed? (Y/N)"<<endl;
+    cin>>employment;
+
+    if(employment=="Y" || employment == "y"){
+        cout<<"Set the adult's income"<<endl;
+        cin>>income;
+        employed = true;
+    } else if(employment=="N" || employment == "n"){
+        income = 0.0;
+        employed = false;
+    }
+    
+    ConcreteCitizenBuilder builder;
+    CitizenDirector director(&builder);
+
+    // Create a child citizen and display initial state
+    Citizen* adult = director.createAdult(name, age, 100,income, employed);
+    cout << "Adult citizen created" << endl;
+    cout << endl;
+    citizens.push_back(adult);
+}
+void CityFacade::updateCitizens(){
+    if(citizens.size() == 0){
+        cout<<"No citizens to update"<<endl;
+    }
+
+    int update = -10;
+
+    while(update<0 && update-1>citizens.size()){
+        cout<<"Which citizen do you want to update?"<<endl;
+        showCitizenStats();
+        cin>>update;
+    }
+    
+    cout<<"From citizen ";
+    citizens[update-1]->display();
+    cout<<endl;
+
+    cout<<"What would you like to update? "<<endl
+        <<"1. Employment"<<endl
+        <<"2. Income"<<endl;
+    int choice;
+    cin>>choice;
+    if(choice == 1){
+        if(citizens[update-1]->getEmployment()){
+            citizens[update-1]->setEmploymentStatus(false);
+            citizens[update-1]->setIncome(0.0);
+        } else{
+            citizens[update-1]->setEmploymentStatus(true);
+        }
+        cout<<"Citizen employment status updated"<<endl;
+    } else if (choice ==2){
+        if(citizens[update-1]->getEmployment()){
+            cout<<"Insert income: "<<endl;
+            double income;
+            cin>>income;
+            citizens[update-1]->setIncome(income);
+        } else{
+            cout<<"Citizen is unemployed, cannot update income"<<endl;
         }
     }
 }

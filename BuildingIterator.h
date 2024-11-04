@@ -2,6 +2,7 @@
 #define BUILDINGITERATOR_H
 
 #include <iostream>
+#include <variant>
 #include <vector>
 #include "Building.h"
 #include "CityIterator.h"
@@ -23,7 +24,26 @@ class BuildingIterator: public CityIterator{
         int currentindexL;
         int currentindexCB;
     public:
+    using BuildingVariant = std::variant<ApartmentBuilding*, House*, Landmark*, CommercialBuilding*, std::nullptr_t>;
     BuildingIterator(vector<ApartmentBuilding*> apartmentBuildings, vector<House*> houses, vector<Landmark*> landmarks, vector<CommercialBuilding*> commercialBuildings);
+
+    BuildingVariant next(string nothing) {
+        nothing = "";
+        if (apartmentHasNext()) {
+            return APnext();
+        } 
+        if (houseHasNext()) {
+            return Hnext();
+        } 
+        if (landmarkHasNext()) {
+            return Lnext();
+        } 
+        if (commercialHasNext()) {
+            return CBnext();
+        }
+
+        return nullptr; // No more buildings to iterate
+    }
 
     virtual bool hasNext();
      virtual bool apartmentHasNext();
