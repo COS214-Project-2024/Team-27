@@ -1,14 +1,15 @@
 #ifndef POWERSYSTEMFACTORY_H
 #define POWERSYSTEMFACTORY_H
 
-#include <iostream>
-using namespace std;
+#include <memory>
+#include "PowerSystem.h"
+#include "UtilityFactory.h"
+#include "Utility.h"
 
 class PowerSystemFactory: public UtilityFactory{
-    private:
-
-    public:
-    
+public:
+   
+    Utility* createUtility(double resourceAmount);
 };
-
 #endif
+
