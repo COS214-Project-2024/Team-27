@@ -369,8 +369,8 @@ bool stillGoing = true;
     while(stillGoing){
         cout << "========================================" << endl;
     cout << "1. View Services Overview" << endl;
-    cout << "2. Use Resource" << endl;
-    cout << "3. Back to Home" << endl;
+    cout << "2. Use Service" << endl;
+    cout << "3. Back To Home" << endl;
     cout << "========================================" << endl;
     cout << "Select an option (1-3): "<<endl;
 
@@ -379,13 +379,13 @@ bool stillGoing = true;
 
     switch(prompt){
         case 1:
-            cout<<"View Services Overview"<<endl;
-        
+            cityFacade->showServicesStats();
             cout<<endl;
             
             break;
+        
         case 2: 
-            cout<<"Use Services"<<endl;
+            cityFacade->useResource();
             cout<<endl;
             
             break;
@@ -397,7 +397,7 @@ bool stillGoing = true;
             break;
 
         default:
-            cout<<"Wrong prompt, chose 1-3"<<endl;
+            cout<<"Wrong prompt, chose 1-10"<<endl;
             cout<<endl;
     }
     }

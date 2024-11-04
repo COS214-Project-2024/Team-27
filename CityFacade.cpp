@@ -1026,80 +1026,80 @@ void CityFacade::useResource() {
         switch (serviceChoice) {
             case 1:
                 // Display citizens in Education service
-                educationService->showCitizens();
+                school->showCitizens();
                 std::cout << "Select a citizen index to use the service: ";
                 std::cin >> citizenIndex;
 
                 // Get the citizen from the Education service
-                if (citizenIndex >= 0 && citizenIndex < educationService->enrolledStudents.size()) {
-                    Citizen* citizen = educationService->enrolledStudents[citizenIndex];
+                if (citizenIndex >= 0 && citizenIndex < school->enrolledStudents.size()) {
+                    Citizen* citizen = school->enrolledStudents[citizenIndex];
                     std::cout << "Enter the purpose for using Education service: ";
                     std::cin.ignore();
                     std::getline(std::cin, usagePurpose);
                     
                     // Use the service
-                    educationService->useService(citizen, usagePurpose);
-                    educationService->releaseStudent(citizen); // Release the citizen after use
+                    school->useService(citizen, usagePurpose);
+                    school->releaseStudent(citizen); // Release the citizen after use
                 } else {
                     std::cout << "Invalid index selected." << std::endl;
                 }
                 break;
             
             case 2:
-                cinemaService->showCitizens();
+                movies->showCitizens();
                 std::cout << "Select a citizen index to use the service: ";
                 std::cin >> citizenIndex;
 
                 // Get the citizen from the Cinema service
-                if (citizenIndex >= 0 && citizenIndex < cinemaService->currentAudience.size()) {
-                    Citizen* citizen = cinemaService->currentAudience[citizenIndex];
+                if (citizenIndex >= 0 && citizenIndex < movies->currentAudience.size()) {
+                    Citizen* citizen = movies->currentAudience[citizenIndex];
                     std::cout << "Enter the purpose (e.g., movie name) for Cinema service: ";
                     std::cin.ignore();
                     std::getline(std::cin, usagePurpose);
                     
                     // Use the service
-                    cinemaService->useService(citizen, usagePurpose);
-                    cinemaService->releaseAudience(citizen); // Release the citizen after use
+                    movies->useService(citizen, usagePurpose);
+                    movies->releaseAudience(citizen); // Release the citizen after use
                 } else {
                     std::cout << "Invalid index selected." << std::endl;
                 }
                 break;
 
             case 3:
-                healthcareService->showCitizens();
+                hospital->showCitizens();
                 std::cout << "Select a citizen index to use the service: ";
                 std::cin >> citizenIndex;
 
                 // Get the citizen from the Healthcare service
-                if (citizenIndex >= 0 && citizenIndex < healthcareService->currentPatients.size()) {
-                    Citizen* citizen = healthcareService->currentPatients[citizenIndex];
+                if (citizenIndex >= 0 && citizenIndex < hospital->currentPatients.size()) {
+                    Citizen* citizen = hospital->currentPatients[citizenIndex];
                     std::cout << "Enter the purpose for using Healthcare service: ";
                     std::cin.ignore();
                     std::getline(std::cin, usagePurpose);
                     
                     // Use the service
-                    healthcareService->useService(citizen, usagePurpose);
-                    healthcareService->releasePatient(citizen); // Release the citizen after use
+                    hospital->useService(citizen, usagePurpose);
+                    hospital->releasePatient(citizen); // Release the citizen after use
                 } else {
                     std::cout << "Invalid index selected." << std::endl;
                 }
                 break;
 
             case 4:
-                policeStationService->showCitizens();
+                jail->showCitizens();
                 std::cout << "Select a citizen index to use the service: ";
                 std::cin >> citizenIndex;
 
                 // Get the citizen from the Police Station service
-                if (citizenIndex >= 0 && citizenIndex < policeStationService->currentRequests.size()) {
-                    Citizen* citizen = policeStationService->currentRequests[citizenIndex];
+                if (citizenIndex >= 0 && citizenIndex < jail->currentRequests.size()) {
+                    Citizen* citizen = jail->currentRequests[citizenIndex];
                     std::cout << "Enter the purpose for using Police Station service: ";
                     std::cin.ignore();
                     std::getline(std::cin, usagePurpose);
                     
                     // Use the service
-                    policeStationService->useService(citizen, usagePurpose);
-                    policeStationService->releaseRequest(citizen); // Release the citizen after use
+                    jail->useService(citizen, usagePurpose);
+                    jail->releaseRequest(citizen); // Release the citizen after use
                 } else {
                     std::cout << "Invalid index selected." << std::endl;
                 }
@@ -1114,5 +1114,3 @@ void CityFacade::useResource() {
         }
     }
 }
-
-

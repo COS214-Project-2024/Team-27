@@ -52,10 +52,10 @@ class CityFacade{
         CityGrowthManager* growthManager ;
         GovernmentCaretaker* caretaker ;
 
-        Healthcare* healthcareService;
-        Education* educationService;
-        PoliceStation* policeStationService;
-        Cinema* cinemaService;
+        Healthcare* hospital;
+        Cinema* movies;
+        PoliceStation* jail;
+        Education* school;
 
     public:
         CityFacade();

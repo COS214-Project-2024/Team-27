@@ -128,3 +128,4 @@ void Government::collectCitizenTax() {
     collectBuildingTax();
     std::cout << "City tax collection complete." << std::endl;
  }
+
