@@ -108,11 +108,12 @@ To run this project, you need:
 Group Members
 This project was developed by a dedicated team of five members:
 
-Member 1
-Member 2
-Member 3
-Member 4
-Member 5
+- **Member 1**
+- **Member 2**
+- **Member 3**
+- **Member 4**
+- **Member 5**
+
 Each member contributed to various aspects of the design, coding, and testing phases to bring the City Builder Simulation to life.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p> ```
