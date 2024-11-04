@@ -32,6 +32,9 @@
 #include "Education.h"
 #include "PoliceStation.h"
 #include "Cinema.h"
+#include "BuildingIterator.h"
+#include "CitizenIterator.h"
+#include "City.h"
 
 #include "Government.h"
 #include "Citizen.h"
