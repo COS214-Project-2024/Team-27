@@ -775,6 +775,125 @@ void CityFacade::startUp(){
     cout << "City initialized with buildings and citizens." << endl;
 }
 
+void CityFacade::manageBuildingStates(){
+    int building;
+    cout<<"Which type of building's state would you like to change?"<<endl;
+    cout<<"1. Apartment Building \n2. House \n3. Landmark \n4. Commercial Building"<<endl;
+    cin>>building;
+    cout<<endl;
+
+    int state;
+    switch(building){
+        case 1:
+            cout<<"Choose an Apartment Building to change state: "<<endl;
+            showBuildings("ApartmentB");
+            int apartmentB;
+            cin>>apartmentB;
+
+            cout<<endl;
+            
+            cout<<"Which state would you like to change it to?"<<endl;
+            cout<<"1. Under Construction \n2. Operational \n3. Closed Down \n4. Damaged"<<endl;
+            cin>>state;
+
+            if(state == 1){
+                apartmentBuildings[apartmentB-1]->construct();
+            } else if(state == 2){
+                apartmentBuildings[apartmentB-1]->operate();
+            } else if(state == 3){
+                apartmentBuildings[apartmentB-1]->closeDown();
+            } else if(state == 4){
+                apartmentBuildings[apartmentB-1]->damage();
+            } else{
+                cout<<"Wrong input"<<endl;
+            }
+        
+            break;
+        
+        case 2:
+            cout<<"Choose a house to change state: "<<endl;
+            showBuildings("House");
+            int house;
+            cin>>house;
+
+            cout<<endl;
+            
+            cout<<"Which state would you like to change it to?"<<endl;
+            cout<<"1. Under Construction \n2. Operational \n3. Closed Down \n4. Damaged"<<endl;
+            cin>>state;
+
+            if(state == 1){
+                houses[house-1]->construct();
+            } else if(state == 2){
+                houses[house-1]->operate();
+            } else if(state == 3){
+                houses[house-1]->closeDown();
+            } else if(state == 4){
+                houses[house-1]->damage();
+            } else{
+                cout<<"Wrong input"<<endl;
+            }
+        
+            break;
+        
+        case 3:
+            cout<<"Choose a landmark to change state: "<<endl;
+            showBuildings("Landmark");
+            int landmark;
+            cin>>landmark;
+
+            cout<<endl;
+            
+            cout<<"Which state would you like to change it to?"<<endl;
+            cout<<"1. Under Construction \n2. Operational \n3. Closed Down \n4. Damaged"<<endl;
+            cin>>state;
+
+            if(state == 1){
+                landmarks[landmark-1]->construct();
+            } else if(state == 2){
+                landmarks[landmark-1]->operate();
+            } else if(state == 3){
+                landmarks[landmark-1]->closeDown();
+            } else if(state == 4){
+                landmarks[landmark-1]->damage();
+            } else{
+                cout<<"Wrong input"<<endl;
+            }
+        
+            break;
+        
+        case 4:
+            cout<<"Choose a Commercial Building to change state: "<<endl;
+            showBuildings("CommercialB");
+            int commercialB;
+            cin>>commercialB;
+
+            cout<<endl;
+            
+            cout<<"Which state would you like to change it to?"<<endl;
+            cout<<"1. Under Construction \n2. Operational \n3. Closed Down \n4. Damaged"<<endl;
+            cin>>state;
+
+            if(state == 1){
+                commercialBuildings[commercialB-1]->construct();
+            } else if(state == 2){
+                commercialBuildings[commercialB-1]->operate();
+            } else if(state == 3){
+                commercialBuildings[commercialB-1]->closeDown();
+            } else if(state == 4){
+                commercialBuildings[commercialB-1]->damage();
+            } else{
+                cout<<"Wrong input"<<endl;
+            }
+        
+            break;
+    }
+
+    cout<<endl;
+
+    
+
+}
 
 void CityFacade::showUtilityStats(){
 

@@ -62,6 +62,7 @@ void ApartmentBuilding::displayInfo(){
 ApartmentBuilding::ApartmentBuilding(string name){
     this->name = name;
     setState(new UnderConstruction);
+    cout<<"Apartment Building "<<name<<" is now under construction"<<endl;
 }
 
 ApartmentBuilding::ApartmentBuilding(string name, BuildingState* state){
@@ -94,11 +95,15 @@ void ApartmentBuilding::operate(){
 
 void ApartmentBuilding::closeDown(){
     state->closeDown(this);
+    citizens.clear();
+    units.clear();
     cout<<"Apartment Building "<<name<<" is now closed down"<<endl;
 }
 
 void ApartmentBuilding::damage(){
     state->closeDown(this);
+    citizens.clear();
+    units.clear();
     cout<<"Apartment Building "<<name<<" is now damaged"<<endl;
 }
 
@@ -114,3 +119,4 @@ void Unit::useResources(){
 vector<Unit*> ApartmentBuilding::getUnits(){
     return units;
 }
+
