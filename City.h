@@ -3,6 +3,11 @@
 
 #include "Command.h"
 #include "Citizen.h"
+#include "CityIterator.h"
+#include "BuildingIterator.h"
+#include "CityAggregate.h"
+#include "Building.h"
+
 
 #include <vector>
 #include <iostream>

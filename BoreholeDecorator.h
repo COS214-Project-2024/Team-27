@@ -5,10 +5,9 @@
 using namespace std;
 
 class BoreholeDecorator: public BuildingDecorator{
-    private:
-
-    public:
-    
+public:
+    explicit BoreholeDecorator(Building* building);
+    void displayInfo() override ;
 };
 
 #endif
