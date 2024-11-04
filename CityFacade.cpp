@@ -390,8 +390,6 @@ void CityFacade::showCitizenStats(){
 
 }
 
-<<<<<<< HEAD
-=======
 void CityFacade::createAdult(){
     string name;
     string employment;
@@ -853,8 +851,6 @@ void CityFacade::manageBuildingStates(){
     
 
 }
-
->>>>>>> e531b57a73b53b88cf8eed96240f3be2460b2284
 void CityFacade::showUtilityStats(){
 
 }
@@ -869,4 +865,14 @@ void CityFacade::showTaxStats(){
 
 void CityFacade::showGrowthStats(){
 
+}
+
+void CityFacade::viewPopulationGrowthOverView(){
+    cout << "Population :" << growthManager->getPopulation() << endl ;
+    cout << "Number Of Buildings :" << growthManager->getNumOfBuildings() << endl ;
+    cout << "Economic growth rate :" << growthManager->getEconGrowthRate() << endl ;
+}
+
+void CityFacade::simulateNaturalDisaster(double PopulationImpact, double buidlingImpact, double economicImpact){
+    growthManager->simulateNaturalDisaster(gov, caretaker,PopulationImpact, buidlingImpact, economicImpact);
 }

@@ -419,12 +419,13 @@ bool stillGoing = true;
         cout << "Select an option (1-6): "<<endl;
 
     int prompt;
-    cin>>prompt;
+    cin >> prompt;
 
     switch(prompt){
         case 1:
-            cout<<"Implement population and growth stats facade"<<endl;
-            cout<<endl;
+            cout << "The detailed overview of the city's population & growth overview :"<<endl;
+            cityFacade->viewPopulationGrowthOverView();
+            cout << endl;
             
             break;
         case 2: 
@@ -433,7 +434,8 @@ bool stillGoing = true;
             
             break;
         case 3: 
-            cout<<"Implement natural disaster facade"<<endl;
+            cout<<"Simulating a Natural Disaster : "<<endl;
+            cityFacade->simulateNaturalDisaster();
             cout<<endl;
             
             break;

@@ -25,7 +25,9 @@
 #include "Bus.h"
 #include "BuildingMaterials.h"
 
-#include "Governemnt.h"
+#include "Government.h"
+#include "Citizen.h"
+
 #include <cstdlib>
 #include <ctime>
 using namespace std;
@@ -38,6 +40,11 @@ class CityFacade{
         vector<CommercialBuilding*> commercialBuildings;
         vector<Citizen*> citizens;
         BuildingMaterials* materials;
+
+        Government* gov;
+        CityGrowthManager* growthManager ;
+        GovernmentCaretaker* caretaker ;
+
     public:
         CityFacade();
         void showAllStats();
@@ -72,9 +79,11 @@ class CityFacade{
 
         void startUp();
 
+        void viewPopulationGrowthOverView();
+        void managePopulationGrowth();
+        void simulateNaturalDisaster();
+        void makeAllBuildingsOperational();  
 
-
-        
 
 };
 
