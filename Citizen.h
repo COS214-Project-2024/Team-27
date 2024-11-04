@@ -13,19 +13,20 @@ private:
   int satisfaction;
   bool isEmployed;
 
+  // Static member to track the last assigned ID
+    static int lastAssignedID;
+
 public:
     Citizen();
 
     // Setters
     void setName(const std::string& name);
-    void setID(int ID);
     void setAge(int age);
     void setIncome(double income);
     void setSatisfaction(int satisfaction);
     void setEmploymentStatus(bool isEmployed);
-
-double getincome();
-bool getEmploymentStatus();
+    bool getEmployment();
+double getIncome();
     // Display details
     void display() const;
 

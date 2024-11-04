@@ -6,20 +6,23 @@ CitizenIterator::CitizenIterator(vector<Citizen*> citizens): citizens(citizens),
      return currentindex < citizens.size();
   }
 
-Citizen* CitizenIterator::next() {
+
+
+ void CitizenIterator::Next() {
     if (hasNext()) {
-        return citizens[currentindex++];
+        currentindex++;
     }
-    std::cout<<"no more citizens "<<std::endl;
-    return NULL;  
+    else{
+    std::cout<<"no more citizens "<<std::endl;}
+ 
 }
 
 bool CitizenIterator::isDone() {
     return currentindex >= citizens.size();
 }
-Citizen* CitizenIterator::currentItem() {
+Citizen* CitizenIterator::citizenCurrentItem() {
     if (!isDone()) {
         return citizens[currentindex];
     }
     return NULL;  
-}
+}  

@@ -10,7 +10,7 @@ class CityAggregate{
 
     public:
     virtual CityIterator* createBuildingIterator()=0;
-    virtual CityIterator* createCitizenInterator()=0;
+    virtual CityIterator* createCitizenIterator()=0;
 };
 
 #endif

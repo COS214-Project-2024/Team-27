@@ -12,11 +12,14 @@ class CitizenIterator: public CityIterator{
      vector<Citizen*> citizens ;
 int currentindex;
     public:
+   
+  
+
     CitizenIterator(vector<Citizen*> citizens);
      virtual bool hasNext();
-     Citizen* next();
+     void Next();
     virtual bool isDone();
-     Citizen* currentItem();
+     Citizen* citizenCurrentItem();
 };
 
 #endif

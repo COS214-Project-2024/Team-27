@@ -3,13 +3,19 @@
 
 #include <iostream>
 #include "BuildingState.h"
+#include "Utility.h"
+#include <memory>
+#include <map>
 using namespace std;
 
 class BuildingState;
 class Building{
-    private:
+    protected:
         BuildingState* state;
-        double revenue;
+        map<string, unique_ptr<Utility>> utilities;
+  bool hasBorehole;
+        bool hasSolar;
+      
     public:
     virtual ~Building() = default;
     virtual void setState(BuildingState* newState)=0;
@@ -23,7 +29,17 @@ class Building{
     virtual void displayInfo()=0;
     virtual Building* clone()=0;
     virtual void useResources()=0;
-    virtual double getRevenue()=0;
+    virtual void addUtility(const string& name, unique_ptr<Utility> util) = 0;
+    virtual void removeUtility(const string& name) = 0;
+    virtual void notify() = 0;
+   virtual double totalAmount()=0;
+
+    virtual void sethasbool(bool b)=0;
+    virtual void sethasSolar(bool b)=0;
+      virtual bool gethasbool()=0;
+    virtual bool gethasSolar()=0;
+
+
 };
 
 #endif

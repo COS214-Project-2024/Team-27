@@ -13,11 +13,13 @@ class BuildingIterator: public CityIterator{
  vector<Building*> buildings;
 int currentindex;
     public:
+
+    
 BuildingIterator(vector<Building*> buildings);
      virtual bool hasNext();
-     Building* next();
+   virtual  void Next();
     virtual bool isDone();
- Building* currentItem();
+ Building* buildingCurrentItem();
       
 };
 

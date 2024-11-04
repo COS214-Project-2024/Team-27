@@ -6,18 +6,20 @@ BuildingIterator::BuildingIterator(vector<Building*> buildings): buildings(build
   bool BuildingIterator::hasNext(){
      return currentindex < buildings.size();
   }
-Building* BuildingIterator::next() {
+void BuildingIterator::Next() {
     if (hasNext()) {
-        return buildings[currentindex++];
+    currentindex++;
     }
+    else{
     std::cout<<"no more buildings "<<std::endl;
-    return NULL;  
+    }
+     
 }
 
 bool BuildingIterator::isDone() {
     return currentindex >= buildings.size();
 }
-Building* BuildingIterator::currentItem() {
+Building* BuildingIterator::buildingCurrentItem() {
     if (!isDone()) {
         return buildings[currentindex];
     }
