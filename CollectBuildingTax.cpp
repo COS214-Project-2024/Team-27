@@ -1,7 +1,11 @@
 #include "CollectBuildingTax.h"
 
- CollectBuildingTax::CollectBuildingTax(Government* gov) :government(gov){}
+CollectBuildingTax::CollectBuildingTax(Government *gov)
+{
+    this->gov=gov;
+}
 
-void CollectBuildingTax::execute() {
-    government->collectBuildingTax();
+void CollectBuildingTax::execute()
+{
+    gov->collectBuildingTax();
 }

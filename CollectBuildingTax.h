@@ -1,16 +1,14 @@
 #ifndef COLLECTBUILDINGTAX_H
 #define COLLECTBUILDINGTAX_H
-#include "Government.h"
 #include "Command.h"
+#include "Government.h"
 
-class CollectBuildingTax :public Command {
-private:
-    Government* government;
-
-public:
-    CollectBuildingTax(Government* gov) ;
-    void execute() override;
-
+class CollectBuildingTax:public Command {
+  private:
+  Government* gov;
+  public :
+  CollectBuildingTax(Government* gov);
+    virtual void execute();
 };
 
 #endif

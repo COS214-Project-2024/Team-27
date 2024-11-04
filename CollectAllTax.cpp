@@ -1,11 +1,11 @@
 #include "CollectAllTax.h"
 
-
- CollectAllTax::CollectAllTax(Government* gov) : government(gov) {}
-
- void CollectAllTax::execute() {
-    government->collectCitizenTax();
-    government->collectBuildingTax();
-    government->collectCityTax();
+CollectAllTax::CollectAllTax(Government *gov)
+{
+    this->gov=gov;
 }
- 
+
+void CollectAllTax::execute()
+{
+    gov->collectCityTax();
+}

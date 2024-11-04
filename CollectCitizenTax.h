@@ -1,16 +1,15 @@
 #ifndef COLLECTCITIZENTAX
 #define COLLECTCITIZENTAX
-#include <iostream>
-#include "Government.h"
 #include "Command.h"
+#include "Government.h"
 
-
-class CollectCitizenTax: public Command {
-private:
-    Government* government;
-    public:
-      CollectCitizenTax(Government* gov) ;
-    virtual void execute() ;
+class CollectCitizenTax:public Command{
+  private:
+  Government* gov;
+  public :
+  CollectCitizenTax(Government* gov);
+    virtual void execute();
+   
 };
 
 

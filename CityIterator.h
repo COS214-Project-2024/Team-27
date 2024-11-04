@@ -9,11 +9,15 @@ class CityIterator{
     private:
 
     public:
+     virtual bool isDone()=0;
    virtual bool hasNext()=0;
-    // virtual Building* next()=0;
-    virtual bool isDone()=0;
-    // virtual Building* currentItem()=0;
+ virtual void  Next()=0;
+ 
+     virtual Building* buildingCurrentItem(){}
+
+    virtual Citizen* citizenCurrentItem(){}
     
+
 };
 
 #endif

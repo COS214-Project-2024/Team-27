@@ -1,7 +1,11 @@
 #include "CollectCitizenTax.h"
 
+CollectCitizenTax::CollectCitizenTax(Government *gov)
+{
+    this->gov=gov;
+}
 
- CollectCitizenTax::CollectCitizenTax(Government* gov) :government(gov){}
-void CollectCitizenTax::execute() {
-    government->collectCitizenTax();
+void CollectCitizenTax::execute()
+{
+    gov->collectCitizenTax();
 }
