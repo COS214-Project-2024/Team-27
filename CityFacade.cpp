@@ -885,15 +885,26 @@ void CityFacade::simulateNaturalDisaster(double PopulationImpact, double buidlin
 }
 
 void CityFacade::makeAllBuildingsOperational(){
-
-    BuildingState* operationalState = new Operational() ;
-    BuildingState* underConstructionState = new UnderConstruction();
-    BuildingState* damagedSate = new Damaged() ;
-    BuildingState* closedDownState = new ClosedDown() ;
-
     if(apartmentBuildings.size() > 0){
         for(Building* thisBuilding : apartmentBuildings){
             thisBuilding->operate();
         }
     }
+    if(commercialBuildings.size() > 0){
+        for(Building* thisCommercialBuilding : commercialBuildings){
+            thisCommercialBuilding->operate();
+        }
+    }
+    if(houses.size() > 0){
+        for(Building* thisHouse : houses){
+            thisHouse->operate();
+        }
+    }
+    if(landmarks.size() > 0 ){
+        for(Building* landmark : landmarks){
+            landmark->operate();
+        }
+    }
+
+    cout << "Alll buildings are now operational ." << endl ;
 }
