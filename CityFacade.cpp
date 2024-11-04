@@ -1,7 +1,7 @@
 #include "CityFacade.h"
 
 CityFacade::CityFacade(){
-    government = new Government(0,0,0);
+    
 }
 
 void CityFacade::createAPBuilding(){
