@@ -1,8 +1,11 @@
 #include "City.h"
 
-City::City(vector<Building *> buildings, vector<Citizen *> citizens)
+City::City(vector<ApartmentBuilding*> apartmentBuildings, vector<House*> houses, vector<Landmark*> landmarks, vector<CommercialBuilding*> commercialBuildings, vector<Citizen*> citizens)
 {
-    this->buildings=buildings;
+    this->apartmentBuildings = apartmentBuildings;
+    this->houses = houses;
+    this->landmarks = landmarks;
+    this->commercialBuildings = commercialBuildings;
     this->citizens=citizens;
 }
 
