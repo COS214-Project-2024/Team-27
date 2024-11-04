@@ -11,20 +11,21 @@ void CitySimulation::home(){
         cout << "1. View City Overview" << endl;
         cout << "2. Manage Buildings" << endl;
         cout << "3. Manage Citizens" << endl;
-        cout << "4. Manage Utilities & Services" << endl;
-        cout << "5. Adjust Tax Rates" << endl;
-        cout << "6. City Growth & Development" << endl;
-        cout << "7. Save City State" << endl;
-        cout << "8. Load City State" << endl;
-        cout << "9. Exit Simulation" << endl;
+        cout << "4. Manage Utilities" << endl;
+        cout << "5. Manage Services" << endl;
+        cout << "6. Adjust Tax Rates" << endl;
+        cout << "7. City Growth & Development" << endl;
+        cout << "8. Save City State" << endl;
+        cout << "9. Load City State" << endl;
+        cout << "10. Exit Simulation" << endl;
         cout << "========================================" << endl;
-        cout << "Select an option (1-9): "<<endl;
+        cout << "Select an option (1-10): "<<endl;
         
         cin >> prompt;
         cout<<endl;
         cout <<endl<< "You have selected option " << prompt << endl;
 
-        if (prompt == 9) {
+        if (prompt == 10) {
             cout << "Exiting simulation. Goodbye!" << endl
             << "This is what you have: "<<endl;
             cityFacade->showAllStats();
@@ -42,7 +43,6 @@ void CitySimulation::start(){
     cout << "========================================" << endl;
 
     first();
-    stats();
     
     home();
 }
@@ -54,18 +54,12 @@ void CitySimulation::processCommand(int command){
             
             break;
         case 2: 
-            cout<<"Implement building facade"<<endl;
-            cout<<endl;
             option2();
             
-            //build house function
             break;
         case 3:
-            cout<<"Implement citizen facade"<<endl;
-            cout<<endl;
             option3();
             
-            //build landmark function
             break;
         case 4: 
             cout<<"Implement utilities facade"<<endl;
@@ -75,38 +69,45 @@ void CitySimulation::processCommand(int command){
             //build commercial function
             break;
         case 5: 
-            cout<<"Implement tax facade"<<endl;
+            cout<<"Implement services facade"<<endl;
             cout<<endl;
             option5();
+            
             //build commercial function
             break;
         case 6: 
-            cout<<"Implement city growth management facade"<<endl;
+            cout<<"Implement tax facade"<<endl;
             cout<<endl;
             option6();
             //build commercial function
             break;
         case 7: 
-            cout<<"Implement save city facade"<<endl;
+            cout<<"Implement city growth management facade"<<endl;
             cout<<endl;
             option7();
-            
             //build commercial function
             break;
         case 8: 
-            cout<<"Implement load facade"<<endl;
+            cout<<"Implement save city facade"<<endl;
             cout<<endl;
             option8();
+            
             //build commercial function
             break;
         case 9: 
-            cout<<"Implement exit facade"<<endl;
+            cout<<"Implement load facade"<<endl;
             cout<<endl;
             option9();
             //build commercial function
             break;
+        case 10: 
+            cout<<"Implement exit facade"<<endl;
+            cout<<endl;
+            option10();
+            //build commercial function
+            break;
         default:
-            cout<<"Wrong prompt, chose 1-9"<<endl;
+            cout<<"Wrong prompt, chose 1-10"<<endl;
             cout<<endl;
     }
 }
@@ -116,13 +117,19 @@ void CitySimulation::stats(){
     cityFacade->showAllStats();
 }
 
+
 void CitySimulation::first(){
-    cout<<"This is where we initialise the city with basic stats to get it going and the user will add onto what's here "<<endl;
-    for(int i = 0; i<4;i++){
-        cout<<endl;
-    }
+    cout << "Welcome to The Creatives' City Builder Simulation!" << endl;
+    cout << "In this simulation, you are the architect of a budding metropolis. You'll have the power to shape its growth, manage resources, and ensure the happiness of its citizens."<<endl;
+    cout << "Begin by building foundational structures, establishing essential services, and crafting a vision for the city's future." << endl;
+    cout << "As the city expands, you'll face new challenges and opportunities to turn this humble start into a thriving urban landscape." << endl;
+    cout << endl;
+    cout << "Good luck, and may your city flourish!" << endl;
+    cout << endl;
     cout << "=========================================================" << endl;
-    //implement startup function
+    cout<<endl;
+    
+    cityFacade->startUp();
 
 }
 
@@ -140,11 +147,13 @@ void CitySimulation::option2(){
         cout << "4. Build House" << endl;
         cout << "5. Build Landmark" << endl;
         cout << "6. Build Commercial Building" << endl;
-        cout << "7. Manage Utilities & Services" << endl;
-        cout << "8. Manage Tax" << endl;
-        cout << "9. Back To Home" << endl;
+        cout << "7. Manage Utilities " << endl;
+        cout << "8. Manage Services" << endl;
+        cout << "9. Manage Tax" << endl;
+        cout << "10. Back To Home" << endl;
+        cout << "11. Change Building states" << endl;
         cout << "========================================" << endl;
-        cout << "Select an option (1-9): "<<endl;
+        cout << "Select an option (1-11): "<<endl;
 
         int prompt;
         cin>>prompt;
@@ -181,21 +190,30 @@ void CitySimulation::option2(){
                 
                 break;
             case 7: 
-                cout<<"Implement Utilities and Services facade"<<endl;
+                cout<<"Implement Utilities facade"<<endl;
                 cout<<endl;
                 
                 break;
             case 8: 
+                cout<<"Implement Services facade"<<endl;
+                cout<<endl;
+                
+                break;
+            case 9: 
                 cout<<"Implement building tax facade"<<endl;
                 cout<<endl;
                 
                 break;
-            case 9:
+            case 10:
                 cout<<"going back home"<<endl;
                 stillGoing = false;
                 break;
+            case 11: 
+                cityFacade->manageBuildingStates();
+                
+                break;
             default:
-                cout<<"Wrong prompt, chose 1-9"<<endl;
+                cout<<"Wrong prompt, chose 1-10"<<endl;
                 cout<<endl;
         }
     }
@@ -223,37 +241,30 @@ void CitySimulation::option3(){
 
     switch(prompt){
         case 1:
-            cout<<"Implement citizen stats facade"<<endl;
-            cout<<endl;
-            
+            cityFacade->showCitizenStats();
             break;
         case 2: 
-            cout<<"Implement new citizen facade"<<endl;
-            cout<<endl;
+            cityFacade->createCitizen();
             
             break;
         case 3:
-            cout<<"Implement update citizen facade"<<endl;
-            cout<<endl;
+            cityFacade->updateCitizens();
             
             break;
         case 4: 
-            cout<<"Implement move into apartment facade"<<endl;
-            cout<<endl;
+            cityFacade->moveIn();
             
             break;
         case 5: 
-            cout<<"Implement move into house facade"<<endl;
-            cout<<endl;
+            cityFacade->moveIn();
             
             break;
         case 6: 
-            cout<<"Implement visit landmark facade"<<endl;
-            cout<<endl;
+            cityFacade->visitLandmark();
             
             break;
         case 7: 
-            cout<<"Implement visit commercial building facade"<<endl;
+            cityFacade->visitCommercialBuilding();
             cout<<endl;
             
             break;
@@ -265,10 +276,12 @@ void CitySimulation::option3(){
         case 9:
             cout<<"Implement citizen services facade"<<endl;
             break;
+
         case 10:
             cout<<"going back home"<<endl;
             stillGoing = false;
             break;
+
         default:
             cout<<"Wrong prompt, chose 1-11"<<endl;
             cout<<endl;
@@ -355,6 +368,80 @@ void CitySimulation::option5(){
 bool stillGoing = true;
     while(stillGoing){
         cout << "========================================" << endl;
+    cout << "1. View Services Overview" << endl;
+    cout << "2. Add new utility or Service" << endl;
+    cout << "3. Update existing Utility or Service" << endl;
+    cout << "4. Restock Resource" << endl;
+    cout << "5. Use Resource" << endl;
+    cout << "6. Use Service" << endl;
+    cout << "7. Assign utility to building" << endl;
+    cout << "8. Assign citizen to service" << endl;
+    cout << "9. Back To Home" << endl;
+    cout << "========================================" << endl;
+    cout << "Select an option (1-10): "<<endl;
+
+    int prompt;
+    cin>>prompt;
+
+    switch(prompt){
+        case 1:
+            cout<<"Implement Utilities & Services stats facade"<<endl;
+            cout<<endl;
+            
+            break;
+        case 2: 
+            cout<<"Implement new utility or service facade"<<endl;
+            cout<<endl;
+            
+            break;
+        case 3: 
+            cout<<"Implement updating utility or service facade"<<endl;
+            cout<<endl;
+            
+            break;
+        case 4:
+            cout<<"Implement restock resource facade"<<endl;
+            cout<<endl;
+            
+            break;
+        case 5: 
+            cout<<"Implement use resource facade"<<endl;
+            cout<<endl;
+            
+            break;
+        case 6: 
+            cout<<"Implement use service facade"<<endl;
+            cout<<endl;
+            
+            break;
+        case 7: 
+            cout<<"Implement utility to building facade"<<endl;
+            cout<<endl;
+            
+            break;
+        case 8: 
+            cout<<"Implement service to citizen facade"<<endl;
+            cout<<endl;
+            
+            break;
+        case 9: 
+            cout<<"going back home"<<endl;
+            stillGoing = false;
+            cout<<endl;
+            
+            break;
+
+        default:
+            cout<<"Wrong prompt, chose 1-10"<<endl;
+            cout<<endl;
+    }
+    }
+}
+
+void CitySimulation::option6(){
+bool stillGoing = true;
+    while(stillGoing){
+        cout << "========================================" << endl;
         cout << "1. View Tax Overview" << endl;
         cout << "2. Manage Building Tax" << endl;
         cout << "3. Manage Citizen Tax" << endl;
@@ -401,12 +488,12 @@ bool stillGoing = true;
     }
 }
 
-void CitySimulation::option6(){
+void CitySimulation::option7(){
 bool stillGoing = true;
     while(stillGoing){
         cout << "========================================" << endl;
         cout << "1. View Population & Growth Overview" << endl;
-        cout << "2. Manage Population & Growth" << endl;
+        cout << "2. Manage & evaluate Population Growth" << endl;
         cout << "3. Simulate Natural Disaster" << endl;
         cout << "4. Make Buildings Operational" << endl;
         cout << "5. Back To Home" << endl;
@@ -414,26 +501,34 @@ bool stillGoing = true;
         cout << "Select an option (1-6): "<<endl;
 
     int prompt;
-    cin>>prompt;
+    cin >> prompt;
 
     switch(prompt){
         case 1:
-            cout<<"Implement population and growth stats facade"<<endl;
-            cout<<endl;
+            cout << "The detailed overview of the city's population & growth overview :"<<endl;
+            cityFacade->viewPopulationGrowthOverView();
+            cout << endl;
             
             break;
         case 2: 
-            cout<<"Implement manage population and growth facade"<<endl;
+            cout<<"managing and evaluating population and growth facade"<<endl;
+            cityFacade->managePopulationGrowth();
             cout<<endl;
             
             break;
         case 3: 
-            cout<<"Implement natural disaster facade"<<endl;
-            cout<<endl;
-            
+            double populationImpact, buildingImpact, economicImpact;
+            cout << "Enter population impact (%): ";
+            cin >> populationImpact;
+            cout << "Enter building impact (%): ";
+            cin >> buildingImpact;
+            cout << "Enter economic impact factor: ";
+            cin >> economicImpact;
+            cityFacade->simulateNaturalDisaster(populationImpact, buildingImpact, economicImpact);
             break;
         case 4:
             cout<<"Implement all buildings operational facade"<<endl;
+            cityFacade->makeAllBuildingsOperational();
             cout<<endl;
             
             break;
@@ -451,7 +546,7 @@ bool stillGoing = true;
     }
 }
 
-void CitySimulation::option7(){
+void CitySimulation::option8(){
     bool stillGoing = true;
     while(stillGoing){
         cout << "========================================" << endl;
@@ -495,7 +590,7 @@ void CitySimulation::option7(){
     }
 }
 
-void CitySimulation::option8(){
+void CitySimulation::option9(){
     bool stillGoing = true;
     while(stillGoing){
         cout << "========================================" << endl;
@@ -532,7 +627,7 @@ void CitySimulation::option8(){
     }
 }
 
-void CitySimulation::option9(){
+void CitySimulation::option10(){
     cout<<"Exiting the simulation, We hope you enjoyed! Showing stats: "<<endl;
     stats();
 }

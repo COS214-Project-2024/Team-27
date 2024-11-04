@@ -12,6 +12,12 @@
 #include "Landmark.h"
 #include "CommercialBuilding.h"
 
+#include "CollectAllTax.h"
+#include "CollectBuildingTax.h"
+#include "CollectCitizenTax.h"
+#include "Building.h"
+#include "GovernmentMemento.h"
+
 #include <string>
 #include <vector>
 
@@ -38,7 +44,6 @@ class Government {
     CollectAllTax* collectalltax;
 
   public:
-    // Existing constructors
     Government(double cRate, double bRate, double economicGrowthRate, vector<Citizen*>, vector<Building*>);
     Government(double cRate, double bRate, double economicGrowthRate);
 

@@ -25,6 +25,7 @@ public:
     void setIncome(double income);
     void setSatisfaction(int satisfaction);
     void setEmploymentStatus(bool isEmployed);
+    bool getEmployment();
 
     // Display details
     void display() const;

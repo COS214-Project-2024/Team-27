@@ -2,6 +2,7 @@
 #define GOVERNMENTMEMENTO_H
 
 #include <vector>
+
 #include "Citizen.h"
 #include "Building.h"
 #include <iostream>

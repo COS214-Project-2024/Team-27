@@ -14,7 +14,27 @@
 #include "House.h"
 #include "Landmark.h"
 #include "CommercialBuilding.h"
+#include "ConcreteCitizenBuilder.h"
+#include "Citizen.h"
+#include "CitizenBuilder.h"
+#include "CitizenDirector.h"
+#include "Transport.h"
+#include "Walk.h"
+#include "Taxi.h"
+#include "Cycle.h"
+#include "Bus.h"
+#include "BuildingMaterials.h"
+#include "Services.h"
+#include "Healthcare.h"
+#include "Education.h"
+#include "PoliceStation.h"
+#include "Cinema.h"
+
 #include "Government.h"
+#include "Citizen.h"
+
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 class CityFacade{
@@ -25,6 +45,11 @@ class CityFacade{
         vector<CommercialBuilding*> commercialBuildings;
 
         Government* government ;
+        vector<Citizen*> citizens;
+        BuildingMaterials* materials;
+        CityGrowthManager* growthManager ;
+        GovernmentCaretaker* caretaker ;
+
     public:
         CityFacade();
         void showAllStats();
@@ -35,13 +60,35 @@ class CityFacade{
         void showTaxStats();
         void showGrowthStats();
         void showUnits();
+
         void showBuildings(string type);
         void createAPBuilding();
         void createUnit();
         void createHouse();
         void createLandmark();
         void createCommercial();
-        
+        void manageBuildingStates();
+
+        void createCitizen();
+        void createChild();
+        void createAdult();
+        void setCitizenDetails(Citizen* citizen, const std::string& name, int age, double income, int satisfaction, bool isEmployed); 
+        void updateCitizens();
+
+        void moveIn();
+        void moveIntoHouse();
+        void moveIntoApartment();
+
+        void visitLandmark();
+        void visitCommercialBuilding();
+
+        void startUp();
+
+        void viewPopulationGrowthOverView();
+        void managePopulationGrowth();
+        void simulateNaturalDisaster(double PopulationImpact, double buidlingImpact, double economicImpact);
+        void makeAllBuildingsOperational();
+
 
 };
 
