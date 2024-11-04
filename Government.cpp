@@ -1,5 +1,11 @@
 #include "Government.h"
 
+void Government::collectBuildingTax()
+{
+   return ;
+}
+
+
 Government::Government(double  cRate, double bRate, double econGrowthRate, vector<Citizen*> initialCitizens, vector <Building*> initialBuildings) 
     : citizenTaxRate(cRate), buildingTaxRate(bRate), economicGrowthRate(econGrowthRate),citizens(initialCitizens), buildings(initialBuildings){
         cityGrowthManager = new CityGrowthManager(citizens.size(), buildings.size(), econGrowthRate);
@@ -97,3 +103,28 @@ void Government::UpdateLandMarks(vector<Landmark*> l){
 void Government::UpdateCommercial(vector<CommercialBuilding*> c){
     commercialBuildings = c ;
 }
+void Government::collectCitizenTax() {
+
+      int i=1;
+      int j=1;
+    
+    for (Citizen* citizen : citizens) {
+    
+      if(citizen->getEmployment() && citizen->getincome()>=3000){
+       double tax= citizen->getincome() * citizenTaxRate;
+       CTotalTax+=tax;
+             std::cout <<"( "<< i++<< ") Collected " << tax << " from citizen." << std::endl;
+      }
+      else{
+       ///cout user does not qualiy to pay tax
+      }
+          
+    }
+ }
+
+ void Government::collectCityTax(){
+    
+ collectCitizenTax();
+    collectBuildingTax();
+    std::cout << "City tax collection complete." << std::endl;
+ }

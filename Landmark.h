@@ -24,6 +24,7 @@ class Landmark: public Building{
     void setState(BuildingState* newState) override;
     BuildingState* getState() override;
     void getName() override;
+    string getLName();
     void construct() override;
     void operate() override;
     void closeDown() override;

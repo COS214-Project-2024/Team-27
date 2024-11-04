@@ -1,6 +1,10 @@
 #ifndef GOVERNMENTCARETAKER_H
 #define GOVERNMENTCARETAKER_H
 
+#include <vector>
+#include <iostream>
+using namespace std;
+
 #include "GovernmentMemento.h"
 #include "CityGrowthManager.h"
 
@@ -13,6 +17,4 @@ class GovernmentCaretaker{
         GovernmentMemento* getMemento(int i);
         ~GovernmentCaretaker();
 };
-
-
 #endif

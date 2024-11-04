@@ -5,10 +5,14 @@
 using namespace std;
 
 class Utility{
-    private:
-
+    protected:
+      
     public:
-    
+       virtual void useResources(double used) = 0;   
+       virtual void update() = 0;
+     
 };
+
+
 
 #endif

@@ -3,6 +3,7 @@
 Landmark::Landmark(string name){
     this->name = name;
     setState(new UnderConstruction);
+    cout<<"Landmark "<<name<<" is now under construction"<<endl;
 }
 
 Landmark::Landmark(string name, string size, BuildingState* state){
@@ -62,4 +63,8 @@ Landmark* Landmark::clone(){
 
 void Landmark::useResources(){
     
+}
+
+string Landmark::getLName(){
+    return name;
 }

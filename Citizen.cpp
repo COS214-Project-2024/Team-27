@@ -11,6 +11,7 @@ void Citizen::setName(const std::string& name) {
     this->name = name; 
 }
 
+
 void Citizen::setAge(int age) {
      this->age = age; 
 }
@@ -24,6 +25,10 @@ void Citizen::setSatisfaction(int satisfaction) {
 }
 void Citizen::setEmploymentStatus(bool isEmployed) {
      this->isEmployed = isEmployed;
+}
+
+bool Citizen::getEmployment() { 
+    return isEmployed; 
 }
 
 void Citizen::display() const {
