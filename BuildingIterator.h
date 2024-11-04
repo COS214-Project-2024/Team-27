@@ -5,6 +5,10 @@
 #include <vector>
 #include "Building.h"
 #include "CityIterator.h"
+#include "ApartmentBuilding.h"
+#include "House.h"
+#include "Landmark.h"
+#include "CommercialBuilding.h"
 
 using namespace std;
 

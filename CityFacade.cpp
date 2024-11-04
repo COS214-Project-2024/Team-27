@@ -1169,7 +1169,7 @@ void CityFacade::AssignUtilitiestoBuildings()
 }
 void CityFacade::simulateNaturalDisaster(double PopulationImpact, double buidlingImpact, double economicImpact)
 {
-    growthManager->simulateNaturalDisaster(government, caretaker, PopulationImpact, buidlingImpact, economicImpact);
+    growthManager->simulateNaturalDisaster(PopulationImpact, buidlingImpact, economicImpact);
     cout << "Natural Disaster simulated, City metrics updated ." << endl;
 }
 

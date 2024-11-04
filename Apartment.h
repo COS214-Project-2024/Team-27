@@ -22,9 +22,9 @@ class Apartment: public Building{
         virtual void closeDown();
         virtual void damage();
         virtual Building* clone();
-    virtual double taxableAmount();
-   virtual void sethasbool(bool b);
-    virtual void sethasSolar(bool b);
+//     virtual double taxableAmount();
+//    virtual void sethasbool(bool b);
+//     virtual void sethasSolar(bool b);
 };
 
 #endif

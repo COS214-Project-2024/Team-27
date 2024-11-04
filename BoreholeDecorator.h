@@ -2,6 +2,7 @@
 #define BOREHOLEDECORATOR_H
 
 #include <iostream>
+#include "BuildingDecorator.h"
 using namespace std;
 
 class BoreholeDecorator: public BuildingDecorator{
