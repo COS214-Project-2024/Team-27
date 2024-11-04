@@ -39,6 +39,7 @@
 #include <cstdlib>
 #include <vector>
 #include <ctime>
+#include <variant>
 using namespace std;
 
 class CityFacade{
@@ -102,6 +103,9 @@ class CityFacade{
 
         void viewServicesOverview();
         void useResource();
+
+        void traverseCitizens();
+        void traverseBuildings();
 
 
 };

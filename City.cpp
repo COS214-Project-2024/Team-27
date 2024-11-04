@@ -9,35 +9,34 @@ City::City(vector<ApartmentBuilding*> apartmentBuildings, vector<House*> houses,
     this->citizens=citizens;
 }
 
-void City::addCommand(Command *command)
-{
-commands.push_back(command);
-}
+// void City::addCommand(Command *command)
+// {
+// commands.push_back(command);
+// }
 
-void City::executeCommands()
-{
-    std::cout<<"Executing  commands"<<std::endl;
-    for (Command* command:commands)
-    {
-        command->execute();
+// void City::executeCommands()
+// {
+//     std::cout<<"Executing  commands"<<std::endl;
+//     for (Command* command:commands)
+//     {
+//         command->execute();
     
-    }
+//     }
     
-}
+// }
 
-void City::addBuilding(Building *b)
-{
-    buildings.push_back(b);
-}
+// void City::addBuilding(Building *b)
+// {
+//     buildings.push_back(b);
+// }
 
- CityIterator* City::createBuildingIterator()
+BuildingIterator* City::createBuildingIterator(vector<ApartmentBuilding*> apartmentBuildings, vector<House*> houses, vector<Landmark*> landmarks, vector<CommercialBuilding*> commercialBuildings)
 {
-   return new BuildingIterator(this->buildings);
+   return new BuildingIterator(apartmentBuildings, houses, landmarks, commercialBuildings);
   //return nullptr;
 }
 
-CityIterator *City::createCitizenIterator()
-{
-    return new CitizenIterator(this->citizens);
-      //return nullptr;
+CitizenIterator* City::createCitizenIterator(vector<Citizen*> citizens){
+    return new CitizenIterator(citizens);
 }
+

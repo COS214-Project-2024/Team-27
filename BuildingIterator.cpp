@@ -13,7 +13,7 @@ BuildingIterator::BuildingIterator(vector<ApartmentBuilding*> apartmentBuildings
 }
 
   bool BuildingIterator::hasNext(){
-     return false;
+     return apartmentHasNext() || houseHasNext() || landmarkHasNext() || commercialHasNext();
   }
 
     bool BuildingIterator::apartmentHasNext(){
@@ -25,7 +25,7 @@ bool BuildingIterator::houseHasNext(){
 }
 
 bool BuildingIterator::landmarkHasNext(){
-    return currentindexL < landmark.size();
+    return currentindexL < landmarks.size();
 }
 
 bool BuildingIterator::commercialHasNext(){
@@ -37,7 +37,7 @@ Building* BuildingIterator::next() {
     return NULL;  
 }
 
-    ApartmentBuilding* Building::APnext(){
+    ApartmentBuilding* BuildingIterator::APnext(){
         if (apartmentHasNext()) {
         return apartmentBuildings[currentindexAP++];
     }
@@ -45,7 +45,7 @@ Building* BuildingIterator::next() {
     return NULL;  
     }
 
-     House* Building::Hnext(){
+     House* BuildingIterator::Hnext(){
         if (houseHasNext()) {
             return houses[currentindexH++];
         }
@@ -53,21 +53,25 @@ Building* BuildingIterator::next() {
         return NULL;  
      }
 
-     Landmark* Building::Lnext(){
+     Landmark* BuildingIterator::Lnext(){
         if (landmarkHasNext()) {
-            return buildings[currentindexL++];
+            return landmarks[currentindexL++];
         }
         std::cout<<"no more landmarks "<<std::endl;
         return NULL;  
      }
 
-     CommercialBuilding* Building::CBnext(){
+     CommercialBuilding* BuildingIterator::CBnext(){
         if (commercialHasNext()) {
             return commercialBuildings[currentindexCB++];
         }
         std::cout<<"no more commercial buildings "<<std::endl;
         return NULL;  
      }
+
+bool BuildingIterator::isDone() {
+    return false;
+}
 
 bool BuildingIterator::APisDone() {
     return currentindexAP >= apartmentBuildings.size();

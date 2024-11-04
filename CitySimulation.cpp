@@ -76,8 +76,7 @@ void CitySimulation::processCommand(int command){
             //build commercial function
             break;
         case 6: 
-            cout<<"Implement tax facade"<<endl;
-            cout<<endl;
+            
             option6();
             //build commercial function
             break;
@@ -425,12 +424,12 @@ bool stillGoing = true;
             
             break;
         case 2: 
-            cout<<"Implement building tax facade"<<endl;
+            cityFacade->traverseBuildings();
             cout<<endl;
             
             break;
         case 3: 
-            cout<<"Implement citizen tax facade"<<endl;
+            cityFacade->traverseCitizens();
             cout<<endl;
             
             break;
