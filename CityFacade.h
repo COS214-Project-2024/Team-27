@@ -110,7 +110,9 @@ class CityFacade{
 
         void traverseCitizens();
         void traverseBuildings();
-
+        GovernmentCaretaker* getCaretaker(){
+            return caretaker ;
+        };
 
 };
 

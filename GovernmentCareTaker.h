@@ -15,6 +15,9 @@ class GovernmentCaretaker{
     public :
         void saveMemento(GovernmentMemento* memento);
         GovernmentMemento* getMemento(int i);
+        int numOfMementos(){
+            return history.size() ;
+        }
         ~GovernmentCaretaker();
 };
 #endif
