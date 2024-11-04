@@ -3,9 +3,6 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="">
-    <img src="img/city_logo.png" alt="Logo" width="450" height="70">
-  </a>
 
   <h3 align="center">City Builder Simulation</h3>
 
@@ -62,7 +59,7 @@ The City Builder Simulation is a dynamic application designed to model urban dev
 - **Factory Method**: Used for creating buildings with standard procedures.
 - **State**: Manages different states of buildings (e.g., under construction, operational).
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 ### Built With
 <p align="left">
@@ -107,4 +104,4 @@ This project was developed by a dedicated team of five members:
 - **Jongisapho Ndeya**
 - **Lesedi Manoto**
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p> ```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
