@@ -13,6 +13,8 @@ class Building{
     protected:
         BuildingState* state;
         map<string, unique_ptr<Utility>> utilities;
+  bool hasBorehole;
+        bool hasSolar;
     public:
     virtual ~Building() = default;
     virtual void setState(BuildingState* newState)=0;
@@ -29,6 +31,11 @@ class Building{
     virtual void addUtility(const string& name, unique_ptr<Utility> util) = 0;
     virtual void removeUtility(const string& name) = 0;
     virtual void notify() = 0;
+  virtual double taxableAmount()=0;
+    virtual void sethasbool(bool b)=0;
+    virtual void sethasSolar(bool b)=0;
+
+
 };
 
 #endif
