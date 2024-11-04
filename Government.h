@@ -21,7 +21,13 @@ class Government {
   private:
     CityGrowthManager* cityGrowthManager;
     vector<Citizen*> citizens;
+
     vector<Building*> buildings;
+    vector<ApartmentBuilding*> apartmentBuildings;
+    vector<House*> houses;
+    vector<Landmark*> landmarks;
+    vector<CommercialBuilding*> commercialBuildings;
+
     double buildingTaxRate;
     double citizenTaxRate;
     double economicGrowthRate;
@@ -51,6 +57,11 @@ class Government {
     void moveIn(int numPeople, string reason);
     void addCitizen(Citizen* c);
     void addBuilding(Building* b);
+
+    void UpdateApartment(vector<ApartmentBuilding*> a);
+    void UpdateHouse(vector<House*> h);
+    void UpdateLandMarks(vector<Landmark*> l);
+    void UpdateCommercial(vector<CommercialBuilding*> c); 
 
     // Memento
     GovernmentMemento* saveState();

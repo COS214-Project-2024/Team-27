@@ -42,7 +42,7 @@ void CityFacade::createAPBuilding(){
             }
             cout<<"Apartment building cloned"<<endl;
         }
-government->UpdateApartment(apartmentBuildings);
+        government->UpdateApartment(apartmentBuildings);
         return;
     }
 

@@ -80,3 +80,20 @@ void Government::displayState(){
 void Government::addBuilding(Building* b){
     buildings.push_back(b);
 }
+
+
+void Government::UpdateApartment(vector<ApartmentBuilding*> a){
+    apartmentBuildings = a ;
+}
+
+void Government::UpdateHouse(vector<House*> h){
+    houses = h ;
+}
+
+void Government::UpdateLandMarks(vector<Landmark*> l){
+    landmarks = l ;
+}
+
+void Government::UpdateCommercial(vector<CommercialBuilding*> c){
+    commercialBuildings = c ;
+}
