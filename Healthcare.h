@@ -13,7 +13,7 @@ using namespace std;
 #include "Services.h"
 
 class Healthcare : Services{
-private:
+public:
 
     int Rating;
     vector<Citizen*> currentPatients;
@@ -22,13 +22,15 @@ private:
     void improveRating();
     void decreaseRating();
     
-public:
+
     Healthcare(int hospitalCapacity);
     void admitPatient(Citizen* citizen);
     void releasePatient(Citizen* citizen);
     void details();
     void useService(Citizen* citizen, string reason);
     ~Healthcare();
+    int getCurrent();
+    void showCitizens();
     
 };
 

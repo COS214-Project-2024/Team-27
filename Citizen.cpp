@@ -36,3 +36,12 @@ void Citizen::display() const {
               << ", Income: " << income << ", Satisfaction: " << satisfaction
               << ", Employed: " << (isEmployed ? "Yes" : "No") << "\n";
 }
+
+string Citizen::getName(){
+     return name;
+}
+
+int Citizen::getAge(){
+     return age;
+}
+

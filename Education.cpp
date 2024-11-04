@@ -55,6 +55,13 @@ void Education::useService(Citizen* citizen, string subject) {
     }
 }
 
+void Education::showCitizens(){
+    std::cout << "Current Students in Education Service:" << std::endl;
+        for (size_t i = 0; i < enrolledStudents.size(); ++i) {
+            std::cout << i << ". " << enrolledStudents[i]->getName() << " (Age: " << enrolledStudents[i]->getAge() << ")" << std::endl;
+        }
+}
+
 Education::~Education() {
 
 }

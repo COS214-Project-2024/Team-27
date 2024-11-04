@@ -675,9 +675,49 @@ void CityFacade::startUp(){
         commercial->setState(new Operational());
     }
 
+    int healthcareCapacity = 50;
+    int educationCapacity = 100;
+    int policeStationCapacity = 30;
+    int cinemaCapacity = 40;
+
+    // Initialize services with their capacities
+    healthcareService = new Healthcare(healthcareCapacity);
+    educationService = new Education(educationCapacity);
+    policeStationService = new PoliceStation(policeStationCapacity);
+    cinemaService = new Cinema(cinemaCapacity);
+
+    // Assign citizens to services randomly
+    for (Citizen* citizen : citizens) {
+        int serviceChoice = rand() % 4; // Randomly pick a service
+        switch (serviceChoice) {
+            case 0:
+                if (healthcareService->currentPatients.size() < healthcareCapacity) {
+                    healthcareService->currentPatients.push_back(citizen);
+                }
+                break;
+            case 1:
+                if (educationService->enrolledStudents.size() < educationCapacity) {
+                    educationService->enrolledStudents.push_back(citizen);
+                }
+                break;
+            case 2:
+                if (policeStationService->currentRequests.size() < policeStationCapacity) {
+                    policeStationService->currentRequests.push_back(citizen);
+                }
+                break;
+            case 3:
+                if (cinemaService->currentAudience.size() < cinemaCapacity) {
+                    cinemaService->currentAudience.push_back(citizen);
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
     
 
-    cout << "City initialized with buildings and citizens." << endl;
+    cout << "City initialized with buildings, citizens and services" << endl;
 }
 
 void CityFacade::manageBuildingStates(){
@@ -855,3 +895,148 @@ void CityFacade::makeAllBuildingsOperational(){
 
     cout << "All buildings are now operational ." << endl ;
 }
+
+void CityFacade::viewServicesOverview() {
+    int choice;
+    bool viewing = true;
+
+    while (viewing) {
+        std::cout << "======== Services Overview ========" << std::endl;
+        std::cout << "1. View Education" << std::endl;
+        std::cout << "2. View Cinema" << std::endl;
+        std::cout << "3. View Healthcare" << std::endl;
+        std::cout << "4. View Police Station" << std::endl;
+        std::cout << "5. Back to Previous Menu" << std::endl;
+        std::cout << "Select an option (1-5): ";
+        std::cin >> choice;
+
+        switch (choice) {
+            case 1:
+                educationService->details();
+                break;
+            case 2:
+                cinemaService->details();
+                break;
+            case 3:
+                healthcareService->details();
+                break;
+            case 4:
+                policeStationService->details();
+                break;
+            case 5:
+                viewing = false;
+                break;
+            default:
+                std::cout << "Invalid option. Please choose between 1 and 5." << std::endl;
+        }
+    }
+}
+
+void CityFacade::useResource() {
+    int serviceChoice, citizenIndex;
+    std::string usagePurpose;
+    bool usingService = true;
+
+    while (usingService) {
+        std::cout << "======== Use Resource ========" << std::endl;
+        std::cout << "1. Use Education" << std::endl;
+        std::cout << "2. Use Cinema" << std::endl;
+        std::cout << "3. Use Healthcare" << std::endl;
+        std::cout << "4. Use Police Station" << std::endl;
+        std::cout << "5. Back to Previous Menu" << std::endl;
+        std::cout << "Select a service to use (1-5): ";
+        std::cin >> serviceChoice;
+
+        switch (serviceChoice) {
+            case 1:
+                // Display citizens in Education service
+                educationService->showCitizens();
+                std::cout << "Select a citizen index to use the service: ";
+                std::cin >> citizenIndex;
+
+                // Get the citizen from the Education service
+                if (citizenIndex >= 0 && citizenIndex < educationService->enrolledStudents.size()) {
+                    Citizen* citizen = educationService->enrolledStudents[citizenIndex];
+                    std::cout << "Enter the purpose for using Education service: ";
+                    std::cin.ignore();
+                    std::getline(std::cin, usagePurpose);
+                    
+                    // Use the service
+                    educationService->useService(citizen, usagePurpose);
+                    educationService->releaseStudent(citizen); // Release the citizen after use
+                } else {
+                    std::cout << "Invalid index selected." << std::endl;
+                }
+                break;
+            
+            case 2:
+                cinemaService->showCitizens();
+                std::cout << "Select a citizen index to use the service: ";
+                std::cin >> citizenIndex;
+
+                // Get the citizen from the Cinema service
+                if (citizenIndex >= 0 && citizenIndex < cinemaService->currentAudience.size()) {
+                    Citizen* citizen = cinemaService->currentAudience[citizenIndex];
+                    std::cout << "Enter the purpose (e.g., movie name) for Cinema service: ";
+                    std::cin.ignore();
+                    std::getline(std::cin, usagePurpose);
+                    
+                    // Use the service
+                    cinemaService->useService(citizen, usagePurpose);
+                    cinemaService->releaseAudience(citizen); // Release the citizen after use
+                } else {
+                    std::cout << "Invalid index selected." << std::endl;
+                }
+                break;
+
+            case 3:
+                healthcareService->showCitizens();
+                std::cout << "Select a citizen index to use the service: ";
+                std::cin >> citizenIndex;
+
+                // Get the citizen from the Healthcare service
+                if (citizenIndex >= 0 && citizenIndex < healthcareService->currentPatients.size()) {
+                    Citizen* citizen = healthcareService->currentPatients[citizenIndex];
+                    std::cout << "Enter the purpose for using Healthcare service: ";
+                    std::cin.ignore();
+                    std::getline(std::cin, usagePurpose);
+                    
+                    // Use the service
+                    healthcareService->useService(citizen, usagePurpose);
+                    healthcareService->releasePatient(citizen); // Release the citizen after use
+                } else {
+                    std::cout << "Invalid index selected." << std::endl;
+                }
+                break;
+
+            case 4:
+                policeStationService->showCitizens();
+                std::cout << "Select a citizen index to use the service: ";
+                std::cin >> citizenIndex;
+
+                // Get the citizen from the Police Station service
+                if (citizenIndex >= 0 && citizenIndex < policeStationService->currentRequests.size()) {
+                    Citizen* citizen = policeStationService->currentRequests[citizenIndex];
+                    std::cout << "Enter the purpose for using Police Station service: ";
+                    std::cin.ignore();
+                    std::getline(std::cin, usagePurpose);
+                    
+                    // Use the service
+                    policeStationService->useService(citizen, usagePurpose);
+                    policeStationService->releaseRequest(citizen); // Release the citizen after use
+                } else {
+                    std::cout << "Invalid index selected." << std::endl;
+                }
+                break;
+
+            case 5:
+                usingService = false;
+                break;
+
+            default:
+                std::cout << "Invalid option. Please choose between 1 and 5." << std::endl;
+        }
+    }
+}
+
+

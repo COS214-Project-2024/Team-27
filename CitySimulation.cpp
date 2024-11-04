@@ -369,62 +369,27 @@ bool stillGoing = true;
     while(stillGoing){
         cout << "========================================" << endl;
     cout << "1. View Services Overview" << endl;
-    cout << "2. Add new utility or Service" << endl;
-    cout << "3. Update existing Utility or Service" << endl;
-    cout << "4. Restock Resource" << endl;
-    cout << "5. Use Resource" << endl;
-    cout << "6. Use Service" << endl;
-    cout << "7. Assign utility to building" << endl;
-    cout << "8. Assign citizen to service" << endl;
-    cout << "9. Back To Home" << endl;
+    cout << "2. Use Resource" << endl;
+    cout << "3. Back to Home" << endl;
     cout << "========================================" << endl;
-    cout << "Select an option (1-10): "<<endl;
+    cout << "Select an option (1-3): "<<endl;
 
     int prompt;
     cin>>prompt;
 
     switch(prompt){
         case 1:
-            cout<<"Implement Utilities & Services stats facade"<<endl;
+            cout<<"View Services Overview"<<endl;
+        
             cout<<endl;
             
             break;
         case 2: 
-            cout<<"Implement new utility or service facade"<<endl;
+            cout<<"Use Services"<<endl;
             cout<<endl;
             
             break;
         case 3: 
-            cout<<"Implement updating utility or service facade"<<endl;
-            cout<<endl;
-            
-            break;
-        case 4:
-            cout<<"Implement restock resource facade"<<endl;
-            cout<<endl;
-            
-            break;
-        case 5: 
-            cout<<"Implement use resource facade"<<endl;
-            cout<<endl;
-            
-            break;
-        case 6: 
-            cout<<"Implement use service facade"<<endl;
-            cout<<endl;
-            
-            break;
-        case 7: 
-            cout<<"Implement utility to building facade"<<endl;
-            cout<<endl;
-            
-            break;
-        case 8: 
-            cout<<"Implement service to citizen facade"<<endl;
-            cout<<endl;
-            
-            break;
-        case 9: 
             cout<<"going back home"<<endl;
             stillGoing = false;
             cout<<endl;
@@ -432,7 +397,7 @@ bool stillGoing = true;
             break;
 
         default:
-            cout<<"Wrong prompt, chose 1-10"<<endl;
+            cout<<"Wrong prompt, chose 1-3"<<endl;
             cout<<endl;
     }
     }

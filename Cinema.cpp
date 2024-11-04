@@ -59,3 +59,10 @@ void Cinema::details() {
 Cinema::~Cinema() {
 
 }
+
+void Cinema::showCitizens(){
+    std::cout << "Current Patients in Healthcare Service:" << std::endl;
+        for (size_t i = 0; i < currentAudience.size(); ++i) {
+            std::cout << i << ". " << currentAudience[i]->getName() << " (Age: " << currentAudience[i]->getAge() << ")" << std::endl;
+        }
+}

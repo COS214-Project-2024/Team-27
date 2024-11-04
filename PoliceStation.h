@@ -7,14 +7,14 @@
 #include "Services.h"
 
 class PoliceStation : public Services {
-private:
+public:
     int Rating;
     std::vector<Citizen*> currentRequests;
    
     void improveRating();
     void decreaseRating();
 
-public:
+
     PoliceStation(int stationCapacity);
     void admitRequest(Citizen* citizen);  
     void releaseRequest(Citizen* citizen);

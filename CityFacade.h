@@ -44,11 +44,17 @@ class CityFacade{
         vector<Landmark*> landmarks;
         vector<CommercialBuilding*> commercialBuildings;
 
+
         Government* government ;
         vector<Citizen*> citizens;
         BuildingMaterials* materials;
         CityGrowthManager* growthManager ;
         GovernmentCaretaker* caretaker ;
+
+        Healthcare* healthcareService;
+        Education* educationService;
+        PoliceStation* policeStationService;
+        Cinema* cinemaService;
 
     public:
         CityFacade();
@@ -88,6 +94,9 @@ class CityFacade{
         void managePopulationGrowth();
         void simulateNaturalDisaster(double PopulationImpact, double buidlingImpact, double economicImpact);
         void makeAllBuildingsOperational();
+
+        void viewServicesOverview();
+        void useResource();
 
 
 };
