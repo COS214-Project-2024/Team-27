@@ -35,6 +35,7 @@
 #include "Cinema.h"
 #include "BuildingIterator.h"
 #include "CitizenIterator.h"
+#include "City.h"
 
 #include "Government.h"
 #include "Citizen.h"
@@ -110,7 +111,9 @@ class CityFacade{
 
         void traverseCitizens();
         void traverseBuildings();
-
+        GovernmentCaretaker* getCaretaker(){
+            return caretaker ;
+        };
 
 };
 
