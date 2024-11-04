@@ -1,6 +1,8 @@
+
 #include "CityFacade.h"
 
 CityFacade::CityFacade(){
+    
 }
 
 void CityFacade::createAPBuilding(){
@@ -41,6 +43,7 @@ void CityFacade::createAPBuilding(){
             }
             cout<<"Apartment building cloned"<<endl;
         }
+        government->UpdateApartment(apartmentBuildings);
         return;
     }
 
@@ -62,7 +65,7 @@ void CityFacade::createAPBuilding(){
         myApartmentBuilding->operate();
     } 
     apartmentBuildings.push_back(myApartmentBuilding);
-
+    government->UpdateApartment(apartmentBuildings);
 }
 
 void CityFacade::createUnit(){
@@ -91,6 +94,7 @@ void CityFacade::createUnit(){
             myUnit->operate();
         } 
         apartmentBuildings[building-1]->addUnit(myUnit);
+        government->UpdateApartment(apartmentBuildings);
         cout<<"Unit created and added"<<endl;
         
         return;
@@ -135,10 +139,13 @@ void CityFacade::createHouse(){
             cin>>num;
             if(0<num-1<houses.size()){
                 houses.push_back(houses[num-1]->clone());
+
             }
             cout<<"House cloned"<<endl;
         }
+        government->UpdateHouse(houses);
         return;
+
     }
 
     string name;
@@ -159,6 +166,7 @@ void CityFacade::createHouse(){
         myHouse->operate();
     } 
     houses.push_back(myHouse);
+    government->UpdateHouse(houses);
     cout<<"House created"<<endl;
 
 }
@@ -201,6 +209,7 @@ void CityFacade::createLandmark(){
             }
             cout<<"Landmark cloned"<<endl;
         }
+        government->UpdateLandMarks(landmarks);
         return;
     }
 
@@ -223,6 +232,7 @@ void CityFacade::createLandmark(){
         myLandmark->operate();
     } 
     landmarks.push_back(myLandmark);
+    government->UpdateLandMarks(landmarks);
     cout<<"Landmark created"<<endl;
 
 }
@@ -265,6 +275,7 @@ void CityFacade::createCommercial(){
             }
             cout<<"Commercial building cloned"<<endl;
         }
+        government->UpdateCommercial(commercialBuildings);
         return;
     }
 
@@ -287,6 +298,7 @@ void CityFacade::createCommercial(){
                 myCom->operate();
             } 
             commercialBuildings.push_back(myCom);
+            government->UpdateCommercial(commercialBuildings);
             cout<<"commercial building created"<<endl;
 
 }
@@ -390,85 +402,21 @@ void CityFacade::showCitizenStats(){
 
 }
 
-void CityFacade::createAdult(){
-    string name;
-    string employment;
-    bool employed;
-    double income;
-    int age = 10;
-    cout<<"Give the adult a name: "<<endl;
-    cin>>name;
-    cout<<endl;
+void CityFacade::showUtilityStats(){
 
-    while(age<18){
-        cout<<"Give the adult an age: "<<endl;
-        cin>>age;
-    }
-
-    cout<<"Is the adult employed? (Y/N)"<<endl;
-    cin>>employment;
-
-    if(employment=="Y" || employment == "y"){
-        cout<<"Set the adult's income"<<endl;
-        cin>>income;
-        employed = true;
-    } else if(employment=="N" || employment == "n"){
-        income = 0.0;
-        employed = false;
-    }
-    
-    ConcreteCitizenBuilder builder;
-    CitizenDirector director(&builder);
-
-    // Create a child citizen and display initial state
-    Citizen* adult = director.createAdult(name, age, 100,income, employed);
-    cout << "Adult citizen created" << endl;
-    cout << endl;
-    citizens.push_back(adult);
 }
-void CityFacade::updateCitizens(){
-    if(citizens.size() == 0){
-        cout<<"No citizens to update"<<endl;
-    }
 
-    int update = -10;
+void CityFacade::showServicesStats(){
 
-    while(update<0 && update-1>citizens.size()){
-        cout<<"Which citizen do you want to update?"<<endl;
-        showCitizenStats();
-        cin>>update;
-    }
-    
-    cout<<"From citizen ";
-    citizens[update-1]->display();
-    cout<<endl;
-
-    cout<<"What would you like to update? "<<endl
-        <<"1. Employment"<<endl
-        <<"2. Income"<<endl;
-    int choice;
-    cin>>choice;
-    if(choice == 1){
-        if(citizens[update-1]->getEmployment()){
-            citizens[update-1]->setEmploymentStatus(false);
-            citizens[update-1]->setIncome(0.0);
-        } else{
-            citizens[update-1]->setEmploymentStatus(true);
-        }
-        cout<<"Citizen employment status updated"<<endl;
-    } else if (choice ==2){
-        if(citizens[update-1]->getEmployment()){
-            cout<<"Insert income: "<<endl;
-            double income;
-            cin>>income;
-            citizens[update-1]->setIncome(income);
-        } else{
-            cout<<"Citizen is unemployed, cannot update income"<<endl;
-        }
-    }
-
-    
 }
+
+void CityFacade::showTaxStats(){
+
+}
+
+void CityFacade::showGrowthStats(){
+
+} 
 void CityFacade::setCitizenDetails(Citizen* citizen, const string& name, int age, double income, int satisfaction, bool isEmployed) {
     citizen->setName(name);
     citizen->setAge(age);

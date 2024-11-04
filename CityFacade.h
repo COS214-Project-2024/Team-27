@@ -43,10 +43,10 @@ class CityFacade{
         vector<House*> houses;
         vector<Landmark*> landmarks;
         vector<CommercialBuilding*> commercialBuildings;
+
+        Government* government ;
         vector<Citizen*> citizens;
         BuildingMaterials* materials;
-
-        Government* gov;
         CityGrowthManager* growthManager ;
         GovernmentCaretaker* caretaker ;
 

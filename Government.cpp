@@ -5,17 +5,36 @@ void Government::collectBuildingTax()
    return ;
 }
 
-void Government::collectCityTax()
-{
-     collectalltax = new CollectAllTax();
-    
-}
-
 
 Government::Government(double  cRate, double bRate, double econGrowthRate, vector<Citizen*> initialCitizens, vector <Building*> initialBuildings) 
     : citizenTaxRate(cRate), buildingTaxRate(bRate), economicGrowthRate(econGrowthRate),citizens(initialCitizens), buildings(initialBuildings){
         cityGrowthManager = new CityGrowthManager(citizens.size(), buildings.size(), econGrowthRate);
     }
+Government::Government(double cRate, double bRate, double econGrowthRate)
+    :  citizenTaxRate(cRate), buildingTaxRate(bRate), economicGrowthRate(econGrowthRate){
+        cityGrowthManager = new CityGrowthManager(citizens.size(), buildings.size(), econGrowthRate);
+    }
+Government::Government(double cRate, double bRate, double economicGrowthRate,
+                       vector<Citizen*> citizens,
+                       vector<ApartmentBuilding*> apartmentBuildings,
+                       vector<House*> houses,
+                       vector<Landmark*> landmarks,
+                       vector<CommercialBuilding*> commercialBuildings)
+    : citizenTaxRate(cRate), buildingTaxRate(bRate), economicGrowthRate(economicGrowthRate),
+      citizens(citizens) {
+    for (auto* apartment : apartmentBuildings) {
+        buildings.push_back(apartment);
+    }
+    for (auto* house : houses) {
+        buildings.push_back(house);
+    }
+    for (auto* landmark : landmarks) {
+        buildings.push_back(landmark);
+    }
+    for (auto* commercial : commercialBuildings) {
+        buildings.push_back(commercial);
+    }
+}
 
 GovernmentMemento* Government::saveState(){
     vector<Citizen*> citizenPointers ;
@@ -68,6 +87,22 @@ void Government::addBuilding(Building* b){
     buildings.push_back(b);
 }
 
+
+void Government::UpdateApartment(vector<ApartmentBuilding*> a){
+    apartmentBuildings = a ;
+}
+
+void Government::UpdateHouse(vector<House*> h){
+    houses = h ;
+}
+
+void Government::UpdateLandMarks(vector<Landmark*> l){
+    landmarks = l ;
+}
+
+void Government::UpdateCommercial(vector<CommercialBuilding*> c){
+    commercialBuildings = c ;
+}
 void Government::collectCitizenTax() {
 
       int i=1;
@@ -86,9 +121,7 @@ void Government::collectCitizenTax() {
           
     }
  }
-void Government::collectBuildingTax(){
 
-}
  void Government::collectCityTax(){
     
  collectCitizenTax();
