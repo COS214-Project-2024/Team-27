@@ -1,14 +1,14 @@
-#ifndef WASTESYSTEMFACTORY_H
-#define WASTESYSTEMFACTORY_H
+#ifndef WASTESYSTEM_FACTORY_H
+#define WASTESYSTEM_FACTORY_H
 
-#include <iostream>
-using namespace std;
+#include "WasteSystem.h"
+#include <memory>
 
-class WasteSystemFactory: public UtilityFactory{
-    private:
-
-    public:
-    
+class WasteSystemFactory{
+public:
+    // Factory method to create WasteSystem objects
+    Utility* createUtility(double resourceAmount);
+    Utility* createUtility(double kilograms, int numOfTrucks);
 };
 
 #endif
