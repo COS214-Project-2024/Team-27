@@ -1548,6 +1548,4 @@ void CityFacade::updateCitizens(){
             cout<<"Citizen is unemployed, cannot update income"<<endl;
         }
     }
-
-    
 }
