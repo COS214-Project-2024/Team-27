@@ -26,6 +26,7 @@ public:
     void releaseAudience(Citizen* citizen);
     void details();
     void useService(Citizen* citizen, string movie);
+    void showCitizens();
     ~Cinema();
     
 };

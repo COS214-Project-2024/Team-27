@@ -62,3 +62,10 @@ void PoliceStation::decreaseRating() {
         std::cout << "Police Station rating decreased to " << Rating << "." << std::endl;
     }
 }
+
+void PoliceStation::showCitizens(){
+    std::cout << "Current Patients in Healthcare Service:" << std::endl;
+        for (size_t i = 0; i < currentRequests.size(); ++i) {
+            std::cout << i << ". " << currentRequests[i]->getName() << " (Age: " << currentRequests[i]->getAge() << ")" << std::endl;
+        }
+}

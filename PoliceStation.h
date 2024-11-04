@@ -20,6 +20,7 @@ public:
     void releaseRequest(Citizen* citizen);
     void details();
     void useService(Citizen* citizen, string reason);
+    void showCitizens();
     ~PoliceStation();
 };
 
