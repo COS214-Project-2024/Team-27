@@ -77,6 +77,9 @@ class Government {
     double getCitizenTaxRate() { return citizenTaxRate; }
     double getBuildingTaxRate() { return buildingTaxRate; }
     double getEconomicGrowthRate() { return economicGrowthRate; }
+
+    // setter
+    void setCityGrowthManager(CityGrowthManager* newCityGrowthManager);
 };
 
 #endif
