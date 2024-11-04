@@ -17,7 +17,7 @@ void Government::collectBuildingTax()
      
         }
        myIterator->Next();
-       }
+       }G
 }
 
 
