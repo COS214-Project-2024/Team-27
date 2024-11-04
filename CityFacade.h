@@ -25,6 +25,7 @@
 #include "Walk.h"
 #include "Taxi.h"
 #include "Cycle.h"
+#include "City.h"
 #include "Bus.h"
 #include "BuildingMaterials.h"
 #include "Services.h"

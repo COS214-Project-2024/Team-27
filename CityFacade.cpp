@@ -1435,7 +1435,8 @@ void CityFacade::traverseBuildings(){
         cout<<++i<<endl;
         BuildingVariant currBuilding = myBuildingIterator->next("nothing");
     }
-}void CityFacade::createCitizen(){
+}
+void CityFacade::createCitizen(){
     cout<<"Which type of citizen would you like to create: "<<endl
         << "1. Adult" << endl << "2. Child" <<endl;
     int type;
