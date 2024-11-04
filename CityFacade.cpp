@@ -140,6 +140,7 @@ void CityFacade::createHouse(){
             }
             cout<<"House cloned"<<endl;
         }
+        government->UpdateHouse(houses);
         return;
     }
 
@@ -161,6 +162,7 @@ void CityFacade::createHouse(){
         myHouse->operate();
     } 
     houses.push_back(myHouse);
+    government->UpdateHouse(houses);
     cout<<"House created"<<endl;
 
 }
@@ -203,6 +205,7 @@ void CityFacade::createLandmark(){
             }
             cout<<"Landmark cloned"<<endl;
         }
+        government->UpdateLandMarks(landmarks);
         return;
     }
 
@@ -225,6 +228,7 @@ void CityFacade::createLandmark(){
         myLandmark->operate();
     } 
     landmarks.push_back(myLandmark);
+    government->UpdateLandMarks(landmarks);
     cout<<"Landmark created"<<endl;
 
 }
