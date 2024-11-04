@@ -45,3 +45,6 @@ int Citizen::getAge(){
      return age;
 }
 
+double Citizen::getIncome(){
+     return income ;
+}

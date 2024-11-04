@@ -110,13 +110,13 @@ void Government::collectCitizenTax() {
     
     for (Citizen* citizen : citizens) {
     
-      if(citizen->getEmployment() && citizen->getincome()>=3000){
-       double tax= citizen->getincome() * citizenTaxRate;
+      if(citizen->getEmployment() && citizen->getIncome()>=3000){
+       double tax= citizen->getIncome() * citizenTaxRate;
        CTotalTax+=tax;
              std::cout <<"( "<< i++<< ") Collected " << tax << " from citizen." << std::endl;
       }
       else{
-       ///cout user does not qualiy to pay tax
+            cout << " Citizen " << citizen->getName() << " Doesnt qualify to pay Tax ." << endl ;
       }
           
     }
@@ -124,7 +124,7 @@ void Government::collectCitizenTax() {
 
  void Government::collectCityTax(){
     
- collectCitizenTax();
+    collectCitizenTax();
     collectBuildingTax();
     std::cout << "City tax collection complete." << std::endl;
  }

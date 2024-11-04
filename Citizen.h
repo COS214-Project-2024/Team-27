@@ -28,6 +28,7 @@ public:
     bool getEmployment();
     string getName();
     int getAge();
+    double getIncome();
 
     // Display details
     void display() const;
