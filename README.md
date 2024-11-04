@@ -41,10 +41,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<div align="center"> 
-<a href=""><img src="img/houses.jpg" alt="houses" width="300" height="300"> </a>
-</div>
-
 ### Description
 The City Builder Simulation is a dynamic application designed to model urban development and management. Players can construct and manage various aspects of a virtual city, including buildings, utilities, transportation, and citizen services. The simulation incorporates various design patterns to ensure scalability, maintainability, and flexibility, creating a robust experience for users.
 
@@ -78,7 +74,6 @@ The City Builder Simulation is a dynamic application designed to model urban dev
   </a>
 </p>
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -102,16 +97,14 @@ To run this project, you need:
    ```sh
    make run
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p> <!-- GROUP MEMBERS -->
+
 Group Members
 This project was developed by a dedicated team of five members:
 
-- **Member 1**
-- **Member 2**
-- **Member 3**
-- **Member 4**
-- **Member 5**
-
-Each member contributed to various aspects of the design, coding, and testing phases to bring the City Builder Simulation to life.
+- **Tebatso Mahlathini**
+- **Rethabile Mokoena**
+- **Lineo Khabane**
+- **Jongisapho Ndeya**
+- **Lesedi Manoto**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p> ```
