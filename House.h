@@ -42,6 +42,10 @@ class House: public Building{
     void collectwaste(double kg) override;
     void usepower(double wt) override;
     void usewater(double cm3) override;
+    virtual double taxableAmount();
+   virtual void sethasbool(bool b);
+    virtual void sethasSolar(bool b);
+
 };
 
 #endif

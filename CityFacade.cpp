@@ -2,7 +2,7 @@
 #include "CityFacade.h"
 
 CityFacade::CityFacade(){
-    
+    government = new Government(0,0,0);
 }
 
 void CityFacade::createAPBuilding(){
@@ -867,7 +867,7 @@ void CityFacade::managePopulationGrowth(){
     cout << "Population, buildings, and economy have been evaluated and updated ." << endl;
 }
 void CityFacade::simulateNaturalDisaster(double PopulationImpact, double buidlingImpact, double economicImpact){
-    growthManager->simulateNaturalDisaster(gov, caretaker,PopulationImpact, buidlingImpact, economicImpact);
+    growthManager->simulateNaturalDisaster(government, caretaker,PopulationImpact, buidlingImpact, economicImpact);
     cout << "Natural Disaster simulated, City metrics updated ." << endl ;
 }
 

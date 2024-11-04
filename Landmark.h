@@ -31,6 +31,12 @@ class Landmark: public Building{
     void damage() override;
     Landmark* clone() override;
     void useResources() override;
+    void addUtility(const string &name, unique_ptr<Utility> util) override;
+    void removeUtility(const string &name) override;
+    void notify() override;
+    void collectwaste(double kg) override;
+    void usepower(double wt) override;
+    void usewater(double cm3) override;
 };
 
 #endif
