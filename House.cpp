@@ -49,6 +49,8 @@ void House::operate(){
 
 void House::closeDown(){
     state->closeDown(this);
+    citizens.clear();
+    
     cout<<"House "<<name<<" is now closed down"<<endl;
 }
 
@@ -68,9 +70,4 @@ void House::useResources(){
 
 void House::addResident(Citizen* citizen){
     citizens.push_back(citizen);
-}
-
-double House::getPayableTax()
-{
-    
 }

@@ -4,6 +4,7 @@ Unit::Unit(int number, string size){
     this->unitNumber = number;
     this->size = size;
     setState(new UnderConstruction);
+    cout<<"Unit "<<number<<" is now under construction"<<endl;
 }
 
 Unit::Unit(int number, string size, BuildingState* state){

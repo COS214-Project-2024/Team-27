@@ -109,6 +109,7 @@ void CitySimulation::stats(){
     cityFacade->showAllStats();
 }
 
+
 void CitySimulation::first(){
     cout << "Welcome to The Creatives' City Builder Simulation!" << endl;
     cout << "In this simulation, you are the architect of a budding metropolis. You'll have the power to shape its growth, manage resources, and ensure the happiness of its citizens."<<endl;
@@ -138,11 +139,13 @@ void CitySimulation::option2(){
         cout << "4. Build House" << endl;
         cout << "5. Build Landmark" << endl;
         cout << "6. Build Commercial Building" << endl;
-        cout << "7. Manage Utilities & Services" << endl;
-        cout << "8. Manage Tax" << endl;
-        cout << "9. Back To Home" << endl;
+        cout << "7. Manage Utilities " << endl;
+        cout << "8. Manage Services" << endl;
+        cout << "9. Manage Tax" << endl;
+        cout << "10. Back To Home" << endl;
+        cout << "11. Change Building states" << endl;
         cout << "========================================" << endl;
-        cout << "Select an option (1-9): "<<endl;
+        cout << "Select an option (1-11): "<<endl;
 
         int prompt;
         cin>>prompt;
@@ -179,21 +182,30 @@ void CitySimulation::option2(){
                 
                 break;
             case 7: 
-                cout<<"Implement Utilities and Services facade"<<endl;
+                cout<<"Implement Utilities facade"<<endl;
                 cout<<endl;
                 
                 break;
             case 8: 
+                cout<<"Implement Services facade"<<endl;
+                cout<<endl;
+                
+                break;
+            case 9: 
                 cout<<"Implement building tax facade"<<endl;
                 cout<<endl;
                 
                 break;
-            case 9:
+            case 10:
                 cout<<"going back home"<<endl;
                 stillGoing = false;
                 break;
+            case 11: 
+                cityFacade->manageBuildingStates();
+                
+                break;
             default:
-                cout<<"Wrong prompt, chose 1-9"<<endl;
+                cout<<"Wrong prompt, chose 1-10"<<endl;
                 cout<<endl;
         }
     }

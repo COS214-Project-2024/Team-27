@@ -35,7 +35,6 @@ class House: public Building{
     House* clone() override;
     void useResources() override;
     void addResident(Citizen* citizen);
-    double getPayableTax();
 };
 
 #endif
