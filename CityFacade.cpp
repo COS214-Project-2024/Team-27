@@ -590,6 +590,89 @@ void CityFacade::moveIntoApartment(){
     cout<<endl;
 }
 
+void CityFacade::visitLandmark(){
+    if(landmarks.size() == 0){
+        cout<<"No landmarks to visit"<<endl;
+    } else{
+        int citizen;
+        cout<<"Which citizen wants to visit a landmark? "<<endl;
+        showCitizenStats();
+        cin>>citizen;
+
+        int landmark;
+        cout<<"Which landmark would you like the citizen to visit?"<<endl;
+        showBuildings("Landmark");
+        cin>>landmark;
+
+        int transportOption;
+        cout << "Select mode of transport: "<<endl
+             << "1. Walk" <<endl<<"2. Cycle"<<endl
+             << "3. Taxi" <<endl<<"4. Bus" << endl;
+        cin >> transportOption;
+
+        Transport* transport = nullptr;
+        switch (transportOption) {
+            case 1: transport = new Walk(); break;
+            case 2: transport = new Cycle(); break;
+            case 3: transport = new Taxi(); break;
+            case 4: transport = new Bus(); break;
+            default:
+                cout << "Invalid option, defaulting to walking." << endl;
+                transport = new Walk();
+                break;
+        }
+
+        cout << "Citizen ";
+        citizens[citizen-1]->display();
+        cout << "is ";
+        transport->travel(landmarks[landmark - 1]->getLName());
+        
+    }
+}
+
+void CityFacade::visitCommercialBuilding(){
+    if(commercialBuildings.size() == 0){
+        cout<<"No commercial buildings to visit"<<endl;
+    } else{
+        int citizen;
+        cout<<"Which citizen wants to visit a commercial building? "<<endl;
+        showCitizenStats();
+        cin>>citizen;
+
+        int commercial;
+        cout<<"Which commercial building would you like the citizen to visit?"<<endl;
+        showBuildings("CommercialB");
+        cin>>commercial;
+
+        int transportOption;
+        cout << "Select mode of transport: "<<endl
+             << "1. Walk" <<endl<<"2. Cycle"<<endl
+             << "3. Taxi" <<endl<<"4. Bus" << endl;
+        cin >> transportOption;
+
+        Transport* transport = nullptr;
+        switch (transportOption) {
+            case 1: transport = new Walk(); break;
+            case 2: transport = new Cycle(); break;
+            case 3: transport = new Taxi(); break;
+            case 4: transport = new Bus(); break;
+            default:
+                cout << "Invalid option, defaulting to walking." << endl;
+                transport = new Walk();
+                break;
+        }
+
+        cout << "Citizen ";
+        citizens[citizen-1]->display();
+        cout << "is ";
+        transport->travel(commercialBuildings[commercial - 1]->getComName());
+    }
+}
+
+void CityFacade::startUp(){
+    
+}
+
 
 void CityFacade::showUtilityStats(){
 

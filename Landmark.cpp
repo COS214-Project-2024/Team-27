@@ -63,3 +63,7 @@ Landmark* Landmark::clone(){
 void Landmark::useResources(){
     
 }
+
+string Landmark::getLName(){
+    return name;
+}
