@@ -11,8 +11,6 @@
 
   <p align="center">
     A Dynamic Urban Development Simulator
-    <br />
-    <a href="https://your-docs-link.com"><strong>Explore the docs »</strong></a>
   </p>
 </div>
 
