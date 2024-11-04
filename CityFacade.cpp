@@ -942,10 +942,43 @@ void CityFacade::AssignUtilitiestoBuildings()
             }
   }
 }
-void CityFacade::simulateNaturalDisaster(double PopulationImpact, double buidlingImpact, double economicImpact){
-    growthManager->simulateNaturalDisaster(government, caretaker,PopulationImpact, buidlingImpact, economicImpact);
-    cout << "Natural Disaster simulated, City metrics updated ." << endl ;
-}
+void CityFacade::simulateNaturalDisaster(double populationImpact, double buildingImpact, double economicImpact) {
+        // Simulate impact on population
+        int numCitizensToMove = static_cast<int>(citizens.size() * (populationImpact / 100.0));
+        vector<Citizen*> newCitizens;
+
+        for (int i = 0; i < numCitizensToMove && !citizens.empty(); ++i) {
+            newCitizens.push_back(std::move(citizens.back()));
+            citizens.pop_back();
+        }
+
+        // Simulate impact on buildings
+        int numApartmentBuildingsToRemove = static_cast<int>(apartmentBuildings.size() * (buildingImpact / 100.0));
+        int numHousesToRemove = static_cast<int>(houses.size() * (buildingImpact / 100.0));
+        int numCommercialBuildingsToRemove = static_cast<int>(commercialBuildings.size() * (buildingImpact / 100.0));
+        int landmarkBuildingsToRemove = static_cast<int>(landmarks.size() * (buildingImpact / 100.0));
+
+        for (int i = 0; i < numApartmentBuildingsToRemove && !apartmentBuildings.empty(); ++i) {
+            apartmentBuildings[i]->damage();
+            apartmentBuildings.pop_back();
+        }
+        for (int i = 0; i < numHousesToRemove && !houses.empty(); ++i) {
+            houses[i]->damage();
+            houses.pop_back();
+        }
+        for (int i = 0; i < numCommercialBuildingsToRemove && !commercialBuildings.empty(); ++i) {
+            commercialBuildings[i]->damage();
+            commercialBuildings.pop_back();
+        }
+        for(int i = 0 ; i < landmarkBuildingsToRemove && !landmarks.empty() ; i++){
+            landmarks[i]->damage();
+            landmarks.pop_back();
+        }
+
+        growthManager->simulateNaturalDisaster(populationImpact, buildingImpact, economicImpact);
+
+        cout << "Natural Disaster simulated, City metrics updated." << endl;
+    }
 
 void CityFacade::makeAllBuildingsOperational(){
     if(apartmentBuildings.size() > 0){
