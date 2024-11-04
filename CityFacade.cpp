@@ -93,6 +93,7 @@ void CityFacade::createUnit(){
             myUnit->operate();
         } 
         apartmentBuildings[building-1]->addUnit(myUnit);
+        government->UpdateApartment(apartmentBuildings);
         cout<<"Unit created and added"<<endl;
         
         return;
@@ -137,11 +138,13 @@ void CityFacade::createHouse(){
             cin>>num;
             if(0<num-1<houses.size()){
                 houses.push_back(houses[num-1]->clone());
+
             }
             cout<<"House cloned"<<endl;
         }
         government->UpdateHouse(houses);
         return;
+
     }
 
     string name;
@@ -271,6 +274,7 @@ void CityFacade::createCommercial(){
             }
             cout<<"Commercial building cloned"<<endl;
         }
+        government->UpdateCommercial(commercialBuildings);
         return;
     }
 
@@ -293,6 +297,7 @@ void CityFacade::createCommercial(){
                 myCom->operate();
             } 
             commercialBuildings.push_back(myCom);
+            government->UpdateCommercial(commercialBuildings);
             cout<<"commercial building created"<<endl;
 
 }
