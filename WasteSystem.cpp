@@ -4,7 +4,13 @@ WasteSystem::WasteSystem(double Kilograms, int numOftrucks)
 {
     this->Kilograms =Kilograms;
     this->numOftrucks = numOftrucks;
+    this->f = true;
     
+}
+
+bool WasteSystem::flag()
+{
+    return f;
 }
 
 void WasteSystem::update()
@@ -15,7 +21,7 @@ void WasteSystem::update()
 void WasteSystem::useResources(double used)
 {
     if (used > Kilograms*numOftrucks)
-    {   
+    {   f = false;
         std::cout<<"the weight of waste is greater than what trucks can carry increase number of trucks"<<std::endl;
     }
     else{
