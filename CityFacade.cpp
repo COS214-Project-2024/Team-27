@@ -875,4 +875,5 @@ void CityFacade::viewPopulationGrowthOverView(){
 
 void CityFacade::simulateNaturalDisaster(double PopulationImpact, double buidlingImpact, double economicImpact){
     growthManager->simulateNaturalDisaster(gov, caretaker,PopulationImpact, buidlingImpact, economicImpact);
+    cout << "Natural Disaster simulated, City metrics updated ." << endl ;
 }
