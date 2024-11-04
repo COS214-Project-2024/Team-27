@@ -27,6 +27,7 @@ class Landmark: public Building{
     string getLName();
     void construct() override;
     void operate() override;
+    void getUtilitystats() override;
     void closeDown() override;
     void damage() override;
     Landmark* clone() override;

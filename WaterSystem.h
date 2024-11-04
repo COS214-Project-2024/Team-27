@@ -13,7 +13,8 @@ class WaterSystem: public Utility{
         WaterSystem(double Litres);
         void update();
         void useResources(double used);
-        bool flag();   
+        bool flag();
+        void showresources();
 };
 
 #endif

@@ -45,6 +45,26 @@ void Landmark::operate(){
     cout<<"Landmark "<<name<<" is now operational"<<endl;
 }
 
+void Landmark::getUtilitystats()
+{
+      if (utilities.find("water") != utilities.end()) {
+            utilities["water"]->showresources();
+        } else {
+            std::cout <<  "water utility does NOT exist on " << name<<".\n";
+        }
+        if (utilities.find("waste") != utilities.end()) {
+            utilities["waste"]->showresources();
+        } else {
+            std::cout << "waste utility does NOT exist on " << name<<".\n";
+        }
+        if (utilities.find("power") != utilities.end()) {
+            utilities["power"]->showresources();
+        } else {
+            std::cout <<"power utility does NOT exist on " << name<<".\n";
+        }
+    
+}
+
 void Landmark::closeDown(){
     state->closeDown(this);
     cout<<"Landmark "<<name<<" is now closed down"<<endl;

@@ -31,6 +31,7 @@ class House: public Building{
     void construct() override;
     void operate() override;
     void closeDown() override;
+    void getUtilitystats() override;
     void damage() override;
     House* clone() override;
     void useResources() override;

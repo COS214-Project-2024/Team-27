@@ -30,3 +30,8 @@ bool WaterSystem::flag()
 {
     return f;
 }
+
+void WaterSystem::showresources()
+{
+    std::cout << Litres <<" Litres of water available"<<endl;
+}

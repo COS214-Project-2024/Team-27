@@ -28,3 +28,8 @@ bool PowerSystem::flag()
 {
     return f;
 }
+
+void PowerSystem::showresources()
+{
+    std::cout << megawatts << " megawatts of power is available "<<endl;
+}

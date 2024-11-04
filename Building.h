@@ -19,6 +19,7 @@ class Building{
     virtual void setSize(string size) =0;
     virtual BuildingState* getState()=0;
     virtual void getName()=0;
+    virtual void getUtilitystats()=0;
     virtual void construct()=0;
     virtual void operate()=0;
     virtual void closeDown()=0;

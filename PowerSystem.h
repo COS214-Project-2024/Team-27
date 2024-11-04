@@ -14,6 +14,7 @@ class PowerSystem: public Utility{
         void update();
         void useResources(double used);
          bool flag();
+         void showresources();
 };
 
 #endif

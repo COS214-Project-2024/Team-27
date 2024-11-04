@@ -38,6 +38,7 @@ class ApartmentBuilding: public Apartment{
         void setState(BuildingState* newState) override;
         BuildingState* getState() override;
         void getName() override;
+        void getUtilitystats() override;
         void construct() override;
         void operate() override;
         void closeDown() override;

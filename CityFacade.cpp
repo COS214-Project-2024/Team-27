@@ -402,9 +402,7 @@ void CityFacade::showCitizenStats(){
 
 }
 
-void CityFacade::showUtilityStats(){
 
-}
 
 void CityFacade::showServicesStats(){
 
@@ -840,7 +838,35 @@ void CityFacade::manageBuildingStates(){
 
 }
 void CityFacade::showUtilityStats(){
-
+    
+            cout<<" ApartmentBuilding UtilityStats"<<endl;
+        for(int i = 1; i<=apartmentBuildings.size();i++){
+            cout<<i<<". ";
+            apartmentBuildings[i-1]->getName();
+            apartmentBuildings[i-1]->getUtilitystats();
+            cout<<endl;
+        }
+            cout<<" houses UtilityStats"<<endl;
+        for(int i = 1; i<=houses.size();i++){
+            cout<<i<<". ";
+            houses[i-1]->getName();
+            houses[i-1]->getUtilitystats();
+            cout<<endl;
+        }
+            cout<<" landmarks UtilityStats"<<endl;
+        for(int i = 1; i<=landmarks.size();i++){
+            cout<<i<<". ";
+            landmarks[i-1]->getName();
+            landmarks[i-1]->getUtilitystats();
+            cout<<endl;
+        }
+            cout<<" commercialBuildings UtilityStats"<<endl;
+        for(int i = 1; i<=commercialBuildings.size();i++){
+            cout<<i<<". ";
+            commercialBuildings[i-1]->getName();
+            commercialBuildings[i-1]->getUtilitystats();
+            cout<<endl;
+  }
 }
 
 void CityFacade::showServicesStats(){

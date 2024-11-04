@@ -28,3 +28,9 @@ void WasteSystem::useResources(double used)
          std::cout<<used <<"Kg of waste removed"<<std::endl;
     }
 }
+
+void WasteSystem::showresources()
+{
+    std::cout<<"number of kilograms a truck can carry : "<<Kilograms<<endl;
+    std::cout<<"number of trucks available : "<<numOftrucks<<endl;
+}
