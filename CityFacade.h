@@ -25,6 +25,7 @@
 #include "Walk.h"
 #include "Taxi.h"
 #include "Cycle.h"
+#include "City.h"
 #include "Bus.h"
 #include "BuildingMaterials.h"
 #include "Services.h"
@@ -32,6 +33,8 @@
 #include "Education.h"
 #include "PoliceStation.h"
 #include "Cinema.h"
+#include "BuildingIterator.h"
+#include "CitizenIterator.h"
 
 #include "Government.h"
 #include "Citizen.h"
