@@ -1,7 +1,7 @@
 #include "PowerSystemFactory.h"
 
 
-Utility* PowerSystemFactory::createUtility(double resourceAmount)
+std::unique_ptr<Utility> PowerSystemFactory::createUtility(double resourceAmount)
 {
-    return new PowerSystem(resourceAmount);
+     return std::make_unique<PowerSystem>(resourceAmount);
 }
