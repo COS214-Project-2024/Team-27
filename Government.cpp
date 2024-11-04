@@ -1,18 +1,8 @@
 #include "Government.h"
-#include "CollectAllTax.h"
-#include "CollectBuildingTax.h"
-#include "CollectCitizenTax.h"
-#include "Building.h"
-#include "GovernmentMemento.h"
-
-void Government::collectCitizenTax()
-{
-    
-}
 
 void Government::collectBuildingTax()
 {
-   
+   return ;
 }
 
 void Government::collectCityTax()
@@ -83,10 +73,10 @@ void Government::collectCitizenTax() {
    int i=1;
    int j=1;
 
- for (Citizen citizen : citizens) {
+ for (Citizen* citizen : citizens) {
   
-   if(citizen.getEmploymentStatus() && citizen.getincome()>=3000){
-    double tax= citizen.getincome() * citizenTaxRate;
+   if(citizen->getEmployment() && citizen->getincome()>=3000){
+    double tax= citizen->getincome() * citizenTaxRate;
     CTotalTax+=tax;
           std::cout <<"( "<< i++<< ") Collected " << tax << " from citizen." << std::endl;
    }

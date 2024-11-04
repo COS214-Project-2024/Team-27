@@ -4,6 +4,12 @@
 #include "CityGrowthManager.h"
 #include "GovernmentMemento.h"
 
+#include "CollectAllTax.h"
+#include "CollectBuildingTax.h"
+#include "CollectCitizenTax.h"
+#include "Building.h"
+#include "GovernmentMemento.h"
+
 #include <string>
 #include <vector>
 
