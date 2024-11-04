@@ -906,5 +906,5 @@ void CityFacade::makeAllBuildingsOperational(){
         }
     }
 
-    cout << "Alll buildings are now operational ." << endl ;
+    cout << "All buildings are now operational ." << endl ;
 }
