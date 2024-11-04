@@ -14,7 +14,6 @@ public:
     ~ConcreteCitizenBuilder();
 
     void setName(const std::string& name) override;
-    void setID(int ID) override;
     void setAge(int age) override;
     void setIncome(double income) override;
     void setSatisfaction(int satisfaction) override;
