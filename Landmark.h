@@ -3,10 +3,11 @@
 
 #include <iostream>
 #include "BuildingState.h"
+#include "Building.h"
+#include "UnderConstruction.h"
 #include "Operational.h"
 #include "ClosedDown.h"
 #include "Damaged.h"
-#include "UnderConstruction.h"
 using namespace std;
 
 class Landmark: public Building{
@@ -23,11 +24,12 @@ class Landmark: public Building{
     void setState(BuildingState* newState) override;
     BuildingState* getState() override;
     void getName() override;
+    string getLName();
     void construct() override;
     void operate() override;
     void closeDown() override;
     void damage() override;
-    Building* clone() override;
+    Landmark* clone() override;
     void useResources() override;
 };
 

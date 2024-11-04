@@ -13,7 +13,7 @@ class ApartmentFactory: public BuildingFactory{
 
     public:
         Unit* createUnit(int unitNumber, string size);
-        Building* construct(string name) override;
+        ApartmentBuilding* construct(string name) override;
 };
 
 #endif

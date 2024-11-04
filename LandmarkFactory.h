@@ -11,7 +11,7 @@ class LandmarkFactory: public BuildingFactory{
     private:
 
     public:
-        Building* construct(string name) override;
+        Landmark* construct(string name) override;
 };
 
 #endif

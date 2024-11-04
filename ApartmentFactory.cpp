@@ -1,6 +1,6 @@
 #include "ApartmentFactory.h"
 
-Building* ApartmentFactory::construct(string name){
+ApartmentBuilding* ApartmentFactory::construct(string name){
     return new ApartmentBuilding(name);
 }
 

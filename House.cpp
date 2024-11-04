@@ -3,7 +3,8 @@
 House::House(string name){
     this->name = name;
     this->size = size;
-    construct();
+    setState(new UnderConstruction);
+    cout<<"House "<<name<<" is now under construction"<<endl;
 }
 
 void House::setSize(string size){
@@ -48,6 +49,8 @@ void House::operate(){
 
 void House::closeDown(){
     state->closeDown(this);
+    citizens.clear();
+    
     cout<<"House "<<name<<" is now closed down"<<endl;
 }
 
@@ -56,11 +59,15 @@ void House::damage(){
     cout<<"House "<<name<<" is now damaged"<<endl;
 }
 
-Building* House::clone(){
+House* House::clone(){
     cout<<"A clone of House "<<name<<" has been created"<<endl;
     return new House(this->name, this->size, this->state);
 }
 
 void House::useResources(){
     
+}
+
+void House::addResident(Citizen* citizen){
+    citizens.push_back(citizen);
 }

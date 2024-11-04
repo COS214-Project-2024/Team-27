@@ -3,7 +3,8 @@
 Unit::Unit(int number, string size){
     this->unitNumber = number;
     this->size = size;
-    construct();
+    setState(new UnderConstruction);
+    cout<<"Unit "<<number<<" is now under construction"<<endl;
 }
 
 Unit::Unit(int number, string size, BuildingState* state){
@@ -56,7 +57,11 @@ void Unit::damage(){
     cout<<"Unit "<<unitNumber<<" is now damaged"<<endl;
 }
 
-Building* Unit::clone(){
+Unit* Unit::clone(){
     cout<<"A clone of Unit "<<unitNumber<<" has been created"<<endl;
     return new Unit(this->unitNumber, this->size, this->state);
+}
+
+void Unit::addResident(Citizen *citizen){
+    citizens.push_back(citizen);
 }
