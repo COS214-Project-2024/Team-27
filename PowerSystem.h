@@ -13,7 +13,7 @@ class PowerSystem: public Utility{
         PowerSystem(double megawatts);
         void update();
         void useResources(double used);
-    
+         bool flag();
 };
 
 #endif
