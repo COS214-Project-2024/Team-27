@@ -33,6 +33,7 @@ class House: public Building{
     void closeDown() override;
     void getUtilitystats() override;
     void damage() override;
+     bool fullutilies();
     House* clone() override;
     void useResources() override;
     void addResident(Citizen* citizen);

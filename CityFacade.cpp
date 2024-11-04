@@ -892,6 +892,56 @@ void CityFacade::managePopulationGrowth(){
     growthManager->evaluateEconomicGrowth();
     cout << "Population, buildings, and economy have been evaluated and updated ." << endl;
 }
+
+void CityFacade::AssignUtilitiestoBuildings()
+{
+       std::vector<Building*> without ;
+        cout<<" ApartmentBuilding without full utilities"<<endl;
+        for(int i = 1; i<=apartmentBuildings.size();i++){
+            int r = 1;
+            cout<<r<<". ";
+            if (apartmentBuildings[i-1]->fullutilies() == false)
+            {
+                apartmentBuildings[i-1]->getName();
+                without.push_back(apartmentBuildings[i-1]);
+                r++;
+            } 
+        }
+            cout<<" houses without full utilities"<<endl;
+        for(int i = 1; i<=houses.size();i++){
+            cout<<i<<". ";
+             int r = 1;
+            cout<<r<<". ";
+            if (houses[i-1]->fullutilies() == false)
+            {
+                houses[i-1]->getName();
+                  without.push_back(houses[i-1]);
+                r++;
+            }
+        }
+            cout<<" landmarks without full utilitiess"<<endl;
+        for(int i = 1; i<=landmarks.size();i++){
+           int r = 1;
+            cout<<r<<". ";
+            if (landmarks[i-1]->fullutilies() == false)
+            {
+                landmarks[i-1]->getName();
+                  without.push_back(landmarks[i-1]);
+                r++;
+            }
+        }
+            cout<<" commercialBuildings without full utilities"<<endl;
+        for(int i = 1; i<=commercialBuildings.size();i++){
+            int r = 1;
+            cout<<r<<". ";
+            if (commercialBuildings[i-1]->fullutilies() == false)
+            {
+                commercialBuildings[i-1]->getName();
+                  without.push_back(commercialBuildings[i-1]);
+                r++;
+            }
+  }
+}
 void CityFacade::simulateNaturalDisaster(double PopulationImpact, double buidlingImpact, double economicImpact){
     growthManager->simulateNaturalDisaster(government, caretaker,PopulationImpact, buidlingImpact, economicImpact);
     cout << "Natural Disaster simulated, City metrics updated ." << endl ;

@@ -2,6 +2,7 @@
 #define WASTESYSTEM_H
 
 #include <iostream>
+#include <vector>
 #include "Utility.h"
 using namespace std;
 

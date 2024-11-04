@@ -26,6 +26,7 @@ class Landmark: public Building{
     void getName() override;
     string getLName();
     void construct() override;
+     bool fullutilies();
     void operate() override;
     void getUtilitystats() override;
     void closeDown() override;

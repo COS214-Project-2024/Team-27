@@ -64,6 +64,18 @@ void Unit::closeDown()
     cout << "Unit " << unitNumber << " is now closed down" << endl;
 }
 
+bool Unit::fullutilies()
+{
+     std::string requiredUtilities[] = {"water", "waste", "power"};
+    
+    for (const auto& name : requiredUtilities) {
+        if (utilities.find(name) == utilities.end()) {
+            return false;
+        } 
+    }
+    return true;
+}
+
 void Unit::getUtilitystats()
 {
     if (utilities.find("water") != utilities.end())

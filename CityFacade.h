@@ -34,6 +34,7 @@
 #include "Citizen.h"
 
 #include <cstdlib>
+#include <vector>
 #include <ctime>
 using namespace std;
 
@@ -92,6 +93,7 @@ class CityFacade{
 
         void viewPopulationGrowthOverView();
         void managePopulationGrowth();
+        void AssignUtilitiestoBuildings();
         void simulateNaturalDisaster(double PopulationImpact, double buidlingImpact, double economicImpact);
         void makeAllBuildingsOperational();
 

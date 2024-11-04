@@ -35,6 +35,7 @@ class ApartmentBuilding: public Apartment{
         void removeUnit(Unit* unit);
         vector<Unit*> getUnits();
         void displayInfo() override;
+        bool fullutilies();
         void setState(BuildingState* newState) override;
         BuildingState* getState() override;
         void getName() override;

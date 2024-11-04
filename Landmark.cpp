@@ -40,6 +40,18 @@ void Landmark::construct(){
     cout<<"Landmark "<<name<<" is now under construction"<<endl;
 }
 
+bool Landmark::fullutilies()
+{
+     std::string requiredUtilities[] = {"water", "waste", "power"};
+    
+    for (const auto& name : requiredUtilities) {
+        if (utilities.find(name) == utilities.end()) {
+            return false;
+        } 
+    }
+    return true;
+}
+
 void Landmark::operate(){
     state->operate(this);
     cout<<"Landmark "<<name<<" is now operational"<<endl;

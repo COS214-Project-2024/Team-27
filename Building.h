@@ -20,6 +20,7 @@ class Building{
     virtual BuildingState* getState()=0;
     virtual void getName()=0;
     virtual void getUtilitystats()=0;
+    virtual bool fullutilies() = 0;
     virtual void construct()=0;
     virtual void operate()=0;
     virtual void closeDown()=0;

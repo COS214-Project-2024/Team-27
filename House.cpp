@@ -77,6 +77,18 @@ void House::damage(){
     cout<<"House "<<name<<" is now damaged"<<endl;
 }
 
+bool House::fullutilies()
+{
+     std::string requiredUtilities[] = {"water", "waste", "power"};
+    
+    for (const auto& name : requiredUtilities) {
+        if (utilities.find(name) == utilities.end()) {
+            return false;
+        } 
+    }
+    return true;
+}
+
 House* House::clone(){
     cout<<"A clone of House "<<name<<" has been created"<<endl;
     return new House(this->name, this->size, this->state);

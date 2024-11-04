@@ -36,6 +36,18 @@ void CommercialBuilding::getName(){
     cout<<name;
 }
 
+bool CommercialBuilding::fullutilies()
+{
+     std::string requiredUtilities[] = {"water", "waste", "power"};
+    
+    for (const auto& name : requiredUtilities) {
+        if (utilities.find(name) == utilities.end()) {
+            return false;
+        } 
+    }
+    return true;
+}
+
 void CommercialBuilding::construct(){
     state->construct(this);
     cout<<"Commercial Building "<<name<<" is now under construction"<<endl;

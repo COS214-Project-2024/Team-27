@@ -32,6 +32,7 @@ class Unit: public Apartment{
         void construct() override;
         void operate() override;
         void closeDown() override;
+         bool fullutilies();
         void getUtilitystats() override;
         void damage() override;
         Unit* clone() override;
