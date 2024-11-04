@@ -8,13 +8,14 @@ int ApartmentBuilding::numUnits(){
     return units.size();
 }
 
-void ApartmentBuilding::printUnits(){
-    for(int i = 1; i<=units.size();i++){
-            cout<<i<<". ";
-            units[i-1]->getName();
-            cout<<endl;
-        }
+void ApartmentBuilding::printUnits() {
+    for (size_t i = 1; i <= units.size(); i++) {
+        cout << i << ". ";
+        units[i - 1]->getName();
+        cout << endl;
+    }
 }
+
 
 void ApartmentBuilding::addUnit(Unit* unit){
     if(unit){
@@ -113,4 +114,73 @@ void Unit::useResources(){
 
 vector<Unit*> ApartmentBuilding::getUnits(){
     return units;
+}
+
+void ApartmentBuilding::addUtility(const string& name, unique_ptr<Utility> util)
+{
+    utilities[name] = std::move(util);
+    cout << "Utility added: " << name << endl;
+}
+
+void ApartmentBuilding::removeUtility(const string& name)
+{
+     if (utilities.erase(name)) {
+        cout << "Utility removed: " << name << endl;
+    } else {
+        cout << "Utility not found: " << name << endl;
+    }
+}
+
+void ApartmentBuilding::notify()
+{
+     cout << "Notifying all utilities:" << endl;
+    for (auto it = utilities.begin(); it != utilities.end(); ++it) {
+        cout << "Notifying utility: " << it->first << endl;
+        if (it->second->flag()== false)
+        {
+            it->second->update(); 
+        }
+    }
+}
+
+void ApartmentBuilding::collectwaste(double kg)
+{
+    if (utilities.find("waste") != utilities.end()) {
+       
+        cout << "waste utility found; proceeding with waste collection of " << kg << " kg." << endl;
+        utilities["waste"]->useResources(kg);
+       
+    } else {
+       
+        cout << "No waste utility found; cannot proceed with waste collection." << endl;
+    }
+
+}
+
+void ApartmentBuilding::usepower(double wt)
+{
+    if (utilities.find("power") != utilities.end()) {
+       
+        cout << "waste utility found;  " << wt << " megawatts of power used." << endl;
+        utilities["power"]->useResources(wt);
+       
+    } else {
+       
+        cout << "no utility for power found." << endl;
+    }
+
+    
+}
+
+void ApartmentBuilding::usewater(double cm3)
+{
+    if (utilities.find("water") != utilities.end()) {
+       
+        cout << "water utility found;  " << cm3 << " liters of water used." << endl;
+        utilities["water"]->useResources(cm3);
+       
+    } else {
+       
+        cout << "no utility for water found." << endl;
+    }
 }

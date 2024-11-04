@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <algorithm>
+#include <map>
 #include <vector>
 #include "Apartment.h"
 #include "Unit.h"
@@ -23,6 +24,7 @@ class ApartmentBuilding: public Apartment{
         string size;
         BuildingState* state;
         vector<Citizen*> citizens;
+
     public:
         int numUnits();
         void printUnits();
@@ -44,6 +46,13 @@ class ApartmentBuilding: public Apartment{
         void useResources() override;
         void setSize(string size);
         void addResident(Citizen* citizen);
+        void addUtility(const string& name, unique_ptr<Utility> util)override;
+        void removeUtility(const string& name) override;
+        void notify() override;
+        void collectwaste(double kg) override;
+        void usepower(double wt) override;
+        void usewater(double cm3) override;
+
 };
 
 #endif

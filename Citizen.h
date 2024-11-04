@@ -26,6 +26,8 @@ public:
     void setSatisfaction(int satisfaction);
     void setEmploymentStatus(bool isEmployed);
     bool getEmployment();
+    string getName();
+    int getAge();
 
     // Display details
     void display() const;

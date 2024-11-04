@@ -64,3 +64,69 @@ Unit* Unit::clone(){
 void Unit::addResident(Citizen *citizen){
     citizens.push_back(citizen);
 }
+
+void Unit::addUtility(const string& name, unique_ptr<Utility> util)
+{
+    utilities[name] = std::move(util);
+    cout << "Utility added: " << name << endl;
+}
+
+void Unit::removeUtility(const string& name)
+{
+     if (utilities.erase(name)) {
+        cout << "Utility removed: " << name << endl;
+    } else {
+        cout << "Utility not found: " << name << endl;
+    }
+}
+
+void Unit::notify()
+{
+     cout << "Notifying all utilities:" << endl;
+    for (auto it = utilities.begin(); it != utilities.end(); ++it) {
+        cout << "Notifying utility: " << it->first << endl;
+        if (it->second->flag()== false)
+        {
+            it->second->update(); 
+        }
+    }
+}
+
+void Unit::collectwaste(double kg)
+{
+    if (utilities.find("waste") != utilities.end()) {
+       
+        cout << "waste utility found; proceeding with waste collection of " << kg << " kg." << endl;
+        utilities["waste"]->useResources(kg);
+       
+    } else {
+       
+        cout << "No waste utility found; cannot proceed with waste collection." << endl;
+    }
+}
+
+void Unit::usepower(double wt)
+{
+    if (utilities.find("power") != utilities.end()) {
+       
+        cout << "waste utility found;  " << wt << " megawatts of power used." << endl;
+        utilities["power"]->useResources(wt);
+       
+    } else {
+       
+        cout << "no utility for power found." << endl;
+    }
+}
+
+void Unit::usewater(double cm3)
+{
+    if (utilities.find("water") != utilities.end()) {
+       
+        cout << "water utility found;  " << cm3 << " liters of water used." << endl;
+        utilities["water"]->useResources(cm3);
+       
+    } else {
+       
+        cout << "no utility for water found." << endl;
+    }
+}

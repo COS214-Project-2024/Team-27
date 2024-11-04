@@ -1,6 +1,8 @@
+
 #include "CityFacade.h"
 
 CityFacade::CityFacade(){
+    government = new Government(0,0,0);
 }
 
 void CityFacade::createAPBuilding(){
@@ -41,6 +43,7 @@ void CityFacade::createAPBuilding(){
             }
             cout<<"Apartment building cloned"<<endl;
         }
+        government->UpdateApartment(apartmentBuildings);
         return;
     }
 
@@ -62,7 +65,7 @@ void CityFacade::createAPBuilding(){
         myApartmentBuilding->operate();
     } 
     apartmentBuildings.push_back(myApartmentBuilding);
-
+    government->UpdateApartment(apartmentBuildings);
 }
 
 void CityFacade::createUnit(){
@@ -91,6 +94,7 @@ void CityFacade::createUnit(){
             myUnit->operate();
         } 
         apartmentBuildings[building-1]->addUnit(myUnit);
+        government->UpdateApartment(apartmentBuildings);
         cout<<"Unit created and added"<<endl;
         
         return;
@@ -135,10 +139,13 @@ void CityFacade::createHouse(){
             cin>>num;
             if(0<num-1<houses.size()){
                 houses.push_back(houses[num-1]->clone());
+
             }
             cout<<"House cloned"<<endl;
         }
+        government->UpdateHouse(houses);
         return;
+
     }
 
     string name;
@@ -159,6 +166,7 @@ void CityFacade::createHouse(){
         myHouse->operate();
     } 
     houses.push_back(myHouse);
+    government->UpdateHouse(houses);
     cout<<"House created"<<endl;
 
 }
@@ -201,6 +209,7 @@ void CityFacade::createLandmark(){
             }
             cout<<"Landmark cloned"<<endl;
         }
+        government->UpdateLandMarks(landmarks);
         return;
     }
 
@@ -223,6 +232,7 @@ void CityFacade::createLandmark(){
         myLandmark->operate();
     } 
     landmarks.push_back(myLandmark);
+    government->UpdateLandMarks(landmarks);
     cout<<"Landmark created"<<endl;
 
 }
@@ -265,6 +275,7 @@ void CityFacade::createCommercial(){
             }
             cout<<"Commercial building cloned"<<endl;
         }
+        government->UpdateCommercial(commercialBuildings);
         return;
     }
 
@@ -287,6 +298,7 @@ void CityFacade::createCommercial(){
                 myCom->operate();
             } 
             commercialBuildings.push_back(myCom);
+            government->UpdateCommercial(commercialBuildings);
             cout<<"commercial building created"<<endl;
 
 }
@@ -363,7 +375,7 @@ void CityFacade::showBuildingStats(){
 void CityFacade::showUnits(){
     for(int i = 0; i<apartmentBuildings.size();i++){
         if(apartmentBuildings[i] && apartmentBuildings[i]->numUnits() != 0){
-            cout<<"In apartment building ";
+            cout<<"In apartment building";
             apartmentBuildings[i]->getName();
             cout<<" we have the following units: "<<endl;
             apartmentBuildings[i]->printUnits();
@@ -387,131 +399,24 @@ void CityFacade::showAllStats(){
 }
 
 void CityFacade::showCitizenStats(){
-    if(citizens.size() == 0){
-        cout<<"No citizens to show"<<endl;
-    }
-
-    cout<<"We have the following citizens: "<<endl;
-    for(int i = 0; i<citizens.size();i++){
-        cout<<i+1<<". ";
-        citizens[i]->display();
-    }
-}
-
-void CityFacade::createCitizen(){
-    cout<<"Which type of citizen would you like to create: "<<endl
-        << "1. Adult" << endl << "2. Child" <<endl;
-    int type;
-    cin>>type;
-    if(type == 1){
-        createAdult();
-    } else if(type == 2){
-        createChild();
-    }
-}
-
-void CityFacade::createChild(){
-    string name;
-    int age = 20;
-    cout<<"Give the child a name: "<<endl;
-    cin>>name;
-    cout<<endl;
-
-    while(age>18){
-        cout<<"Give the child an age: "<<endl;
-        cin>>age;
-    }
-    
-    ConcreteCitizenBuilder builder;
-    CitizenDirector director(&builder);
-
-    // Create a child citizen and display initial state
-    Citizen* child = director.createChild(name, age, 100);
-    cout << "Child citizen created" << endl;
-    
-    citizens.push_back(child);
 
 }
 
-void CityFacade::createAdult(){
-    string name;
-    string employment;
-    bool employed;
-    double income;
-    int age = 10;
-    cout<<"Give the adult a name: "<<endl;
-    cin>>name;
-    cout<<endl;
+void CityFacade::showUtilityStats(){
 
-    while(age<18){
-        cout<<"Give the adult an age: "<<endl;
-        cin>>age;
-    }
-
-    cout<<"Is the adult employed? (Y/N)"<<endl;
-    cin>>employment;
-
-    if(employment=="Y" || employment == "y"){
-        cout<<"Set the adult's income"<<endl;
-        cin>>income;
-        employed = true;
-    } else if(employment=="N" || employment == "n"){
-        income = 0.0;
-        employed = false;
-    }
-    
-    ConcreteCitizenBuilder builder;
-    CitizenDirector director(&builder);
-
-    // Create a child citizen and display initial state
-    Citizen* adult = director.createAdult(name, age, 100,income, employed);
-    cout << "Adult citizen created" << endl;
-    cout << endl;
-    citizens.push_back(adult);
 }
-void CityFacade::updateCitizens(){
-    if(citizens.size() == 0){
-        cout<<"No citizens to update"<<endl;
-    }
 
-    int update = -10;
+void CityFacade::showServicesStats(){
 
-    while(update<0 && update-1>citizens.size()){
-        cout<<"Which citizen do you want to update?"<<endl;
-        showCitizenStats();
-        cin>>update;
-    }
-    
-    cout<<"From citizen ";
-    citizens[update-1]->display();
-    cout<<endl;
-
-    cout<<"What would you like to update? "<<endl
-        <<"1. Employment"<<endl
-        <<"2. Income"<<endl;
-    int choice;
-    cin>>choice;
-    if(choice == 1){
-        if(citizens[update-1]->getEmployment()){
-            citizens[update-1]->setEmploymentStatus(false);
-            citizens[update-1]->setIncome(0.0);
-        } else{
-            citizens[update-1]->setEmploymentStatus(true);
-        }
-        cout<<"Citizen employment status updated"<<endl;
-    } else if (choice ==2){
-        if(citizens[update-1]->getEmployment()){
-            cout<<"Insert income: "<<endl;
-            double income;
-            cin>>income;
-            citizens[update-1]->setIncome(income);
-        } else{
-            cout<<"Citizen is unemployed, cannot update income"<<endl;
-        }
-    }
-
-    
 }
+
+void CityFacade::showTaxStats(){
+
+}
+
+void CityFacade::showGrowthStats(){
+
+} 
 void CityFacade::setCitizenDetails(Citizen* citizen, const string& name, int age, double income, int satisfaction, bool isEmployed) {
     citizen->setName(name);
     citizen->setAge(age);
@@ -670,10 +575,270 @@ void CityFacade::visitCommercialBuilding(){
 }
 
 void CityFacade::startUp(){
+    srand(static_cast<unsigned int>(time(0))); 
+
+    for (int i = 0; i < 15; ++i) {
+        string name = "Child_" + to_string(rand() % 1000); 
+        int age = rand() % 18 + 1; 
+        int satisfaction = 100; 
+
+        ConcreteCitizenBuilder builder;
+        CitizenDirector director(&builder);
+        Citizen* child = director.createChild(name, age, satisfaction);
+
+        citizens.push_back(child);
+    }
+
+    for (int i = 0; i < 30; ++i) {
+        string name = "Adult_" + to_string(rand() % 1000); 
+        int age = rand() % 50 + 18; 
+        bool employed = rand() % 2; 
+        double income = employed ? (rand() % 6501 + 3500) : 3500.0; 
+        int satisfaction = 100; 
+
+        ConcreteCitizenBuilder builder;
+        CitizenDirector director(&builder);
+        Citizen* adult = director.createAdult(name, age, satisfaction, income, employed);
+
+        citizens.push_back(adult);
+    }
+
+    int citizenIndex = 0; 
+
+    for (int i = 0; i < 5; ++i) {
+        string name = "Apartment_" + to_string(rand() % 1000); 
+        ApartmentBuilding* apartment = new ApartmentBuilding(name);
+
+        if (i < 2) {
+            for (int j = 0; j < 5; ++j) {
+                int unitNumber = rand() % 100 + 1;
+                Unit* unit = new Unit(unitNumber, "Medium");
+                apartment->addUnit(unit);
+
+                if (citizenIndex + 2 < citizens.size()) {
+                    unit->addResident(citizens[citizenIndex++]);
+                    unit->addResident(citizens[citizenIndex++]);
+                    unit->addResident(citizens[citizenIndex++]);
+                }
+            }
+            apartment->setState(new Operational());
+        } else if (i == 2) {
+            apartment->setState(new UnderConstruction());
+        } else if (i == 3) {
+            apartment->setState(new ClosedDown());
+        } else if (i == 4) {
+            apartment->setState(new Damaged());
+        }
+
+        apartmentBuildings.push_back(apartment);
+    }
+
+    for (int i = 0; i < 4; ++i) {
+        string name = "House_" + to_string(rand() % 1000); 
+        int size = rand() % 150 + 100; 
+        House* house = new House(name);
+        house->setSize("Medium");
+
+        if (i < 2) {
+            house->setState(new Operational());
+        } else if (i == 2) {
+            house->setState(new UnderConstruction());
+        } else if (i == 3) {
+            house->setState(new ClosedDown());
+        } else if (i == 4) {
+            house->setState(new Damaged());
+        }
+
+        if (citizenIndex + 2 < citizens.size()) {
+            house->addResident(citizens[citizenIndex++]);
+            house->addResident(citizens[citizenIndex++]);
+            house->addResident(citizens[citizenIndex++]);
+        }
+
+        houses.push_back(house);
+    }
+
+    landmarks.push_back(new Landmark("Park"));
+    landmarks.push_back(new Landmark("Community Swimming Pool"));
+    landmarks.push_back(new Landmark("City Sign"));
+    landmarks.push_back(new Landmark("Waterfall"));
+    landmarks.push_back(new Landmark("Stadium"));
+    for (auto& landmark : landmarks) {
+        landmark->setState(new Operational());
+    }
+
+    commercialBuildings.push_back(new CommercialBuilding("Food Shop"));
+    commercialBuildings.push_back(new CommercialBuilding("Factory"));
+    commercialBuildings.push_back(new CommercialBuilding("Cinema"));
+    commercialBuildings.push_back(new CommercialBuilding("Clothes Shop"));
+    for (auto& commercial : commercialBuildings) {
+        commercial->setState(new Operational());
+    }
+
+    int healthcareCapacity = 50;
+    int educationCapacity = 100;
+    int policeStationCapacity = 30;
+    int cinemaCapacity = 40;
+
+    // Initialize services with their capacities
+    healthcareService = new Healthcare(healthcareCapacity);
+    educationService = new Education(educationCapacity);
+    policeStationService = new PoliceStation(policeStationCapacity);
+    cinemaService = new Cinema(cinemaCapacity);
+
+    // Assign citizens to services randomly
+    for (Citizen* citizen : citizens) {
+        int serviceChoice = rand() % 4; // Randomly pick a service
+        switch (serviceChoice) {
+            case 0:
+                if (healthcareService->currentPatients.size() < healthcareCapacity) {
+                    healthcareService->currentPatients.push_back(citizen);
+                }
+                break;
+            case 1:
+                if (educationService->enrolledStudents.size() < educationCapacity) {
+                    educationService->enrolledStudents.push_back(citizen);
+                }
+                break;
+            case 2:
+                if (policeStationService->currentRequests.size() < policeStationCapacity) {
+                    policeStationService->currentRequests.push_back(citizen);
+                }
+                break;
+            case 3:
+                if (cinemaService->currentAudience.size() < cinemaCapacity) {
+                    cinemaService->currentAudience.push_back(citizen);
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
     
+
+    cout << "City initialized with buildings, citizens and services" << endl;
 }
 
+void CityFacade::manageBuildingStates(){
+    int building;
+    cout<<"Which type of building's state would you like to change?"<<endl;
+    cout<<"1. Apartment Building \n2. House \n3. Landmark \n4. Commercial Building"<<endl;
+    cin>>building;
+    cout<<endl;
 
+    int state;
+    switch(building){
+        case 1:
+            cout<<"Choose an Apartment Building to change state: "<<endl;
+            showBuildings("ApartmentB");
+            int apartmentB;
+            cin>>apartmentB;
+
+            cout<<endl;
+            
+            cout<<"Which state would you like to change it to?"<<endl;
+            cout<<"1. Under Construction \n2. Operational \n3. Closed Down \n4. Damaged"<<endl;
+            cin>>state;
+
+            if(state == 1){
+                apartmentBuildings[apartmentB-1]->construct();
+            } else if(state == 2){
+                apartmentBuildings[apartmentB-1]->operate();
+            } else if(state == 3){
+                apartmentBuildings[apartmentB-1]->closeDown();
+            } else if(state == 4){
+                apartmentBuildings[apartmentB-1]->damage();
+            } else{
+                cout<<"Wrong input"<<endl;
+            }
+        
+            break;
+        
+        case 2:
+            cout<<"Choose a house to change state: "<<endl;
+            showBuildings("House");
+            int house;
+            cin>>house;
+
+            cout<<endl;
+            
+            cout<<"Which state would you like to change it to?"<<endl;
+            cout<<"1. Under Construction \n2. Operational \n3. Closed Down \n4. Damaged"<<endl;
+            cin>>state;
+
+            if(state == 1){
+                houses[house-1]->construct();
+            } else if(state == 2){
+                houses[house-1]->operate();
+            } else if(state == 3){
+                houses[house-1]->closeDown();
+            } else if(state == 4){
+                houses[house-1]->damage();
+            } else{
+                cout<<"Wrong input"<<endl;
+            }
+        
+            break;
+        
+        case 3:
+            cout<<"Choose a landmark to change state: "<<endl;
+            showBuildings("Landmark");
+            int landmark;
+            cin>>landmark;
+
+            cout<<endl;
+            
+            cout<<"Which state would you like to change it to?"<<endl;
+            cout<<"1. Under Construction \n2. Operational \n3. Closed Down \n4. Damaged"<<endl;
+            cin>>state;
+
+            if(state == 1){
+                landmarks[landmark-1]->construct();
+            } else if(state == 2){
+                landmarks[landmark-1]->operate();
+            } else if(state == 3){
+                landmarks[landmark-1]->closeDown();
+            } else if(state == 4){
+                landmarks[landmark-1]->damage();
+            } else{
+                cout<<"Wrong input"<<endl;
+            }
+        
+            break;
+        
+        case 4:
+            cout<<"Choose a Commercial Building to change state: "<<endl;
+            showBuildings("CommercialB");
+            int commercialB;
+            cin>>commercialB;
+
+            cout<<endl;
+            
+            cout<<"Which state would you like to change it to?"<<endl;
+            cout<<"1. Under Construction \n2. Operational \n3. Closed Down \n4. Damaged"<<endl;
+            cin>>state;
+
+            if(state == 1){
+                commercialBuildings[commercialB-1]->construct();
+            } else if(state == 2){
+                commercialBuildings[commercialB-1]->operate();
+            } else if(state == 3){
+                commercialBuildings[commercialB-1]->closeDown();
+            } else if(state == 4){
+                commercialBuildings[commercialB-1]->damage();
+            } else{
+                cout<<"Wrong input"<<endl;
+            }
+        
+            break;
+    }
+
+    cout<<endl;
+
+    
+
+}
 void CityFacade::showUtilityStats(){
 
 }
@@ -689,3 +854,189 @@ void CityFacade::showTaxStats(){
 void CityFacade::showGrowthStats(){
 
 }
+
+void CityFacade::viewPopulationGrowthOverView(){
+    cout << "Population :" << growthManager->getPopulation() << endl ;
+    cout << "Number Of Buildings :" << growthManager->getNumOfBuildings() << endl ;
+    cout << "Economic growth rate :" << growthManager->getEconGrowthRate() << endl ;
+}
+void CityFacade::managePopulationGrowth(){
+    growthManager->evaluatePopulationGrowth();
+    growthManager->evaluateBuildingExpansion();
+    growthManager->evaluateEconomicGrowth();
+    cout << "Population, buildings, and economy have been evaluated and updated ." << endl;
+}
+void CityFacade::simulateNaturalDisaster(double PopulationImpact, double buidlingImpact, double economicImpact){
+    growthManager->simulateNaturalDisaster(government, caretaker,PopulationImpact, buidlingImpact, economicImpact);
+    cout << "Natural Disaster simulated, City metrics updated ." << endl ;
+}
+
+void CityFacade::makeAllBuildingsOperational(){
+    if(apartmentBuildings.size() > 0){
+        for(Building* thisBuilding : apartmentBuildings){
+            thisBuilding->operate();
+        }
+    }
+    if(commercialBuildings.size() > 0){
+        for(Building* thisCommercialBuilding : commercialBuildings){
+            thisCommercialBuilding->operate();
+        }
+    }
+    if(houses.size() > 0){
+        for(Building* thisHouse : houses){
+            thisHouse->operate();
+        }
+    }
+    if(landmarks.size() > 0 ){
+        for(Building* landmark : landmarks){
+            landmark->operate();
+        }
+    }
+
+    cout << "All buildings are now operational ." << endl ;
+}
+
+void CityFacade::viewServicesOverview() {
+    int choice;
+    bool viewing = true;
+
+    while (viewing) {
+        std::cout << "======== Services Overview ========" << std::endl;
+        std::cout << "1. View Education" << std::endl;
+        std::cout << "2. View Cinema" << std::endl;
+        std::cout << "3. View Healthcare" << std::endl;
+        std::cout << "4. View Police Station" << std::endl;
+        std::cout << "5. Back to Previous Menu" << std::endl;
+        std::cout << "Select an option (1-5): ";
+        std::cin >> choice;
+
+        switch (choice) {
+            case 1:
+                educationService->details();
+                break;
+            case 2:
+                cinemaService->details();
+                break;
+            case 3:
+                healthcareService->details();
+                break;
+            case 4:
+                policeStationService->details();
+                break;
+            case 5:
+                viewing = false;
+                break;
+            default:
+                std::cout << "Invalid option. Please choose between 1 and 5." << std::endl;
+        }
+    }
+}
+
+void CityFacade::useResource() {
+    int serviceChoice, citizenIndex;
+    std::string usagePurpose;
+    bool usingService = true;
+
+    while (usingService) {
+        std::cout << "======== Use Resource ========" << std::endl;
+        std::cout << "1. Use Education" << std::endl;
+        std::cout << "2. Use Cinema" << std::endl;
+        std::cout << "3. Use Healthcare" << std::endl;
+        std::cout << "4. Use Police Station" << std::endl;
+        std::cout << "5. Back to Previous Menu" << std::endl;
+        std::cout << "Select a service to use (1-5): ";
+        std::cin >> serviceChoice;
+
+        switch (serviceChoice) {
+            case 1:
+                // Display citizens in Education service
+                educationService->showCitizens();
+                std::cout << "Select a citizen index to use the service: ";
+                std::cin >> citizenIndex;
+
+                // Get the citizen from the Education service
+                if (citizenIndex >= 0 && citizenIndex < educationService->enrolledStudents.size()) {
+                    Citizen* citizen = educationService->enrolledStudents[citizenIndex];
+                    std::cout << "Enter the purpose for using Education service: ";
+                    std::cin.ignore();
+                    std::getline(std::cin, usagePurpose);
+                    
+                    // Use the service
+                    educationService->useService(citizen, usagePurpose);
+                    educationService->releaseStudent(citizen); // Release the citizen after use
+                } else {
+                    std::cout << "Invalid index selected." << std::endl;
+                }
+                break;
+            
+            case 2:
+                cinemaService->showCitizens();
+                std::cout << "Select a citizen index to use the service: ";
+                std::cin >> citizenIndex;
+
+                // Get the citizen from the Cinema service
+                if (citizenIndex >= 0 && citizenIndex < cinemaService->currentAudience.size()) {
+                    Citizen* citizen = cinemaService->currentAudience[citizenIndex];
+                    std::cout << "Enter the purpose (e.g., movie name) for Cinema service: ";
+                    std::cin.ignore();
+                    std::getline(std::cin, usagePurpose);
+                    
+                    // Use the service
+                    cinemaService->useService(citizen, usagePurpose);
+                    cinemaService->releaseAudience(citizen); // Release the citizen after use
+                } else {
+                    std::cout << "Invalid index selected." << std::endl;
+                }
+                break;
+
+            case 3:
+                healthcareService->showCitizens();
+                std::cout << "Select a citizen index to use the service: ";
+                std::cin >> citizenIndex;
+
+                // Get the citizen from the Healthcare service
+                if (citizenIndex >= 0 && citizenIndex < healthcareService->currentPatients.size()) {
+                    Citizen* citizen = healthcareService->currentPatients[citizenIndex];
+                    std::cout << "Enter the purpose for using Healthcare service: ";
+                    std::cin.ignore();
+                    std::getline(std::cin, usagePurpose);
+                    
+                    // Use the service
+                    healthcareService->useService(citizen, usagePurpose);
+                    healthcareService->releasePatient(citizen); // Release the citizen after use
+                } else {
+                    std::cout << "Invalid index selected." << std::endl;
+                }
+                break;
+
+            case 4:
+                policeStationService->showCitizens();
+                std::cout << "Select a citizen index to use the service: ";
+                std::cin >> citizenIndex;
+
+                // Get the citizen from the Police Station service
+                if (citizenIndex >= 0 && citizenIndex < policeStationService->currentRequests.size()) {
+                    Citizen* citizen = policeStationService->currentRequests[citizenIndex];
+                    std::cout << "Enter the purpose for using Police Station service: ";
+                    std::cin.ignore();
+                    std::getline(std::cin, usagePurpose);
+                    
+                    // Use the service
+                    policeStationService->useService(citizen, usagePurpose);
+                    policeStationService->releaseRequest(citizen); // Release the citizen after use
+                } else {
+                    std::cout << "Invalid index selected." << std::endl;
+                }
+                break;
+
+            case 5:
+                usingService = false;
+                break;
+
+            default:
+                std::cout << "Invalid option. Please choose between 1 and 5." << std::endl;
+        }
+    }
+}
+
+

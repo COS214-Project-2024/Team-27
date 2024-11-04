@@ -19,6 +19,11 @@
 #include "Damaged.h"
 #include "Operational.h"
 #include "ClosedDown.h"
+#include "Healthcare.h"
+#include "Education.h"
+#include "Cinema.h"
+#include "Citizen.h"
+#include "PoliceStation.h"
 #include <iostream>
 using namespace std;
 
@@ -190,6 +195,98 @@ void testMemento(){
     newGov->restoreState(newCareTaker->getMemento(0));
     newGov->displayState();
     
+}
+
+void testServices(){
+    Healthcare hospital(2);
+    Education school(3);
+    Cinema cinema(2);
+    PoliceStation policeStaion(3);
+
+    Citizen* tommy = new Citizen;
+    Citizen* alice = new Citizen;
+    Citizen* bob = new Citizen;
+    Citizen* john = new Citizen;
+
+    tommy->setName("Tommy");
+    alice->setName("Alice");
+    bob->setName("Bob");
+    john->setName("John");
+
+    std::cout << "\n--- Healthcare Service Tests ---\n";
+
+    hospital.admitPatient(tommy);
+    hospital.admitPatient(alice);
+    hospital.admitPatient(bob);
+
+    hospital.useService(tommy, "cold");
+    hospital.useService(john, "fever");
+
+    hospital.releasePatient(tommy);
+    hospital.admitPatient(bob);
+
+    hospital.releasePatient(alice);
+    hospital.releasePatient(bob);
+
+    hospital.details();
+
+    std::cout << "\n--- Education Service Tests ---\n";
+
+    school.enrollStudent(tommy);
+    school.enrollStudent(bob);
+    school.enrollStudent(alice);
+    school.enrollStudent(john);
+
+    school.useService(tommy, "Math");
+    school.useService(john, "Science");
+
+    school.releaseStudent(tommy);
+    school.enrollStudent(john);
+
+    school.releaseStudent(bob);
+    school.releaseStudent(alice);
+
+    school.details();
+
+    std::cout << "\n--- Cinema Service Tests ---\n";
+
+    cinema.admitAudience(tommy);
+    cinema.admitAudience(alice);
+    cinema.admitAudience(bob);
+
+    cinema.useService(tommy, "Inception");
+    cinema.useService(john, "Interstellar");
+
+    cinema.releaseAudience(tommy);
+    cinema.admitAudience(bob);
+
+    cinema.releaseAudience(alice);
+    cinema.releaseAudience(bob);
+
+    cinema.details();
+
+    std::cout << "\n--- Police Service Tests ---\n";
+
+    policeStaion.admitRequest(tommy);
+    policeStaion.admitRequest(alice);
+    policeStaion.admitRequest(bob);
+
+    policeStaion.useService(tommy, "theft report");
+    policeStaion.useService(alice, "missing person inquiry");
+    policeStaion.useService(bob, "lost item report"); 
+
+    policeStaion.releaseRequest(tommy);
+    policeStaion.admitRequest(john);
+
+    policeStaion.releaseRequest(alice);
+    policeStaion.releaseRequest(bob);
+
+    policeStaion.details();
+
+    delete tommy;
+    delete alice;
+    delete bob;
+    delete john;
 }
 
 // void setCitizenDetails(Citizen* citizen, const std::string& name, int age, double income, int satisfaction, bool isEmployed) {

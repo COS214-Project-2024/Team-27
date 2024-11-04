@@ -33,3 +33,5 @@ class GovernmentMemento{
         const vector<Building*>& getBuildings() const ;
 };
 
+
+#endif

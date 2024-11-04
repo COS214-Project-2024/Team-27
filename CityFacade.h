@@ -18,6 +18,23 @@
 #include "Citizen.h"
 #include "CitizenBuilder.h"
 #include "CitizenDirector.h"
+#include "Transport.h"
+#include "Walk.h"
+#include "Taxi.h"
+#include "Cycle.h"
+#include "Bus.h"
+#include "BuildingMaterials.h"
+#include "Services.h"
+#include "Healthcare.h"
+#include "Education.h"
+#include "PoliceStation.h"
+#include "Cinema.h"
+
+#include "Government.h"
+#include "Citizen.h"
+
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 class CityFacade{
@@ -26,7 +43,19 @@ class CityFacade{
         vector<House*> houses;
         vector<Landmark*> landmarks;
         vector<CommercialBuilding*> commercialBuildings;
+
+
+        Government* government ;
         vector<Citizen*> citizens;
+        BuildingMaterials* materials;
+        CityGrowthManager* growthManager ;
+        GovernmentCaretaker* caretaker ;
+
+        Healthcare* healthcareService;
+        Education* educationService;
+        PoliceStation* policeStationService;
+        Cinema* cinemaService;
+
     public:
         CityFacade();
         void showAllStats();
@@ -44,6 +73,7 @@ class CityFacade{
         void createHouse();
         void createLandmark();
         void createCommercial();
+        void manageBuildingStates();
 
         void createCitizen();
         void createChild();
@@ -60,8 +90,14 @@ class CityFacade{
 
         void startUp();
 
+        void viewPopulationGrowthOverView();
+        void managePopulationGrowth();
+        void simulateNaturalDisaster(double PopulationImpact, double buidlingImpact, double economicImpact);
+        void makeAllBuildingsOperational();
 
-        
+        void viewServicesOverview();
+        void useResource();
+
 
 };
 

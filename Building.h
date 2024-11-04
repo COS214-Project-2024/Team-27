@@ -29,6 +29,9 @@ class Building{
     virtual void addUtility(const string& name, unique_ptr<Utility> util) = 0;
     virtual void removeUtility(const string& name) = 0;
     virtual void notify() = 0;
+    virtual void collectwaste(double kg) = 0;
+    virtual void usepower(double wt) = 0;
+    virtual void usewater(double cm3) = 0;
 };
 
 #endif
