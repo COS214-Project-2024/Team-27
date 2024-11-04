@@ -7,19 +7,20 @@
 #include "Services.h"
 
 class Education : public Services {
-private:
+public:
     int Rating;
     std::vector<Citizen*> enrolledStudents;
 
     void improveRating();
     void decreaseRating();
 
-public:
+
     Education(int schoolCapacity);
     void enrollStudent(Citizen* citizen);
     void releaseStudent(Citizen* citizen);
     void useService(Citizen* citizen, string subject);
     void details();
+    void showCitizens();
     ~Education();
 };
 

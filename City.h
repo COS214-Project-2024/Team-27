@@ -7,6 +7,10 @@
 #include "BuildingIterator.h"
 #include "CityAggregate.h"
 #include "Building.h"
+#include "ApartmentBuilding.h"
+#include "House.h"
+#include "Landmark.h"
+#include "CommercialBuilding.h"
 
 
 #include <vector>
@@ -16,16 +20,21 @@ using namespace std ;
 
 class City: public CityAggregate{
     private :
-        vector<Command*> commands ;
-        vector<Building*> buildings ;
-        vector<Citizen*> citizens ;
+        vector<Command*> commands;
+        vector<ApartmentBuilding*> apartmentBuildings;
+        vector<House*> houses;
+        vector<Landmark*> landmarks;
+        vector<CommercialBuilding*> commercialBuildings;
+        vector<Citizen*> citizens;
     public :
-    City(vector<Building*> buildings, vector<Citizen*> citizens);
-        void addCommand(Command* command);
-        void executeCommands();
-        void addBuilding(Building* b);
-        CityIterator* createBuildingIterator();
-        CityIterator* createCitizenIterator();
+        City(vector<ApartmentBuilding*> apartmentBuildings, vector<House*> houses, vector<Landmark*> landmarks, vector<CommercialBuilding*> commercialBuildings, vector<Citizen*> citizens);
+
+        // void addCommand(Command* command);
+        // void executeCommands();
+        
+
+        BuildingIterator* createBuildingIterator(vector<ApartmentBuilding*> apartmentBuildings, vector<House*> houses, vector<Landmark*> landmarks, vector<CommercialBuilding*> commercialBuildings);
+        CitizenIterator* createCitizenIterator(vector<Citizen*> citizens);
 };
 
 

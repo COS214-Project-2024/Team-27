@@ -12,7 +12,9 @@ class WaterSystem: public Utility{
     public:
         WaterSystem(double Litres);
         void update();
-        void useResources(double used);    
+        void useResources(double used);
+        bool flag();
+        void showresources();
 };
 
 #endif

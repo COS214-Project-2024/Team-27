@@ -62,3 +62,14 @@ void Healthcare::decreaseRating() {
         std::cout << "Hospital rating decreased to " << Rating << "." << std::endl;
     }
 }
+
+int Healthcare::getCurrent(){
+    return currentPatients.size();
+}
+
+void Healthcare::showCitizens(){
+    std::cout << "Current Patients in Healthcare Service:" << std::endl;
+        for (size_t i = 0; i < currentPatients.size(); ++i) {
+            std::cout << i << ". " << currentPatients[i]->getName() << " (Age: " << currentPatients[i]->getAge() << ")" << std::endl;
+        }
+}

@@ -31,7 +31,9 @@ class House: public Building{
     void construct() override;
     void operate() override;
     void closeDown() override;
+    void getUtilitystats() override;
     void damage() override;
+     bool fullutilies();
     House* clone() override;
     void useResources() override;
     void addResident(Citizen* citizen);
@@ -42,6 +44,10 @@ class House: public Building{
     void collectwaste(double kg) override;
     void usepower(double wt) override;
     void usewater(double cm3) override;
+    virtual double taxableAmount();
+   virtual void sethasbool(bool b);
+    virtual void sethasSolar(bool b);
+
 };
 
 #endif

@@ -1,14 +1,15 @@
-#ifndef WASTESYSTEMFACTORY_H
-#define WASTESYSTEMFACTORY_H
+#ifndef WASTESYSTEM_FACTORY_H
+#define WASTESYSTEM_FACTORY_H
 
-#include <iostream>
-using namespace std;
+#include <memory>
+#include "UtilityFactory.h"
+#include "WasteSystem.h"
 
-class WasteSystemFactory: public UtilityFactory{
-    private:
-
-    public:
-    
+class WasteSystemFactory : public UtilityFactory{
+public:
+   
+    std::unique_ptr<Utility> createUtility(double resourceAmount) override;
+   std::unique_ptr<Utility> createUtility(double kilograms, int numOfTrucks);
 };
 
 #endif

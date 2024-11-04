@@ -36,6 +36,18 @@ void CommercialBuilding::getName(){
     cout<<name;
 }
 
+bool CommercialBuilding::fullutilies()
+{
+     std::string requiredUtilities[] = {"water", "waste", "power"};
+    
+    for (const auto& name : requiredUtilities) {
+        if (utilities.find(name) == utilities.end()) {
+            return false;
+        } 
+    }
+    return true;
+}
+
 void CommercialBuilding::construct(){
     state->construct(this);
     cout<<"Commercial Building "<<name<<" is now under construction"<<endl;
@@ -49,6 +61,25 @@ void CommercialBuilding::operate(){
 void CommercialBuilding::closeDown(){
     state->closeDown(this);
     cout<<"Commercial Building "<<name<<" is now closed down"<<endl;
+}
+
+void CommercialBuilding::getUtilitystats()
+{
+      if (utilities.find("water") != utilities.end()) {
+            utilities["water"]->showresources();
+        } else {
+            std::cout <<  "water utility does NOT exist on " << name<<".\n";
+        }
+        if (utilities.find("waste") != utilities.end()) {
+            utilities["waste"]->showresources();
+        } else {
+            std::cout << "waste utility does NOT exist on " << name<<".\n";
+        }
+        if (utilities.find("power") != utilities.end()) {
+            utilities["power"]->showresources();
+        } else {
+            std::cout <<"power utility does NOT exist on " << name<<".\n";
+        }
 }
 
 void CommercialBuilding::damage(){

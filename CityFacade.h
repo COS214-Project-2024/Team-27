@@ -7,6 +7,9 @@
 #include "CommercialFactory.h"
 #include "HouseFactory.h"
 #include "LandmarkFactory.h"
+#include "WaterSystemFactory.h"
+#include "PowerSystemFactory.h"
+#include "WasteSystemFactory.h"
 #include "Building.h"
 #include "Apartment.h"
 #include "ApartmentBuilding.h"
@@ -33,8 +36,11 @@
 #include "Government.h"
 #include "Citizen.h"
 
+#include <random>
 #include <cstdlib>
+#include <vector>
 #include <ctime>
+#include <variant>
 using namespace std;
 
 class CityFacade{
@@ -44,11 +50,17 @@ class CityFacade{
         vector<Landmark*> landmarks;
         vector<CommercialBuilding*> commercialBuildings;
 
+
         Government* government ;
         vector<Citizen*> citizens;
         BuildingMaterials* materials;
         CityGrowthManager* growthManager ;
         GovernmentCaretaker* caretaker ;
+
+        Healthcare* hospital;
+        Cinema* movies;
+        PoliceStation* jail;
+        Education* school;
 
     public:
         CityFacade();
@@ -86,8 +98,15 @@ class CityFacade{
 
         void viewPopulationGrowthOverView();
         void managePopulationGrowth();
+        void AssignUtilitiestoBuildings();
         void simulateNaturalDisaster(double PopulationImpact, double buidlingImpact, double economicImpact);
         void makeAllBuildingsOperational();
+
+        void viewServicesOverview();
+        void useResource();
+
+        void traverseCitizens();
+        void traverseBuildings();
 
 
 };

@@ -13,7 +13,7 @@ using namespace std;
 #include "Services.h"
 
 class Cinema : Services {
-private:
+public:
     int Rating;
     vector<Citizen*> currentAudience;
 
@@ -26,6 +26,7 @@ public:
     void releaseAudience(Citizen* citizen);
     void details();
     void useService(Citizen* citizen, string movie);
+    void showCitizens();
     ~Cinema();
     
 };

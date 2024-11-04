@@ -4,6 +4,28 @@ void ApartmentBuilding::getName(){
     cout<<name;
 }
 
+void ApartmentBuilding::getUtilitystats()
+{
+     
+        
+        if (utilities.find("water") != utilities.end()) {
+            utilities["water"]->showresources();
+        } else {
+            std::cout <<  "water utility does NOT exist on " << name<<".\n";
+        }
+        if (utilities.find("waste") != utilities.end()) {
+            utilities["waste"]->showresources();
+        } else {
+            std::cout << "waste utility does NOT exist on " << name<<".\n";
+        }
+        if (utilities.find("power") != utilities.end()) {
+            utilities["power"]->showresources();
+        } else {
+            std::cout <<"power utility does NOT exist on " << name<<".\n";
+        }
+    
+}
+
 int ApartmentBuilding::numUnits(){
     return units.size();
 }
@@ -57,6 +79,18 @@ void ApartmentBuilding::displayInfo(){
         }
     }
     cout<<"This Apartment Building has "<<i<<" units."<<endl;
+}
+
+bool ApartmentBuilding::fullutilies()
+{
+     std::string requiredUtilities[] = {"water", "waste", "power"};
+    
+    for (const auto& name : requiredUtilities) {
+        if (utilities.find(name) == utilities.end()) {
+            return false;
+        } 
+    }
+    return true;
 }
 
 

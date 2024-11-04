@@ -25,9 +25,11 @@ class CommercialBuilding: public Building{
         void setState(BuildingState* newState) override;
         BuildingState* getState() override;
         void getName() override;
+         bool fullutilies();
         void construct() override;
         void operate() override;
         void closeDown() override;
+        void getUtilitystats() override;
         void damage() override;
         CommercialBuilding* clone() override;
         void useResources() override;
