@@ -20,6 +20,7 @@ class City: public CityAggregate{
         vector<Building*> buildings ;
         vector<Citizen*> citizens ;
     public :
+    City(vector<Building*> buildings, vector<Citizen*> citizens);
         void addCommand(Command* command);
         void executeCommands();
         void addBuilding(Building* b);
