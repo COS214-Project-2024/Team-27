@@ -6,8 +6,8 @@
 
 class UtilityFactory {
 public:
-    virtual Utility* createUtility(double resourceAmount) = 0;
-    
+    virtual ~UtilityFactory() = default;
+    virtual std::unique_ptr<Utility> createUtility(double resourceAmount) = 0;
 };
 
 #endif

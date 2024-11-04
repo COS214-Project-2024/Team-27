@@ -1,7 +1,8 @@
 #include "WaterSystemFactory.h"
 
 
-Utility* WaterSystemFactory::createUtility(double resourceAmount)
+
+std::unique_ptr<Utility> WaterSystemFactory::createUtility(double litres)
 {
-    return new WaterSystem(resourceAmount);
+    return std::make_unique<WaterSystem>(litres);
 }

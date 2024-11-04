@@ -2,14 +2,12 @@
 #define POWERSYSTEMFACTORY_H
 
 #include <memory>
-#include "PowerSystem.h"
 #include "UtilityFactory.h"
-#include "Utility.h"
+#include "PowerSystem.h"
 
-class PowerSystemFactory: public UtilityFactory{
+class PowerSystemFactory : public UtilityFactory {
 public:
-   
-    Utility* createUtility(double resourceAmount);
+    std::unique_ptr<Utility> createUtility(double resourceAmount) override;
 };
-#endif
 
+#endif

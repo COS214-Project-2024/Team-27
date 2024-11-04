@@ -1,11 +1,11 @@
 #include "WasteSystemFactory.h"
 
-Utility* WasteSystemFactory::createUtility(double resourceAmount)
+std::unique_ptr<Utility> WasteSystemFactory::createUtility(double resourceAmount)
 {
-    return new WasteSystem(resourceAmount,10);
+    return std::make_unique<WasteSystem>(resourceAmount,10);
 }
 
-Utility* WasteSystemFactory::createUtility(double kilograms, int numOfTrucks)
+std::unique_ptr<Utility> WasteSystemFactory::createUtility(double kilograms, int numOfTrucks)
 {
-   return new WasteSystem(kilograms,numOfTrucks);
+    return std::make_unique<WasteSystem>(kilograms,numOfTrucks);
 }

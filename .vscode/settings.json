@@ -1,5 +1,7 @@
 {
     "files.associations": {
+        "*.embeddedhtml": "html",
+        "*.rmd": "markdown",
         "vector": "cpp",
         "new": "cpp",
         "iostream": "cpp",
@@ -45,6 +47,9 @@
         "ostream": "cpp",
         "stdexcept": "cpp",
         "streambuf": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "cstdarg": "cpp",
+        "fstream": "cpp",
+        "sstream": "cpp"
     }
 }

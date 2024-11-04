@@ -1,13 +1,14 @@
 #ifndef WATERSYSTEM_FACTORY_H
 #define WATERSYSTEM_FACTORY_H
 
+#include "UtilityFactory.h"
 #include "WaterSystem.h"
 #include <memory>
 
-class WaterSystemFactory {
+
+class WaterSystemFactory : public UtilityFactory {
 public:
-    // Factory method to create WaterSystem objects
-   Utility* createUtility(double resourceAmount);
+    std::unique_ptr<Utility> createUtility(double litres);
 };
 
 #endif
