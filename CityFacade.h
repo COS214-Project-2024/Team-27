@@ -36,6 +36,7 @@
 #include "Government.h"
 #include "Citizen.h"
 
+#include <random>
 #include <cstdlib>
 #include <vector>
 #include <ctime>
