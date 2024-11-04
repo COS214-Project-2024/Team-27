@@ -670,7 +670,109 @@ void CityFacade::visitCommercialBuilding(){
 }
 
 void CityFacade::startUp(){
+    srand(static_cast<unsigned int>(time(0))); 
+
+    for (int i = 0; i < 15; ++i) {
+        string name = "Child_" + to_string(rand() % 1000); 
+        int age = rand() % 18 + 1; 
+        int satisfaction = 100; 
+
+        ConcreteCitizenBuilder builder;
+        CitizenDirector director(&builder);
+        Citizen* child = director.createChild(name, age, satisfaction);
+
+        citizens.push_back(child);
+    }
+
+    for (int i = 0; i < 30; ++i) {
+        string name = "Adult_" + to_string(rand() % 1000); 
+        int age = rand() % 50 + 18; 
+        bool employed = rand() % 2; 
+        double income = employed ? (rand() % 6501 + 3500) : 3500.0; 
+        int satisfaction = 100; 
+
+        ConcreteCitizenBuilder builder;
+        CitizenDirector director(&builder);
+        Citizen* adult = director.createAdult(name, age, satisfaction, income, employed);
+
+        citizens.push_back(adult);
+    }
+
+    int citizenIndex = 0; 
+
+    for (int i = 0; i < 5; ++i) {
+        string name = "Apartment_" + to_string(rand() % 1000); 
+        ApartmentBuilding* apartment = new ApartmentBuilding(name);
+
+        if (i < 2) {
+            for (int j = 0; j < 5; ++j) {
+                int unitNumber = rand() % 100 + 1;
+                Unit* unit = new Unit(unitNumber, "Medium");
+                apartment->addUnit(unit);
+
+                if (citizenIndex + 2 < citizens.size()) {
+                    unit->addResident(citizens[citizenIndex++]);
+                    unit->addResident(citizens[citizenIndex++]);
+                    unit->addResident(citizens[citizenIndex++]);
+                }
+            }
+            apartment->setState(new Operational());
+        } else if (i == 2) {
+            apartment->setState(new UnderConstruction());
+        } else if (i == 3) {
+            apartment->setState(new ClosedDown());
+        } else if (i == 4) {
+            apartment->setState(new Damaged());
+        }
+
+        apartmentBuildings.push_back(apartment);
+    }
+
+    for (int i = 0; i < 4; ++i) {
+        string name = "House_" + to_string(rand() % 1000); 
+        int size = rand() % 150 + 100; 
+        House* house = new House(name);
+        house->setSize("Medium");
+
+        if (i < 2) {
+            house->setState(new Operational());
+        } else if (i == 2) {
+            house->setState(new UnderConstruction());
+        } else if (i == 3) {
+            house->setState(new ClosedDown());
+        } else if (i == 4) {
+            house->setState(new Damaged());
+        }
+
+        if (citizenIndex + 2 < citizens.size()) {
+            house->addResident(citizens[citizenIndex++]);
+            house->addResident(citizens[citizenIndex++]);
+            house->addResident(citizens[citizenIndex++]);
+        }
+
+        houses.push_back(house);
+    }
+
+    landmarks.push_back(new Landmark("Park"));
+    landmarks.push_back(new Landmark("Community Swimming Pool"));
+    landmarks.push_back(new Landmark("City Sign"));
+    landmarks.push_back(new Landmark("Waterfall"));
+    landmarks.push_back(new Landmark("Stadium"));
+    for (auto& landmark : landmarks) {
+        landmark->setState(new Operational());
+    }
+
+    commercialBuildings.push_back(new CommercialBuilding("Food Shop"));
+    commercialBuildings.push_back(new CommercialBuilding("Factory"));
+    commercialBuildings.push_back(new CommercialBuilding("Cinema"));
+    commercialBuildings.push_back(new CommercialBuilding("Clothes Shop"));
+    for (auto& commercial : commercialBuildings) {
+        commercial->setState(new Operational());
+    }
+
     
+
+    cout << "City initialized with buildings and citizens." << endl;
 }
 
 

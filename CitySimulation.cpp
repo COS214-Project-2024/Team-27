@@ -42,7 +42,6 @@ void CitySimulation::start(){
     cout << "========================================" << endl;
 
     first();
-    stats();
     
     home();
 }
