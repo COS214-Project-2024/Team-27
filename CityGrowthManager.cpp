@@ -76,3 +76,15 @@ void CityGrowthManager::simulateNaturalDisaster(Government* myGov,
 
     std::cout << "Disaster simulated: Population, buildings, and economy adjusted." << std::endl;
 }
+
+void CityGrowthManager::evaluateBuildingExpansion() {
+    int newBuildings = static_cast<int>(economicGrowthRate * 10);  // Example formula
+    numberOfBuildings += newBuildings;
+    std::cout << "Building expansion evaluated. New number of buildings: " << numberOfBuildings << std::endl;
+}
+
+void CityGrowthManager::evaluateEconomicGrowth() {
+    double economicGrowthIncrease = 0.01;  // Assume a 1% increase
+    economicGrowthRate += economicGrowthIncrease;
+    std::cout << "Economic growth evaluated. New economic growth rate: " << economicGrowthRate << std::endl;
+}

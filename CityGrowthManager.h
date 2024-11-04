@@ -1,6 +1,7 @@
 #ifndef CITYGROWTHMANAGER_H
 #define CITYGROWTHMANAGER_H
 
+
 #include "GovernmentCareTaker.h"
 #include "Government.h"
 #include <iostream>
@@ -25,10 +26,10 @@ class CityGrowthManager{
         int getPopulation();
         int getNumOfBuildings();
         double getEconGrowthRate();
-        void simulateNaturalDisaster(Government* , GovernmentCaretaker* caretaker, 
+        void CityGrowthManager::simulateNaturalDisaster(Government* gov , GovernmentCaretaker* caretaker, 
                                                 double populationImpactPercentage, 
                                                 double buildingImpactPercentage, 
                                                 double economicImpactFactor) ;
-};  
+}; 
 
 #endif
