@@ -9,6 +9,7 @@ class Building;
 class BuildingState;
 class Apartment: public Building{
     private:
+double Tamount;
 
     public:
         virtual ~Apartment() = default;
@@ -22,6 +23,13 @@ class Apartment: public Building{
         virtual void closeDown();
         virtual void damage();
         virtual Building* clone();
+  double totalAmount(); 
+   virtual void sethasbool(bool b);
+    virtual void sethasSolar(bool b);
+       virtual bool gethasbool();
+    virtual bool gethasSolar();
+
+
 };
 
 #endif
