@@ -96,6 +96,7 @@ To run this project, you need:
 
 
 Group Members
+</br>
 This project was developed by a dedicated team of five members:
 
 - **Tebatso Mahlathini**
