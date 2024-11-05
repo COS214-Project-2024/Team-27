@@ -63,10 +63,10 @@ Group Members
 </br>
 This project was developed by a dedicated team of five members:
 
-- **Tebatso Mahlathini**
-- **Rethabile Mokoena**
-- **Lineo Khabane**
-- **Jongisapho Ndeya**
-- **Lesedi Manoto**
+- **Tebatso Mahlathini u22611704**
+- **Rethabile Mokoena u23815087**
+- **Lineo Khabane u23604043**
+- **Jongisapho Ndeya u22625926**
+- **Lesedi Manoto u22564812**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
