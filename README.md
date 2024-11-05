@@ -4,36 +4,12 @@
 <br />
 <div align="center">
 
-  <h3 align="center">City Builder Simulation</h3>
+  <h3 align="center">The Creatives</h3>
 
   <p align="center">
-    A Dynamic Urban Development Simulator
+    City Builder Simulation
   </p>
 </div>
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#description">Description</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#design-patterns-used">Design Patterns Used</a></li>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#installation-requirements">Installation Requirements</a></li>
-        <li><a href="#compilation-and-running">How to Compile and Run</a></li>
-      </ul>
-    </li>
-    <li><a href="#group-members">Group Members</a></li>
-  </ol>
-</details>
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
