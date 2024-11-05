@@ -115,6 +115,10 @@ class CityFacade{
             return caretaker ;
         };
 
+        void collectAllTax();
+        void collectBuildingTax();
+        void collectCitizensTax();
+
 };
 
 #endif

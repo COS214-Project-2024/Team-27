@@ -406,39 +406,33 @@ void CitySimulation::option6(){
 bool stillGoing = true;
     while(stillGoing){
         cout << "========================================" << endl;
-        cout << "1. View Tax Overview" << endl;
-        cout << "2. Manage Building Tax" << endl;
-        cout << "3. Manage Citizen Tax" << endl;
-        cout << "4. Manage City Tax" << endl;
-        cout << "5. Back To Home" << endl;
+        cout << "1. Collect All Tax" << endl;
+        cout << "2. Collect Building Tax" << endl;
+        cout << "3. Collect Citizen Tax" << endl;
+        cout << "4. Back To Home" << endl;
         cout << "========================================" << endl;
-        cout << "Select an option (1-6): "<<endl;
+        cout << "Select an option (1-4): "<<endl;
 
     int prompt;
     cin>>prompt;
 
     switch(prompt){
         case 1:
-            cout<<"Implement tax stats facade"<<endl;
+            cityFacade->collectAllTax();
             cout<<endl;
             
             break;
         case 2: 
-            cityFacade->traverseBuildings();
+            cityFacade->collectBuildingTax();
             cout<<endl;
             
             break;
         case 3: 
-            cityFacade->traverseCitizens();
+            cityFacade->collectCitizensTax();
             cout<<endl;
             
             break;
         case 4:
-            cout<<"Implement all tax facade"<<endl;
-            cout<<endl;
-            
-            break;
-        case 5: 
             cout<<"going back home"<<endl;
             stillGoing = false;
             cout<<endl;
@@ -446,7 +440,7 @@ bool stillGoing = true;
             break;
 
         default:
-            cout<<"Wrong prompt, chose 1-6"<<endl;
+            cout<<"Wrong prompt, choose 1-4"<<endl;
             cout<<endl;
     }
     }

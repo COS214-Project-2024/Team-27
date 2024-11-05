@@ -1550,3 +1550,18 @@ void CityFacade::updateCitizens(){
         }
     }
 }
+
+void CityFacade::collectAllTax(){
+    collectATax = new CollectAllTax(citizens, apartmentBuildings, houses, landmarks, commercialBuildings);
+    collectATax->execute();
+}
+
+void CityFacade::collectBuildingTax(){
+    collectBTax = new CollectBuildingTax(apartmentBuildings, houses, landmarks, commercialBuildings);
+    collectBTax->execute();
+}
+
+void CityFacade::collectCitizensTax(){
+    collectCTax = new CollectCitizenTax(citizens);
+    collectCTax->execute();
+}
