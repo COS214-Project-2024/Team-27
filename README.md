@@ -45,31 +45,21 @@ The City Builder Simulation is a dynamic application designed to model urban dev
 - **Urban Development**: Manage the growth of a city while balancing resources and citizen satisfaction.
 - **Building Creation**: Use the Prototype and Factory Method patterns to create diverse building types quickly.
 - **Citizen Management**: Create customizable citizens using the Builder pattern.
-- **Resource Management**: Monitor and utilize resources through the State and Mediator patterns.
+- **Resource Management**: Monitor and utilize resources through the Observer patterns.
 - **Dynamic State Management**: Track building states (under construction, operational) to reflect real-world scenarios.
 
 ### Design Patterns Used
-- **Memento**: Stores previous states of the government, such as taxes and buildings.
+- **Memento**: Stores previous states of the simulation.
 - **Prototype**: For cloning buildings, allowing quick duplication of complex structures.
-- **Decorator**: Adds additional features to buildings, such as boreholes and solar panels.
-- **Composite**: Manages apartment buildings by grouping individual units into a single entity.
+- **Decorator**: Adds additional features to buildings, such as boreholes and solar system.
+- **Composite**: Manages apartment buildings by grouping individual units into a single apartment building.
 - **Iterator**: Traverses buildings and citizens efficiently.
-- **Command**: Handles actions like collecting taxes and moving citizens.
+- **Command**: Handles actions like collecting taxes for citizens and buildings.
 - **Builder**: Creates customized citizens (e.g., children and adults) with specific attributes.
 - **Factory Method**: Used for creating buildings with standard procedures.
 - **State**: Manages different states of buildings (e.g., under construction, operational).
-
-
-
-### Built With
-<p align="left">
-  <a href="https://www.w3schools.com/cpp/" target="_blank" rel="noreferrer">
-    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" alt="cplusplus" width="40" height="40"/>
-  </a>
-  <a href="https://code.visualstudio.com/" target="_blank" rel="noreferrer">
-    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg" alt="Visual Studio Code" width="40" height="40"/>
-  </a>
-</p>
+- **Facade**: Acts as a unified interface to various design patterns.
+- **Observer**: Facilitates interaction between buildings and utilities.
 
 
 <!-- GETTING STARTED -->
@@ -81,10 +71,8 @@ To run this project, you need:
 - Git for cloning the repository
 
 ### How to Compile and Run
-1. **Clone the repository**:
-   ```sh
-   git clone https://github.com/yourusername/city-builder-simulation.git
-   cd city-builder-simulation
+1. **Download the repository**:
+   
 
 2. **Compile the project**:
    ```sh
